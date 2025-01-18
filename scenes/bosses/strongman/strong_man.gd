@@ -20,7 +20,6 @@ func _ready() -> void:
 	# stomp_cooldown_timer.start()
 
 func on_player_in_range(body: Node2D):
-	print("Player in range")
 	start_stomp_timer()
 
 func on_player_out_of_range(body: Node2D):
@@ -33,7 +32,6 @@ func _process(delta: float) -> void:
 		move_towards(delta, target)
 
 func start_stomp_timer():
-	print("Started Stomp Timer")
 	stomp_cooldown_timer.start()
 	
 func move_towards(_delta, curr_target: Node2D):

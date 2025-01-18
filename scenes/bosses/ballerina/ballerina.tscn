@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dye77ts0dxhp2"]
+[gd_scene load_steps=13 format=3 uid="uid://dye77ts0dxhp2"]
 
 [ext_resource type="PackedScene" uid="uid://48065bwf2hcu" path="res://scenes/bosses/boss_base.tscn" id="1_5l7ns"]
 [ext_resource type="Script" path="res://scenes/bosses/ballerina/ballerina.gd" id="2_k2wil"]
@@ -55,6 +55,9 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jkyu4"]
 size = Vector2(106, 101)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xdfb7"]
+size = Vector2(119, 120)
+
 [node name="BossBase" instance=ExtResource("1_5l7ns")]
 collision_layer = 2
 collision_mask = 4
@@ -75,16 +78,26 @@ animation = &"charge"
 
 [node name="Dash" type="AudioStreamPlayer2D" parent="." index="2"]
 stream = ExtResource("6_c2fx8")
-bus = &"Bosses"
+bus = &"Sfx"
 
 [node name="Shoot" type="AudioStreamPlayer2D" parent="." index="3"]
-bus = &"Bosses"
+bus = &"Sfx"
 
 [node name="Defeat" type="AudioStreamPlayer2D" parent="." index="4"]
-bus = &"Bosses"
+bus = &"Sfx"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="5"]
+[node name="Hit_received" type="AudioStreamPlayer2D" parent="." index="5"]
+bus = &"Sfx"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="6"]
 position = Vector2(-1, -2.5)
 shape = SubResource("RectangleShape2D_jkyu4")
+
+[node name="Hurtbox" type="Area2D" parent="." index="7"]
+collision_layer = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_xdfb7")
 
 [connection signal="timeout" from="DoSomething" to="." method="_on_do_something_timeout"]

@@ -1,16 +1,16 @@
-extends "res://scenes/bosses/boss_base.gd"
+extends BossBase
 
 signal player_hit
 
 @export var cerchio_scene: PackedScene
 @export var base_velocity :float
-@export var target: CharacterBody2D = null
 @export var max_vel :float
 @export var speed_exponent :float
 @export var turn_speed = 1
 @onready var audio_shoot = $Shoot
 @onready var audio_dash = $Dash
 @onready var audio_defeat = $Defeat
+@onready var audio_hit_received = $Hit_received
 @onready var animation_sprites: AnimatedSprite2D = $AnimatedSprite2D
 
 var rng = RandomNumberGenerator.new()
@@ -28,19 +28,20 @@ func get_random_direction() -> Vector2:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	curr_velocity = base_velocity
-	direction = (target.global_position - position).normalized()
+	direction = (player.global_position - position).normalized()
 	idle_direction = get_random_direction()
 	action = "idle"
 	animation_sprites.play("idle")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	super(delta)
 	match action:
 		"idle":
 			curr_velocity = base_velocity
 			direction = idle_direction
 		"charge":
-			var player_direction = (target.global_position - position).normalized()
+			var player_direction = (player.global_position - position).normalized()
 			var current_direction = velocity.normalized()
 			direction = current_direction.lerp(player_direction, turn_speed * delta).normalized()
 			
@@ -70,7 +71,7 @@ func _process(delta: float) -> void:
 func _on_do_something_timeout() -> void:
 	var what_to_do = rng.randf_range(0, 1)
 	if what_to_do < 0.7:
-		direction = (target.global_position - position).normalized()
+		direction = (player.global_position - position).normalized()
 		curr_velocity = 5
 		ramp_up = 1
 		self.velocity = direction*curr_velocity
@@ -82,12 +83,12 @@ func _on_do_something_timeout() -> void:
 	else:
 		animation_sprites.play("shoot")
 		await get_tree().create_timer(0.2).timeout 
-		direction = (target.global_position - position).normalized()
+		direction = (player.global_position - position).normalized()
 		cerchio = cerchio_scene.instantiate()
 		add_child(cerchio)
 		cerchio.global_position = self.global_position
 		cerchio.direction =  direction
-		cerchio.player_position = target.global_position
+		cerchio.player_position = player.global_position
 		cerchio.boss_position = self.global_position
 		audio_shoot.play()
 		action = "shoot"
