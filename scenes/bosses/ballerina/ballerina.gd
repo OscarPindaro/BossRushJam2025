@@ -7,6 +7,7 @@ signal player_hit
 @export var target: CharacterBody2D = null
 @export var max_vel :float
 @export var speed_exponent :float
+@export var turn_speed = 1
 @onready var audio_shoot = $Shoot
 @onready var audio_dash = $Dash
 @onready var audio_defeat = $Defeat
@@ -39,9 +40,14 @@ func _process(delta: float) -> void:
 			curr_velocity = base_velocity
 			direction = idle_direction
 		"charge":
+			var player_direction = (target.global_position - position).normalized()
+			var current_direction = velocity.normalized()
+			direction = current_direction.lerp(player_direction, turn_speed * delta).normalized()
+			
+			
 			animations.speed_scale = 1 + (curr_velocity/max_vel) * 5
 			if ramp_up == 1:
-				curr_velocity = curr_velocity + 30
+				curr_velocity = curr_velocity + 20
 				if curr_velocity > max_vel:
 					ramp_up = 0
 			if ramp_up == 0:
@@ -64,10 +70,11 @@ func _process(delta: float) -> void:
 
 func _on_do_something_timeout() -> void:
 	var what_to_do = rng.randf_range(0, 1)
-	if what_to_do < 0:
+	if what_to_do < 0.7:
 		direction = (target.global_position - position).normalized()
 		curr_velocity = 5
 		ramp_up = 1
+		self.velocity = direction*curr_velocity
 		
 		animations.play("charge")
 		audio_dash.play()

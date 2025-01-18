@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://b2voe3swrvfod"]
+[gd_scene load_steps=5 format=3 uid="uid://b2voe3swrvfod"]
 
 [ext_resource type="Script" path="res://scenes/bosses/ballerina/cerchio.gd" id="1_6bfop"]
 [ext_resource type="Texture2D" uid="uid://brh2qeoqma82q" path="res://asset/graphic/Barrel.png" id="2_obn0l"]
+[ext_resource type="AudioStream" uid="uid://qoi6r3a6ssh0" path="res://asset/sfx/ballerina/boomerang.wav" id="3_q2t8u"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_77hdy"]
 radius = 8.24621
@@ -18,6 +19,7 @@ texture = ExtResource("2_obn0l")
 bus = &"Bosses"
 
 [node name="In_flight" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_q2t8u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_77hdy")
