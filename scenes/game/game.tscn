@@ -22,7 +22,7 @@ _bundled = {
 "version": 3
 }
 
-[node name="game" type="Node2D"]
+[node name="game" type="Node2D" groups=["level"]]
 script = ExtResource("1_0u2hm")
 win_screen = SubResource("PackedScene_6hhc7")
 lose_screen = ExtResource("3_li1fu")

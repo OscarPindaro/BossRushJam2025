@@ -13,8 +13,9 @@ func _ready() -> void:
 		$LabelContainer/Label.text = name
 	bus_index = AudioServer.get_bus_index(bus_name)
 	print (bus_index)
-	print
 	$SliderContainer/Volume.value = db_to_linear(AudioServer.get_bus_volume_db(bus_index))
+	print($SliderContainer/Volume.value)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,6 +25,7 @@ func _process(delta: float) -> void:
 
 func _on_volume_value_changed(value: float) -> void:
 	var volume_db = linear_to_db($SliderContainer/Volume.value)
+	print(volume_db)
 	AudioServer.set_bus_volume_db(bus_index, volume_db)
 	
 
