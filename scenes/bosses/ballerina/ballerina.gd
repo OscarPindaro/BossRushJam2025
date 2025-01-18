@@ -1,4 +1,4 @@
-extends "res://scenes/bosses/boss_base.gd"
+extends BossBase
 
 @export var ziopera = 1
 @export var curr_velocity = 200
@@ -21,7 +21,7 @@ func _process(delta: float) -> void:
 			ramp_up = 0
 	if ramp_up == 0:
 		curr_velocity = curr_velocity ** 0.95
-	print(curr_velocity)
+	#print(curr_velocity)
 	self.velocity = direction*curr_velocity
 	self.move_and_slide()
 	pass	

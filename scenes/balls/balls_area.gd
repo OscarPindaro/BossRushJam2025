@@ -3,6 +3,7 @@ extends Node2D
 @export var number_of_balls = 5
 @export var radius = 100.0
 @export var angular_rotation = PI/64
+@export var balls_rotation: bool = true
 @export var ball_angular_rotation = -PI/64
 var rag_ball = preload("res://scenes/balls/rag_ball.tscn")
 
@@ -20,9 +21,10 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	self.rotate(angular_rotation)
-	for ball in active_balls:
-		ball.rotate(ball_angular_rotation)
-	pass
+	if balls_rotation:
+		for ball in active_balls:
+			ball.rotate(ball_angular_rotation)
+
 
 # evenly distribute objects in a circle
 func arrange_in_circle(num_balls: int, radius: float, center=Vector2.ZERO, start_offset=0) -> Array:

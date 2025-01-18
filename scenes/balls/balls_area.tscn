@@ -3,5 +3,4 @@
 [ext_resource type="Script" path="res://scenes/balls/balls_area.gd" id="1_wlv4e"]
 
 [node name="BallsArea" type="Node2D"]
-position = Vector2(563, 316)
 script = ExtResource("1_wlv4e")
