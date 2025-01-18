@@ -55,19 +55,16 @@ text = "The Spiraling Fool"
 horizontal_alignment = 1
 
 [node name="PlayButton" parent="NinePatchRect/VBoxContainer" instance=ExtResource("2_t0ysj")]
-custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 text = "Play"
 next_scene = ExtResource("3_8yi6t")
 
 [node name="CommandsButton" parent="NinePatchRect/VBoxContainer" instance=ExtResource("2_t0ysj")]
-custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 text = "Commands"
 next_scene = ExtResource("3_niwag")
 
 [node name="CreditsButton" parent="NinePatchRect/VBoxContainer" instance=ExtResource("2_t0ysj")]
-custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 text = "Credits"
 next_scene = ExtResource("3_67rq3")
