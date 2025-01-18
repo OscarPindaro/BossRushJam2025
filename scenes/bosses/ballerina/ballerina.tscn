@@ -9,8 +9,8 @@ radius = 33.0606
 
 [node name="BossBase" instance=ExtResource("1_5l7ns")]
 script = ExtResource("2_k2wil")
-ziopera = 1
-curr_velocity = 0.0
+cerchio_scene = null
+base_velocity = 0.0
 max_vel = 0.0
 speed_exponent = 0.0
 
