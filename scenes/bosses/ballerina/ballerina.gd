@@ -1,4 +1,4 @@
-extends "res://scenes/bosses/boss_base.gd"
+extends BossBase
 
 signal player_hit
 

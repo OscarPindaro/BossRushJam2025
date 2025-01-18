@@ -3,14 +3,15 @@ class_name WAUAudioPlayer
 
 @export var Sounds: Dictionary = {}
 
-# const Sounds = {STEP = preload("res://scene_prova/asset_a_caso/step2.wav"),
-# STOP_MOVING = preload("res://scene_prova/asset_a_caso/cosmonaut1.wav")}
+var Sounds = {STEP = AudioStreamRandomizer.new(),
+STOP_MOVING = preload("res://asset/sfx/player/footsteps/footstep5.wav")}
 
 var active_sound = null
 
 func _ready():
 	self.finished.connect(_on_sound_finished)
-
+	for i in range(4):
+		Sounds["STEP"].add_stream(i,load("res://asset/sfx/player/footsteps/footstep" + str(i+1) + ".wav"), 0.25)
 func _on_sound_finished():
 	self.active_sound = null
 	

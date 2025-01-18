@@ -29,5 +29,5 @@ func walk_right():
 func _process(delta: float) -> void:
 	pass
 	
-func on_hit() -> void:
-	pass
+func take_damage(dmg: float) -> void:
+	hp = hp - dmg
