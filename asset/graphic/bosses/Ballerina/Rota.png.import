@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://rp0no1eyp0pw"
-path="res://.godot/imported/Rota.png-e9fdc3f287b28dc0aa64a15f9a231ccd.ctex"
+path="res://.godot/imported/Rota.png-854b32b275394a888edd29ba51d63f00.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/graphic/bosses/Rota.png"
-dest_files=["res://.godot/imported/Rota.png-e9fdc3f287b28dc0aa64a15f9a231ccd.ctex"]
+source_file="res://asset/graphic/bosses/Ballerina/Rota.png"
+dest_files=["res://.godot/imported/Rota.png-854b32b275394a888edd29ba51d63f00.ctex"]
 
 [params]
 
