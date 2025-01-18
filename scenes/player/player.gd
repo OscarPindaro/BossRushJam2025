@@ -55,6 +55,4 @@ func _physics_process(delta: float) -> void:
 			audio.play_sound("STOP_MOVING")
 			moving = false
 		
-		
-		
 	move_and_slide()

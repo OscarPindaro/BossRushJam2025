@@ -11,7 +11,7 @@ signal player_hit
 @onready var audio_shoot = $Shoot
 @onready var audio_dash = $Dash
 @onready var audio_defeat = $Defeat
-# @onready var animations: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation_sprites: AnimatedSprite2D = $AnimatedSprite2D
 
 var rng = RandomNumberGenerator.new()
 var curr_velocity
@@ -31,7 +31,7 @@ func _ready() -> void:
 	direction = (target.global_position - position).normalized()
 	idle_direction = get_random_direction()
 	action = "idle"
-	animations.play("idle")
+	animation_sprites.play("idle")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -44,8 +44,7 @@ func _process(delta: float) -> void:
 			var current_direction = velocity.normalized()
 			direction = current_direction.lerp(player_direction, turn_speed * delta).normalized()
 			
-			
-			animations.speed_scale = 1 + (curr_velocity/max_vel) * 5
+			animation_sprites.speed_scale = 1 + (curr_velocity/max_vel) * 5
 			if ramp_up == 1:
 				curr_velocity = curr_velocity + 20
 				if curr_velocity > max_vel:
@@ -55,7 +54,7 @@ func _process(delta: float) -> void:
 				if curr_velocity < base_velocity:
 					idle_direction = get_random_direction()
 					action = "idle"
-					animations.play("idle")
+					animation_sprites.play("idle")
 
 		"shoot":
 			direction = Vector2(0, 0)
@@ -63,7 +62,7 @@ func _process(delta: float) -> void:
 			if cerchio.despawned == true:
 				idle_direction = get_random_direction()
 				action = "idle"
-				animations.play("idle")
+				animation_sprites.play("idle")
 
 	self.velocity = direction*curr_velocity
 	self.move_and_slide()
@@ -76,12 +75,12 @@ func _on_do_something_timeout() -> void:
 		ramp_up = 1
 		self.velocity = direction*curr_velocity
 		
-		animations.play("charge")
+		animation_sprites.play("charge")
 		audio_dash.play()
 		action = "charge"
 
 	else:
-		animations.play("shoot")
+		animation_sprites.play("shoot")
 		await get_tree().create_timer(0.2).timeout 
 		direction = (target.global_position - position).normalized()
 		cerchio = cerchio_scene.instantiate()
