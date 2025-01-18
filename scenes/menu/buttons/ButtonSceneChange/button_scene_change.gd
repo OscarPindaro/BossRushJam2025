@@ -18,6 +18,7 @@ func _process(delta: float) -> void:
 
 
 func _on_button_down() -> void:
+	super._on_button_down()
 	print ("NextScene: ",  next_scene)
 	emit_signal("scene_button_pressed", next_scene)
 	pass # Replace with function body.

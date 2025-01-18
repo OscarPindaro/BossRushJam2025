@@ -1,5 +1,5 @@
-extends Button
-class_name ButtonWrapper
+extends ButtonWrapper
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -12,6 +12,6 @@ func _process(delta: float) -> void:
 
 
 func _on_button_down() -> void:
-	print("Test Button: ", name)
-	$AudioStreamPlayer2D.play()
-	
+	super._on_button_down()
+	get_tree().quit()
+	pass # Replace with function body.

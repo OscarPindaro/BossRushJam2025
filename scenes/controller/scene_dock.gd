@@ -1,9 +1,11 @@
 extends Node
 
 @export var first_scene: PackedScene
+@export var settings_button: PackedScene
 
 signal level_started
 signal level_ended
+signal settings_switched
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -16,13 +18,13 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_next_scene(game_scene: PackedScene) -> void:
-	
 	var instance
 	print(game_scene)
 	if game_scene != null:
 		instance = game_scene.instantiate()
 	else:
 		instance = first_scene.instantiate()
+	
 	
 	instance.next_scene.connect(_on_next_scene)
 	
@@ -38,7 +40,16 @@ func _on_next_scene(game_scene: PackedScene) -> void:
 		remove_child(scene)  # Remove the child from the parent node
 		scene.queue_free() 
 	
+	var button = settings_button.instantiate()
+		
+	instance.add_child(button)
+	button.settings_switched.connect(_switch_settings)
+	
 	add_child(instance)
+	
+	
+func _switch_settings():
+	emit_signal("settings_switched")
 
 
 func _on_settings_switched() -> void:

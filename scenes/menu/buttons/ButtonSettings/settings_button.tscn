@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://c31dprby61dbw"]
+
+[ext_resource type="PackedScene" uid="uid://c72tadrko6hg0" path="res://scenes/menu/buttons/ButtonWrapper/button_wrapper.tscn" id="1_bhb40"]
+[ext_resource type="Script" path="res://scenes/menu/buttons/ButtonSettings/settings_button.gd" id="2_e8jg6"]
+
+[node name="SettingsButton" instance=ExtResource("1_bhb40")]
+text = "Settings"
+script = ExtResource("2_e8jg6")

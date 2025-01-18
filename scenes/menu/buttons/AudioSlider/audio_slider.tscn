@@ -5,6 +5,7 @@
 [node name="AudioSlider" type="HBoxContainer"]
 offset_right = 40.0
 offset_bottom = 40.0
+alignment = 1
 script = ExtResource("1_s8fcs")
 
 [node name="LabelContainer" type="MarginContainer" parent="."]
@@ -17,6 +18,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Volume" type="HSlider" parent="SliderContainer"]
+layout_direction = 3
 layout_mode = 2
 
 [connection signal="value_changed" from="SliderContainer/Volume" to="." method="_on_volume_value_changed"]

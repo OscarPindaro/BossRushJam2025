@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://scenes/menu/buttons/ButtonWrapper/button_wrapper.gd" id="1_hg25s"]
 
 [node name="ButtonWrapper" type="Button"]
+custom_minimum_size = Vector2(200, 100)
 offset_right = 8.0
 offset_bottom = 8.0
 script = ExtResource("1_hg25s")
