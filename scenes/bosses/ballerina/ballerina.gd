@@ -29,7 +29,6 @@ func _ready() -> void:
 	direction = (player.global_position - position).normalized()
 	idle_direction = get_random_direction()
 	action = "idle"
-	animation_sprites.play("idle")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -38,6 +37,12 @@ func _process(delta: float) -> void:
 		"idle":
 			curr_velocity = base_velocity
 			direction = idle_direction
+			animation_sprites.rotation = 0
+			if direction.x < 0:
+				animation_sprites.play("idle_left")
+			else:
+				animation_sprites.play("idle_right")
+
 		"charge":
 			var player_direction = (player.global_position - position).normalized()
 			var current_direction = velocity.normalized()
@@ -53,8 +58,6 @@ func _process(delta: float) -> void:
 				if curr_velocity < base_velocity:
 					idle_direction = get_random_direction()
 					action = "idle"
-					animation_sprites.rotation = 0
-					animation_sprites.play("idle")
 
 		"shoot":
 			direction = Vector2(0, 0)
@@ -62,14 +65,13 @@ func _process(delta: float) -> void:
 			if cerchio.despawned == true:
 				idle_direction = get_random_direction()
 				action = "idle"
-				animation_sprites.play("idle")
 
 	self.velocity = direction*curr_velocity
 	self.move_and_slide()
 
 func _on_do_something_timeout() -> void:
 	var what_to_do = rng.randf_range(0, 1)
-	if what_to_do < 0:
+	if what_to_do < 0.7:
 		direction = (player.global_position - position).normalized()
 		curr_velocity = 5
 		ramp_up = 1
@@ -80,9 +82,16 @@ func _on_do_something_timeout() -> void:
 		action = "charge"
 
 	else:
-		animation_sprites.play("shoot")
-		await get_tree().create_timer(0.2).timeout 
 		direction = (player.global_position - position).normalized()
+		action = "shoot_windup"
+		curr_velocity = 0
+		if direction.x < 0:
+			animation_sprites.play("shoot_windup_left")
+			animation_sprites.animation_looped
+		else:
+			animation_sprites.play("shoot_windup_right")
+		await get_tree().create_timer(0.5).timeout
+		direction = (player.global_position - position).normalized() 
 		cerchio = cerchio_scene.instantiate()
 		add_child(cerchio)
 		cerchio.connect("player_hitted", _on_player_hitted)
