@@ -1,9 +1,10 @@
-extends Node2D
+extends Area2D
+class_name BaseBall
 
-enum BallType {STANDARD}
+enum BallType {RAG}
 
 @export var dmg: float
-var type = BallType.STANDARD
+@export var type: BallType 
 
 
 # Called when the node enters the scene tree for the first time.
