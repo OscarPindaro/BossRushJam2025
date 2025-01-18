@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://dxlpp1xb6hb4m"]
+
+[ext_resource type="Script" path="res://scenes/balls/balls_area.gd" id="1_wlv4e"]
+
+[node name="BallsArea" type="Node2D"]
+position = Vector2(563, 316)
+script = ExtResource("1_wlv4e")
