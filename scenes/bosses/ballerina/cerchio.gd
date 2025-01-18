@@ -15,13 +15,22 @@ var start_cooldown = false
 var despawnable = false
 var despawned = false
 
+var circular_offset
+var circular_offset_rotated
+var radius = 10 # Radius of the circular motion
+var angular_speed = 50.0 # Angular speed for circular motion (radians per second)
+var time_passed = 0.0 # Keeps track of elapsed time
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	self.position += direction*speed
+	time_passed += delta
+	circular_offset = Vector2(cos(time_passed * angular_speed), sin(time_passed * angular_speed)) * radius
+	circular_offset_rotated = circular_offset.rotated(direction.angle())
+	self.position += direction*speed + circular_offset_rotated
 	distance_from_player = player_position.distance_to(global_position)
 	distance_from_boss = boss_position.distance_to(global_position)
 	
@@ -35,6 +44,7 @@ func _process(delta: float) -> void:
 		despawnable = true
 	if despawnable == true and distance_from_boss < 50:
 		despawned = true
+		$CollisionShape2D.disabled = true
 		hide()
 	
 func _on_player_hit():
