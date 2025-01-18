@@ -10,7 +10,7 @@ extends BossBase
 	set(value):
 		target = value
 
-var player: Player = null
+var vision_player: Player = null
 var is_stomping: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -22,14 +22,14 @@ func _ready() -> void:
 
 func on_player_in_range(body: Node2D):
 	if body.is_in_group("Player"):
-		player = body as Player
+		vision_player = body as Player
 		print("Player in range")
 		start_or_continue_stomp_timer()
 
 func on_player_out_of_range(body: Node2D):
 	if body.is_in_group("Player"):
 		print("Player out of range")
-		player =  null
+		vision_player =  null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -44,7 +44,6 @@ func start_or_continue_stomp_timer():
 		pass
 
 func start_stomp_timer():
-	print("Started Stomp Timer")
 	stomp_cooldown_timer.start()
 	
 func move_towards(_delta, curr_target: Node2D):

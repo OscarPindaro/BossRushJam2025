@@ -61,7 +61,5 @@ func _physics_process(delta: float) -> void:
 
 	velocity = velocity + external_velocity
 		
-		
-		
 	move_and_slide()
 	external_velocity = Vector2.ZERO

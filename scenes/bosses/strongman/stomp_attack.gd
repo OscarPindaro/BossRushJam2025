@@ -50,7 +50,6 @@ func damage_player():
 func run() -> void:
 	if not Engine.is_editor_hint():
 		# Code to execute in game.
-		print("StompArea Enabled")
 		enabled = true
 		self.stomp_sprite.visible = true
 		set_collisions(true)
@@ -59,7 +58,6 @@ func run() -> void:
 func stop() -> void:
 	if not Engine.is_editor_hint():
 		# Code to execute in game.
-		print("StompArea Disabled")
 		enabled = false
 		self.stomp_sprite.visible = false
 		set_collisions(false)
@@ -79,7 +77,6 @@ func on_player_entered_interaction(body: Node2D):
 func on_player_exited_interaction(body: Node2D):
 	if body.is_in_group("Player"):
 		# add a cast
-		print("Player exited in interaction")
 		player = null
 		player_exited_interaction_area.emit(player)
 
