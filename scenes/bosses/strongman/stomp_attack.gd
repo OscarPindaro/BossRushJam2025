@@ -39,7 +39,7 @@ func _process(delta: float) -> void:
 	if enabled:
 		if interaction_area.overlaps_body(player):
 			print("azz")
-			player.pull()
+			player.pull(Vector2.UP)
 		if hurt_box.overlaps_body(player):
 			print("bbb")
 			player.take_damage(1.)
