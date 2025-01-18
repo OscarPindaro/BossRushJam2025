@@ -1,10 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://gpah4ea7go8w"]
+[gd_scene load_steps=3 format=3 uid="uid://gpah4ea7go8w"]
 
+[ext_resource type="PackedScene" uid="uid://c72tadrko6hg0" path="res://scenes/menu/buttons/ButtonWrapper/button_wrapper.tscn" id="1_adlok"]
 [ext_resource type="Script" path="res://scenes/menu/buttons/ButtonSceneChange/button_scene_change.gd" id="1_v6rfm"]
 
-[node name="SceneChangeButton" type="Button"]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="ButtonSceneChange" instance=ExtResource("1_adlok")]
 script = ExtResource("1_v6rfm")
-
-[connection signal="button_down" from="." to="." method="_on_button_down"]
+next_scene = null

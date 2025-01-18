@@ -1,0 +1,46 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci8munt5neoq7"]
+
+[ext_resource type="Script" path="res://scenes/menu/base_menu.gd" id="1_2pwis"]
+[ext_resource type="PackedScene" uid="uid://gpah4ea7go8w" path="res://scenes/menu/buttons/ButtonSceneChange/button_scene_change.tscn" id="2_sflbv"]
+
+[node name="CommandsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2pwis")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+visible = false
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/NinePatchRect"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="CanvasLayer/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+text = "Commands"
+horizontal_alignment = 1
+
+[node name="Body" type="Label" parent="CanvasLayer/NinePatchRect/VBoxContainer"]
+layout_mode = 2
+text = "Go Fast
+Eat Grass"
+horizontal_alignment = 1
+
+[node name="ReturnButton" parent="CanvasLayer/NinePatchRect/VBoxContainer" instance=ExtResource("2_sflbv")]
+layout_mode = 2
+text = "Return"
+
+[connection signal="scene_button_pressed" from="CanvasLayer/NinePatchRect/VBoxContainer/ReturnButton" to="." method="_on_next_scene"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cnlm6ho48juqv"]
+[gd_scene load_steps=5 format=3 uid="uid://cnlm6ho48juqv"]
 
-[ext_resource type="Script" path="res://scenes/menu/main_menu/main_menu.gd" id="1_442v6"]
+[ext_resource type="Script" path="res://scenes/menu/base_menu.gd" id="1_2642x"]
 [ext_resource type="PackedScene" uid="uid://gpah4ea7go8w" path="res://scenes/menu/buttons/ButtonSceneChange/button_scene_change.tscn" id="2_t0ysj"]
+[ext_resource type="PackedScene" uid="uid://b0r22s7oyogmi" path="res://scenes/menu/credits_menu/credits_menu.tscn" id="3_67rq3"]
+[ext_resource type="PackedScene" uid="uid://ci8munt5neoq7" path="res://scenes/menu/commands_menu/commands_menu.tscn" id="3_niwag"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -10,28 +12,43 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_442v6")
+script = ExtResource("1_2642x")
 
-[node name="Background" type="Sprite2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="Title" type="Label" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background" type="Sprite2D" parent="CanvasLayer"]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/NinePatchRect"]
 layout_mode = 0
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 40.0
+
+[node name="Title" type="Label" parent="CanvasLayer/NinePatchRect/VBoxContainer"]
+layout_mode = 2
 text = "The Spiraling Fool"
 
-[node name="PlayButton" parent="." instance=ExtResource("2_t0ysj")]
-layout_mode = 0
+[node name="PlayButton" parent="CanvasLayer/NinePatchRect/VBoxContainer" instance=ExtResource("2_t0ysj")]
+layout_mode = 2
 text = "Play"
 
-[node name="CommandsButton" parent="." instance=ExtResource("2_t0ysj")]
-layout_mode = 0
+[node name="CommandsButton" parent="CanvasLayer/NinePatchRect/VBoxContainer" instance=ExtResource("2_t0ysj")]
+layout_mode = 2
 text = "Commands"
+next_scene = ExtResource("3_niwag")
 
-[node name="CreditsButton" parent="." instance=ExtResource("2_t0ysj")]
-layout_mode = 0
+[node name="CreditsButton" parent="CanvasLayer/NinePatchRect/VBoxContainer" instance=ExtResource("2_t0ysj")]
+layout_mode = 2
 text = "Credits"
+next_scene = ExtResource("3_67rq3")
 
-[connection signal="on_button_pressed" from="PlayButton" to="." method="_on_next_scene"]
-[connection signal="on_button_pressed" from="CommandsButton" to="." method="_on_next_scene"]
-[connection signal="on_button_pressed" from="CreditsButton" to="." method="_on_next_scene"]
+[connection signal="scene_button_pressed" from="CanvasLayer/NinePatchRect/VBoxContainer/PlayButton" to="." method="_on_next_scene"]
+[connection signal="scene_button_pressed" from="CanvasLayer/NinePatchRect/VBoxContainer/CommandsButton" to="." method="_on_next_scene"]
+[connection signal="scene_button_pressed" from="CanvasLayer/NinePatchRect/VBoxContainer/CreditsButton" to="." method="_on_next_scene"]

@@ -16,9 +16,15 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_next_scene(game_scene: PackedScene) -> void:
-	var instance = game_scene.instantiate()
 	
-	instance._next_scene.connect(_on_next_scene)
+	var instance
+	print(game_scene)
+	if game_scene != null:
+		instance = game_scene.instantiate()
+	else:
+		instance = first_scene.instantiate()
+	
+	instance.next_scene.connect(_on_next_scene)
 	
 	if instance.is_in_group("level"):
 		emit_signal("level_started")
