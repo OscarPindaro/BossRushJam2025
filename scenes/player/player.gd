@@ -14,16 +14,20 @@ class_name Player
 @export var initial_hp: float
 @export var SPEED: float
 var moving = false
+var external_velocity: Vector2 = Vector2.ZERO
 
 var current_hp: float = initial_hp
 
 
 func take_damage(dmg_amount: float) -> float:
 	current_hp = current_hp - dmg_amount
+	print("Current HP ", current_hp)
 	return current_hp
 	
-func pull(direction: Vector2):
-	pass
+func pull(position: Vector2, pull_force: float):
+	var direction = position - self.global_position
+	self.external_velocity = direction * pull_force
+
 
 func _physics_process(delta: float) -> void:
 
@@ -54,7 +58,10 @@ func _physics_process(delta: float) -> void:
 		if moving:
 			audio.play_sound("STOP_MOVING")
 			moving = false
+
+	velocity = velocity + external_velocity
 		
 		
 		
 	move_and_slide()
+	external_velocity = Vector2.ZERO

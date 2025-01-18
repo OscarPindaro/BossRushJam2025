@@ -19,6 +19,7 @@ signal player_exited_interaction_area(body: Node2D)
 		interaction_radius = float(value)
 		if collision_shape != null:
 			collision_shape.shape.radius = interaction_radius
+@export var pull_force: float = 50
 
 var player: Player = null
 
@@ -36,13 +37,15 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if enabled:
-		if interaction_area.overlaps_body(player):
-			print("azz")
-			player.pull(Vector2.UP)
-		if hurt_box.overlaps_body(player):
-			print("bbb")
-			player.take_damage(1.)
+	pass
+
+func pull_player():
+	if interaction_area.overlaps_body(player):
+		player.pull(self.global_position, self.pull_force)
+
+func damage_player():
+	if hurt_box.overlaps_body(player):
+		player.take_damage(1.)
 
 func run() -> void:
 	if not Engine.is_editor_hint():
@@ -69,7 +72,7 @@ func on_player_entered_interaction(body: Node2D):
 	if body.is_in_group("Player"):
 		# add a cast
 		print("Player entered in interaction")
-		player = body as Player
+		self.player = body as Player
 		player_entered_interaction_area.emit(player)
 
 

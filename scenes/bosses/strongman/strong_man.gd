@@ -2,7 +2,7 @@ extends BossBase
 
 # timers
 @onready var stomp_cooldown_timer: Timer =  $StompTimer
-@onready var stomp_duration_time: Timer = $StompDurationTimer
+@onready var vision_area: Area2D = $VisionArea
 
 @onready var stomp_attack: StompAttack = $StompAttack
 
@@ -10,27 +10,38 @@ extends BossBase
 	set(value):
 		target = value
 
+var player: Player = null
+var is_stomping: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	stomp_cooldown_timer.timeout.connect(on_stomp_timer_end)
-	stomp_duration_time.timeout.connect(on_stomp_duration_end)
-	stomp_attack.player_entered_interaction_area.connect(on_player_in_range)
-	stomp_attack.player_exited_interaction_area.connect(on_player_out_of_range)
+	vision_area.body_entered.connect(on_player_in_range)
+	vision_area.body_exited.connect(on_player_out_of_range)
 	# stomp_cooldown_timer.start()
 
 func on_player_in_range(body: Node2D):
-	print("Player in range")
-	start_stomp_timer()
+	if body.is_in_group("Player"):
+		player = body as Player
+		print("Player in range")
+		start_or_continue_stomp_timer()
 
 func on_player_out_of_range(body: Node2D):
-	pass
-
+	if body.is_in_group("Player"):
+		print("Player out of range")
+		player =  null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if target != null:
-		move_towards(delta, target)
+		if !is_stomping:
+			move_towards(delta, target)
+
+func start_or_continue_stomp_timer():
+	if stomp_cooldown_timer.is_stopped():
+		start_stomp_timer()
+	else:
+		pass
 
 func start_stomp_timer():
 	print("Started Stomp Timer")
@@ -46,12 +57,16 @@ func move_towards(_delta, curr_target: Node2D):
 		self.idle()
 
 func on_stomp_timer_end():
+	# time to stomp, move it to the correct position
+	is_stomping = true
+	if self.velocity.x > 0: 
+		# move right and animate right
+		stomp_attack.position = $StompRightPosition.position
+		stomp_right()
+	else:
+		stomp_attack.position = $StompLeftPosition.position
+		stomp_left()
 	stomp_attack.run()
-	stomp_duration_time.start()
-
-func on_stomp_duration_end():
-	stomp_attack.stop()
-	stomp_cooldown_timer.start()
 	
 
 func animate_movement(direction: Vector2):
@@ -59,3 +74,20 @@ func animate_movement(direction: Vector2):
 		self.walk_right()
 	else:
 		self.walk_left()
+
+
+func stomp_left():
+	animate("stomp_left")
+
+func stomp_right():
+	animate("stomp_right")
+
+
+func _on_animations_animation_finished() -> void:
+	print(animations.animation)
+	if animations.animation == "stomp_left" or animations.animation == "stomp_right" :
+		is_stomping=false
+		stomp_attack.pull_player()
+		stomp_attack.damage_player()
+		stomp_attack.stop()
+
