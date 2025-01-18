@@ -89,7 +89,7 @@ SPEED = 300.0
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 position = Vector2(-3, -9)
 sprite_frames = SubResource("SpriteFrames_5jcw2")
-animation = &"idle"
+animation = &"walk"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-2, -2)

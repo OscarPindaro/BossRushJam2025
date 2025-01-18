@@ -4,7 +4,8 @@ class_name WAUAudioPlayer
 # @export var Sounds: Dictionary = {}
 
 var Sounds = {STEP = AudioStreamRandomizer.new(),
-STOP_MOVING = preload("res://asset/sfx/player/footsteps/footstep5.wav")}
+STOP_MOVING = preload("res://asset/sfx/player/footsteps/footstep5.wav"),
+DEAL_DMG = preload("res://asset/sfx/player/dealing_damage/8-bit_damage.wav")}
 
 var active_sound = null
 
