@@ -87,7 +87,6 @@ initial_hp = 100.0
 SPEED = 300.0
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
-position = Vector2(-3, -9)
 sprite_frames = SubResource("SpriteFrames_5jcw2")
 animation = &"idle"
 
