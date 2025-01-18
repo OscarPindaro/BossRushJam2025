@@ -26,16 +26,17 @@ func _on_next_scene(game_scene: PackedScene) -> void:
 		instance = first_scene.instantiate()
 	
 	
-	instance.next_scene.connect(_on_next_scene)
-	
-	if instance.is_in_group("level"):
-		emit_signal("level_started")
-	else:
-		emit_signal("level_ended")
+	instance.next_scene.connect(_on_next_scene)	
 	
 	#get_tree().change_scene_to(instance)	
 	var activeScenes = get_children()
 	
+	if instance.is_in_group("level"):
+		emit_signal("level_started")
+	else:
+		if activeScenes.size() > 0 and activeScenes[0].is_in_group("level"):
+			emit_signal("level_ended")
+		
 	for scene in activeScenes:
 		remove_child(scene)  # Remove the child from the parent node
 		scene.queue_free() 
