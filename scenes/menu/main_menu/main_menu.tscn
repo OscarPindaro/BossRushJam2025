@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://cnlm6ho48juqv"]
+
+[ext_resource type="Script" path="res://scenes/menu/main_menu/main_menu.gd" id="1_442v6"]
+[ext_resource type="PackedScene" uid="uid://gpah4ea7go8w" path="res://scenes/menu/buttons/ButtonSceneChange/button_scene_change.tscn" id="2_t0ysj"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_442v6")
+
+[node name="Background" type="Sprite2D" parent="."]
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "The Spiraling Fool"
+
+[node name="PlayButton" parent="." instance=ExtResource("2_t0ysj")]
+layout_mode = 0
+text = "Play"
+
+[node name="CommandsButton" parent="." instance=ExtResource("2_t0ysj")]
+layout_mode = 0
+text = "Commands"
+
+[node name="CreditsButton" parent="." instance=ExtResource("2_t0ysj")]
+layout_mode = 0
+text = "Credits"
+
+[connection signal="on_button_pressed" from="PlayButton" to="." method="_on_next_scene"]
+[connection signal="on_button_pressed" from="CommandsButton" to="." method="_on_next_scene"]
+[connection signal="on_button_pressed" from="CreditsButton" to="." method="_on_next_scene"]

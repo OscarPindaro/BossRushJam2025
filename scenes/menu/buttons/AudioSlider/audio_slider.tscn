@@ -1,0 +1,22 @@
+[gd_scene load_steps=2 format=3 uid="uid://c4xlqnbj00kf8"]
+
+[ext_resource type="Script" path="res://scenes/menu/buttons/AudioSlider/audio_slider.gd" id="1_s8fcs"]
+
+[node name="AudioSlider" type="HBoxContainer"]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_s8fcs")
+
+[node name="LabelContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="LabelContainer"]
+layout_mode = 2
+
+[node name="SliderContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+
+[node name="Volume" type="HSlider" parent="SliderContainer"]
+layout_mode = 2
+
+[connection signal="value_changed" from="SliderContainer/Volume" to="." method="_on_volume_value_changed"]
