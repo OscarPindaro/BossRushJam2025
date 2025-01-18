@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://dye77ts0dxhp2"]
+
+[ext_resource type="PackedScene" uid="uid://48065bwf2hcu" path="res://scenes/bosses/boss_base.tscn" id="1_5l7ns"]
+[ext_resource type="Script" path="res://scenes/bosses/ballerina/ballerina.gd" id="2_k2wil"]
+
+[node name="BossBase" instance=ExtResource("1_5l7ns")]
+script = ExtResource("2_k2wil")
+ziopera = 1
