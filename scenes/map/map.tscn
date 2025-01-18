@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://d1sdkri0tjfcq"]
+
+[ext_resource type="Texture2D" uid="uid://cs74280rtpu2l" path="res://asset/graphic/placeholder/backgroundplaceholder.png" id="1_7i3hy"]
+
+[node name="Map" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -420)
+scale = Vector2(7.385, 7.385)
+texture = ExtResource("1_7i3hy")
+centered = false
