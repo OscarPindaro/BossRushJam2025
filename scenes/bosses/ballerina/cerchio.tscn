@@ -14,5 +14,10 @@ position = Vector2(1, 2)
 scale = Vector2(1.46875, 1.4375)
 texture = ExtResource("2_obn0l")
 
+[node name="Collision" type="AudioStreamPlayer2D" parent="."]
+bus = &"Bosses"
+
+[node name="In_flight" type="AudioStreamPlayer2D" parent="."]
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_77hdy")
