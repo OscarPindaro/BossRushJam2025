@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://bnm4s5bj33fyq"
-=======
-uid="uid://bys76xjxjwdue"
->>>>>>> origin/Player
-path="res://.godot/imported/Vase.png-59856c4d2462c5167b97d46e270586b0.ctex"
+uid="uid://cyxnhkkyc88l1"
+path="res://.godot/imported/Foglio 2.png-1d668757db9044dfd234d78b43659995.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/Vase.png"
-dest_files=["res://.godot/imported/Vase.png-59856c4d2462c5167b97d46e270586b0.ctex"]
+source_file="res://asset/graphic/Foglio 2.png"
+dest_files=["res://.godot/imported/Foglio 2.png-1d668757db9044dfd234d78b43659995.ctex"]
 
 [params]
 

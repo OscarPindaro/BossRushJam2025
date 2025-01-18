@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://bnm4s5bj33fyq"
-=======
-uid="uid://bys76xjxjwdue"
->>>>>>> origin/Player
-path="res://.godot/imported/Vase.png-59856c4d2462c5167b97d46e270586b0.ctex"
+uid="uid://dbpiac0kg8i7r"
+path="res://.godot/imported/Cosmonaut -Sheet.png-c72b3f7f742c5f5db3f9a01bd47a2624.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/Vase.png"
-dest_files=["res://.godot/imported/Vase.png-59856c4d2462c5167b97d46e270586b0.ctex"]
+source_file="res://asset/graphic/Cosmonaut -Sheet.png"
+dest_files=["res://.godot/imported/Cosmonaut -Sheet.png-c72b3f7f742c5f5db3f9a01bd47a2624.ctex"]
 
 [params]
 

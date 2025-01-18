@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://bnm4s5bj33fyq"
-=======
-uid="uid://bys76xjxjwdue"
->>>>>>> origin/Player
-path="res://.godot/imported/Vase.png-59856c4d2462c5167b97d46e270586b0.ctex"
+uid="uid://cmtjs11l3croy"
+path="res://.godot/imported/Arrow Shield.png-151b658ff4544080ef4ace363439f6fa.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/Vase.png"
-dest_files=["res://.godot/imported/Vase.png-59856c4d2462c5167b97d46e270586b0.ctex"]
+source_file="res://asset/graphic/Arrow Shield.png"
+dest_files=["res://.godot/imported/Arrow Shield.png-151b658ff4544080ef4ace363439f6fa.ctex"]
 
 [params]
 

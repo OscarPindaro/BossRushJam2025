@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://bnm4s5bj33fyq"
-=======
-uid="uid://bys76xjxjwdue"
->>>>>>> origin/Player
-path="res://.godot/imported/Vase.png-59856c4d2462c5167b97d46e270586b0.ctex"
+uid="uid://dldw4jo86mrgl"
+path="res://.godot/imported/Kitchen Floor.png-455d0a904d267dd6c0f75aac2205eb9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/Vase.png"
-dest_files=["res://.godot/imported/Vase.png-59856c4d2462c5167b97d46e270586b0.ctex"]
+source_file="res://asset/graphic/Kitchen Floor.png"
+dest_files=["res://.godot/imported/Kitchen Floor.png-455d0a904d267dd6c0f75aac2205eb9a.ctex"]
 
 [params]
 

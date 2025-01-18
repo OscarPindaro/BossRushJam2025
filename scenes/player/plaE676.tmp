@@ -1,0 +1,74 @@
+[gd_scene load_steps=11 format=3 uid="uid://dn82qtyb5sjxk"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_iqo1o"]
+[ext_resource type="Texture2D" uid="uid://dbpiac0kg8i7r" path="res://asset/graphic/Cosmonaut -Sheet.png" id="2_5b0kg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbjbh"]
+size = Vector2(32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7573i"]
+atlas = ExtResource("2_5b0kg")
+region = Rect2(0, 0, 70, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nbyw3"]
+atlas = ExtResource("2_5b0kg")
+region = Rect2(70, 0, 70, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lrdao"]
+atlas = ExtResource("2_5b0kg")
+region = Rect2(0, 100, 70, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bwip"]
+atlas = ExtResource("2_5b0kg")
+region = Rect2(70, 100, 70, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vw18k"]
+atlas = ExtResource("2_5b0kg")
+region = Rect2(140, 100, 70, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ep1eu"]
+atlas = ExtResource("2_5b0kg")
+region = Rect2(210, 100, 70, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5jcw2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7573i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nbyw3")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lrdao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bwip")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vw18k")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ep1eu")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[node name="Player" type="CharacterBody2D"]
+position = Vector2(1, 0)
+script = ExtResource("1_iqo1o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tbjbh")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5jcw2")
+animation = &"walk"
+speed_scale = 0.5

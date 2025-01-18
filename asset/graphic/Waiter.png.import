@@ -2,20 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-<<<<<<< HEAD
-uid="uid://bnm4s5bj33fyq"
-=======
-uid="uid://bys76xjxjwdue"
->>>>>>> origin/Player
-path="res://.godot/imported/Vase.png-59856c4d2462c5167b97d46e270586b0.ctex"
+uid="uid://c64h0o0udl6x1"
+path="res://.godot/imported/Waiter.png-829ca2596b5a642272a990ac01f86388.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/Vase.png"
-dest_files=["res://.godot/imported/Vase.png-59856c4d2462c5167b97d46e270586b0.ctex"]
+source_file="res://asset/graphic/Waiter.png"
+dest_files=["res://.godot/imported/Waiter.png-829ca2596b5a642272a990ac01f86388.ctex"]
 
 [params]
 
