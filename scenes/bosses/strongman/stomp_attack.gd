@@ -8,6 +8,8 @@ extends Node2D
 @onready var hurt_box: Area2D = $HurtBox
 @onready var stomp_sprite: Sprite2D = $StompSprite
 
+@onready var stomp_sound: AudioStreamPlayer2D = $StompSound
+
 @export var interaction_radius : float :
 	set(value):
 		interaction_radius = float(value)
@@ -38,6 +40,7 @@ func run() -> void:
 		enabled = true
 		stomp_sprite.visible = true
 		set_collisions(true)
+		stomp_sound.play()
 
 func stop() -> void:
 	if not Engine.is_editor_hint():
