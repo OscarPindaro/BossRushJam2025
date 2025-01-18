@@ -11,7 +11,7 @@ signal player_hit
 @onready var audio_shoot = $Shoot
 @onready var audio_dash = $Dash
 @onready var audio_defeat = $Defeat
-@onready var animations: AnimatedSprite2D = $AnimatedSprite2D
+# @onready var animations: AnimatedSprite2D = $AnimatedSprite2D
 
 var rng = RandomNumberGenerator.new()
 var curr_velocity
