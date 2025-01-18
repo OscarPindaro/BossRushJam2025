@@ -15,7 +15,7 @@ scale = Vector2(5, 5)
 script = ExtResource("1_8y7a3")
 interaction_radius = 30.0
 
-[node name="PestoneArea" type="Sprite2D" parent="."]
+[node name="StompSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_at4qs")
 
 [node name="HurtBox" type="Area2D" parent="."]
@@ -23,12 +23,14 @@ texture = ExtResource("1_at4qs")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_kgkj0")
+disabled = true
 debug_color = Color(0.996512, 0, 0.185251, 0.42)
 
 [node name="InteractionArea" type="Area2D" parent="."]
 
 [node name="InteractionShape" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_8kgh3")
+disabled = true
 debug_color = Color(0.657115, 0.515665, 0.0454865, 0.42)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
