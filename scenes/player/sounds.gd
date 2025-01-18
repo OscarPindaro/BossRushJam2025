@@ -1,7 +1,7 @@
 extends AudioStreamPlayer2D
 class_name WAUAudioPlayer
 
-@export var Sounds: Dictionary = {}
+# @export var Sounds: Dictionary = {}
 
 var Sounds = {STEP = AudioStreamRandomizer.new(),
 STOP_MOVING = preload("res://asset/sfx/player/footsteps/footstep5.wav")}
