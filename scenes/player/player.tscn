@@ -80,6 +80,7 @@ animations = [{
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(1, 0)
+collision_mask = 6
 script = ExtResource("1_iqo1o")
 initial_hp = 100.0
 SPEED = 300.0
@@ -88,7 +89,6 @@ SPEED = 300.0
 shape = SubResource("RectangleShape2D_tbjbh")
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
-scale = Vector2(3, 3)
 sprite_frames = SubResource("SpriteFrames_5jcw2")
 animation = &"idle"
 
