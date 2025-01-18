@@ -4,17 +4,21 @@ class_name BossBase
 @export var hp: float = 100
 @export var speed: float = 100 
 @export var player: Player 
+@export var max_hp: float = 1000
+@export var collision_dmg: float
 
 @onready var animations: AnimatedSprite2D = get_node_or_null("Animations")
 @onready var hurtbox: Area2D = get_node_or_null("Hurtbox")
+@onready var healthbar = $HealthBar
 
-signal player_entered_hurt_box(body: Node2D) 
+signal player_entered_hurt_box(body: Node2D)
 signal player_exited_hurt_box(body: Node2D)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	healthbar.value = 100
+	hp = max_hp
 	pass
-
 
 func animate(animation_name: String):
 	if animations != null:
@@ -32,9 +36,11 @@ func walk_right():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	if hurtbox.overlaps_body(player):
-		print("culo")
 		player.take_damage(1.)
 		
 func take_damage(damage) -> void:
+	print("dmg")
 	hp -= damage
+	healthbar.value -= 100*(hp/max_hp)
+	
 	pass

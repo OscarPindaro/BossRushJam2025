@@ -1,12 +1,10 @@
 extends BossBase
 
-signal player_hit
-
 @export var cerchio_scene: PackedScene
 @export var base_velocity :float
 @export var max_vel :float
-@export var speed_exponent :float
 @export var turn_speed = 1
+@export var cerchio_dmg :float
 @onready var audio_shoot = $Shoot
 @onready var audio_dash = $Dash
 @onready var audio_defeat = $Defeat
@@ -45,16 +43,17 @@ func _process(delta: float) -> void:
 			var current_direction = velocity.normalized()
 			direction = current_direction.lerp(player_direction, turn_speed * delta).normalized()
 			
-			animation_sprites.speed_scale = 1 + (curr_velocity/max_vel) * 5
+			animation_sprites.rotate((curr_velocity/max_vel) * 0.5)
 			if ramp_up == 1:
 				curr_velocity = curr_velocity + 20
 				if curr_velocity > max_vel:
 					ramp_up = 0
 			if ramp_up == 0:
-				curr_velocity = curr_velocity ** 0.98
+				curr_velocity = curr_velocity - 20
 				if curr_velocity < base_velocity:
 					idle_direction = get_random_direction()
 					action = "idle"
+					animation_sprites.rotation = 0
 					animation_sprites.play("idle")
 
 		"shoot":
@@ -70,7 +69,7 @@ func _process(delta: float) -> void:
 
 func _on_do_something_timeout() -> void:
 	var what_to_do = rng.randf_range(0, 1)
-	if what_to_do < 0.7:
+	if what_to_do < 0:
 		direction = (player.global_position - position).normalized()
 		curr_velocity = 5
 		ramp_up = 1
@@ -86,13 +85,15 @@ func _on_do_something_timeout() -> void:
 		direction = (player.global_position - position).normalized()
 		cerchio = cerchio_scene.instantiate()
 		add_child(cerchio)
+		cerchio.connect("player_hitted", _on_player_hitted)
+		cerchio.player = player
 		cerchio.global_position = self.global_position
-		cerchio.direction =  direction
+		cerchio.direction = direction
 		cerchio.player_position = player.global_position
 		cerchio.boss_position = self.global_position
 		audio_shoot.play()
 		action = "shoot"
-	
-func _on_player_hit():
-	emit_signal("player_hitted")
+		
+func _on_player_hitted():
+	player.take_damage(cerchio_dmg)
 	

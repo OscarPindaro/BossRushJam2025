@@ -1,6 +1,6 @@
 extends Area2D
 
-signal player_hit
+signal player_hitted
 var rng = RandomNumberGenerator.new()
 
 @export var speed = rng.randf_range(5, 15)
@@ -8,12 +8,12 @@ var rng = RandomNumberGenerator.new()
 @onready var audio_collision = $Collision
 @onready var audio_in_flight = $In_flight
 
-
 var direction
 var player_position
 var distance_from_player
 var boss_position
 var distance_from_boss
+var player
 
 var change_direction = true
 var start_cooldown = false
@@ -40,7 +40,9 @@ func _process(delta: float) -> void:
 	self.position += direction*speed + circular_offset_rotated
 	distance_from_player = player_position.distance_to(global_position)
 	distance_from_boss = boss_position.distance_to(global_position)
-	
+	if self.overlaps_body(self.player):
+		emit_signal("player_hitted")
+			
 	if (distance_from_player < 50):
 		start_cooldown = true
 	if start_cooldown == true:
@@ -54,5 +56,3 @@ func _process(delta: float) -> void:
 		$CollisionShape2D.disabled = true
 		hide()
 	
-func _on_player_hit():
-	emit_signal("player_hitted")

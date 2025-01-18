@@ -1,10 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://dye77ts0dxhp2"]
+[gd_scene load_steps=12 format=3 uid="uid://dye77ts0dxhp2"]
 
 [ext_resource type="PackedScene" uid="uid://48065bwf2hcu" path="res://scenes/bosses/boss_base.tscn" id="1_5l7ns"]
 [ext_resource type="Script" path="res://scenes/bosses/ballerina/ballerina.gd" id="2_k2wil"]
-[ext_resource type="Texture2D" uid="uid://dr7vw6g53wox0" path="res://asset/graphic/Tiles.png" id="3_e1y7x"]
 [ext_resource type="Texture2D" uid="uid://dbpiac0kg8i7r" path="res://asset/graphic/Cosmonaut -Sheet.png" id="3_mjvdi"]
-[ext_resource type="Texture2D" uid="uid://c64h0o0udl6x1" path="res://asset/graphic/Waiter.png" id="4_satiu"]
+[ext_resource type="Texture2D" uid="uid://rp0no1eyp0pw" path="res://asset/graphic/bosses/Rota.png" id="3_stee0"]
 [ext_resource type="AudioStream" uid="uid://bdvwc856yv72v" path="res://asset/sfx/ballerina/dash2.wav" id="6_c2fx8"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_n130r"]
@@ -23,10 +22,7 @@ region = Rect2(140, 192, 70, 96)
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_e1y7x")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_satiu")
+"texture": ExtResource("3_stee0")
 }],
 "loop": true,
 "name": &"charge",
@@ -65,8 +61,8 @@ script = ExtResource("2_k2wil")
 cerchio_scene = null
 base_velocity = 0.0
 max_vel = 0.0
-speed_exponent = 0.0
 turn_speed = 1
+cerchio_dmg = 0.0
 
 [node name="DoSomething" type="Timer" parent="." index="0"]
 wait_time = 3.0
