@@ -14,6 +14,7 @@ script = ExtResource("1_skmpt")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
+layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
@@ -47,6 +48,7 @@ Roberto Maligni"
 horizontal_alignment = 1
 
 [node name="ReturnButton" parent="NinePatchRect/VBoxContainer" instance=ExtResource("2_2mrns")]
+custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 text = "Return"
 

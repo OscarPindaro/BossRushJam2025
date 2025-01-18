@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://cnlm6ho48juqv"]
+[gd_scene load_steps=7 format=3 uid="uid://cnlm6ho48juqv"]
 
 [ext_resource type="Script" path="res://scenes/menu/base_menu.gd" id="1_2642x"]
 [ext_resource type="PackedScene" uid="uid://gpah4ea7go8w" path="res://scenes/menu/buttons/ButtonSceneChange/button_scene_change.tscn" id="2_t0ysj"]
+[ext_resource type="PackedScene" uid="uid://c6yjvbaxt8tb" path="res://scenes/game/game.tscn" id="3_8yi6t"]
 [ext_resource type="PackedScene" uid="uid://b0r22s7oyogmi" path="res://scenes/menu/credits_menu/credits_menu.tscn" id="3_67rq3"]
 [ext_resource type="PackedScene" uid="uid://ci8munt5neoq7" path="res://scenes/menu/commands_menu/commands_menu.tscn" id="3_niwag"]
 [ext_resource type="PackedScene" uid="uid://cs1r2tx6hr7tm" path="res://scenes/menu/buttons/ButtonQuit/quit_button.tscn" id="5_n4wtq"]
@@ -54,15 +55,19 @@ text = "The Spiraling Fool"
 horizontal_alignment = 1
 
 [node name="PlayButton" parent="NinePatchRect/VBoxContainer" instance=ExtResource("2_t0ysj")]
+custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 text = "Play"
+next_scene = ExtResource("3_8yi6t")
 
 [node name="CommandsButton" parent="NinePatchRect/VBoxContainer" instance=ExtResource("2_t0ysj")]
+custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 text = "Commands"
 next_scene = ExtResource("3_niwag")
 
 [node name="CreditsButton" parent="NinePatchRect/VBoxContainer" instance=ExtResource("2_t0ysj")]
+custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 text = "Credits"
 next_scene = ExtResource("3_67rq3")

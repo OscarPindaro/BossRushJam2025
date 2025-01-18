@@ -4,5 +4,6 @@
 [ext_resource type="Script" path="res://scenes/menu/buttons/ButtonQuit/quit_button.gd" id="2_hokte"]
 
 [node name="QuitButton" instance=ExtResource("1_44w3h")]
+custom_minimum_size = Vector2(200, 100)
 text = "Quit"
 script = ExtResource("2_hokte")

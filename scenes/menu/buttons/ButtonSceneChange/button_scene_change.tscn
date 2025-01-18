@@ -4,5 +4,6 @@
 [ext_resource type="Script" path="res://scenes/menu/buttons/ButtonSceneChange/button_scene_change.gd" id="1_v6rfm"]
 
 [node name="ButtonSceneChange" instance=ExtResource("1_adlok")]
+custom_minimum_size = Vector2(200, 100)
 script = ExtResource("1_v6rfm")
 next_scene = null
