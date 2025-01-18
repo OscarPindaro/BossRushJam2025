@@ -90,7 +90,7 @@ shape = SubResource("RectangleShape2D_tbjbh")
 
 [node name="Animations" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_5jcw2")
-animation = &"idle"
+animation = &"walk"
 
 [node name="Sounds" type="AudioStreamPlayer2D" parent="." groups=["Player"]]
 stream = SubResource("AudioStream_non0l")

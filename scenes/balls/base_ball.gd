@@ -1,10 +1,10 @@
 extends Area2D
 class_name BaseBall
 
-enum BallType {RAG}
 
 @export var dmg: float
-@export var type: BallType 
+
+@onready var audio: AudioStreamPlayer2D = $Sounds
 
 var boss: BossBase
 
@@ -19,6 +19,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if self.overlaps_body(boss):
 		boss.take_damage(dmg)
+		audio.play_sound("DEAL_DMG")
 
 
 func on_boss_endered(body: Node2D):
