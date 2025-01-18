@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0sviypnoxko3"
-path="res://.godot/imported/pestone_area.png-cf0a748844c34f7744165e27ae4f6d77.ctex"
+path="res://.godot/imported/pestone_area.png-bccff7bcf8ed4b87a078ad55115dbfac.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/bosses/pestone_area.png"
-dest_files=["res://.godot/imported/pestone_area.png-cf0a748844c34f7744165e27ae4f6d77.ctex"]
+source_file="res://asset/graphic/bosses/pestone_area.png"
+dest_files=["res://.godot/imported/pestone_area.png-bccff7bcf8ed4b87a078ad55115dbfac.ctex"]
 
 [params]
 

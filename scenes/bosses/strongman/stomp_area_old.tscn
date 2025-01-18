@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bol8hjqoykohw"]
 
-[ext_resource type="Texture2D" uid="uid://b0sviypnoxko3" path="res://asset/bosses/pestone_area.png" id="1_yo8jf"]
+[ext_resource type="Texture2D" uid="uid://b0sviypnoxko3" path="res://asset/graphic/bosses/pestone_area.png" id="1_yo8jf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_g68us"]
 radius = 28.0

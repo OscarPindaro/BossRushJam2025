@@ -1,6 +1,10 @@
 @tool
-@icon("res://asset/bosses/pestone_area.png")
+@icon("res://asset/graphic/bosses/pestone_area.png")
 extends Node2D
+class_name StompAttack
+
+signal player_endered_interaction_area(body: Node2D) 
+signal player_exited_interaction_area(body: Node2D) 
 
 @onready var interaction_area: Area2D = $InteractionArea
 @onready var collision_shape: CollisionShape2D = $InteractionArea/InteractionShape
@@ -13,10 +17,10 @@ extends Node2D
 @export var interaction_radius : float :
 	set(value):
 		interaction_radius = float(value)
-		print("collision type ", collision_shape)
 		if collision_shape != null:
-			print("aa")
 			collision_shape.shape.radius = interaction_radius
+
+var player: Player = null
 
 
 var enabled: bool = false
@@ -25,20 +29,28 @@ var enabled: bool = false
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		# Code to execute in game.
-		interaction_area.body_entered.connect(on_player_entered_in_interaction)
-		interaction_area.body_exited.connect(on_player_exited_in_interaction)
+		interaction_area.body_entered.connect(on_player_entered_interaction)
+		interaction_area.body_exited.connect(on_player_exited_interaction)
 		hurt_box.body_entered.connect(on_player_entered_hurt_box)
 		hurt_box.body_entered.connect(on_player_exited_hurt_box)
+		self.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	if enabled:
+		if interaction_area.overlaps_body(player):
+			print("azz")
+			player.pull()
+		if hurt_box.overlaps_body(player):
+			print("bbb")
+			player.take_damage(1.)
 
 func run() -> void:
 	if not Engine.is_editor_hint():
 		# Code to execute in game.
+		print("StompArea Enabled")
 		enabled = true
-		stomp_sprite.visible = true
+		self.visible = true
 		set_collisions(true)
 		stomp_sound.play()
 
@@ -46,30 +58,30 @@ func stop() -> void:
 	if not Engine.is_editor_hint():
 		# Code to execute in game.
 		enabled = false
-		stomp_sprite.visible = false
+		self.visible = false
 		set_collisions(false)
 
 func set_collisions(value: bool):
 	$HurtBox/CollisionShape2D.disabled = not value
 	$InteractionArea/InteractionShape.disabled = not value
 
-func on_player_entered_in_interaction(body: Node2D):
+func on_player_entered_interaction(body: Node2D):
 	if body.is_in_group("Player"):
 		# add a cast
-		var player = body as Player
-		# probably i need to give the player the position in their coordinate space
-		player.pull(self.position)
+		player = body as Player
+		player_endered_interaction_area.emit(player)
 
-func on_player_exited_in_interaction(body: Node2D):
+
+func on_player_exited_interaction(body: Node2D):
 	if body.is_in_group("Player"):
 		# add a cast
-		var player = body as Player
+		player = null
+		player_exited_interaction_area.emit(player)
 
 func on_player_entered_hurt_box(body: Node2D):
 	if body.is_in_group("Player"):
 		# add a cast
 		var player = body as Player
-		player.take_damage(1.)
 
 func on_player_exited_hurt_box(body: Node2D):
 	if body.is_in_group("Player"):

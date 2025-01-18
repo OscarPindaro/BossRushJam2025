@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3ygdh8sictui"]
 
 [ext_resource type="Script" path="res://scenes/bosses/strongman/stomp_attack.gd" id="1_8y7a3"]
-[ext_resource type="Texture2D" uid="uid://b0sviypnoxko3" path="res://asset/bosses/pestone_area.png" id="1_at4qs"]
+[ext_resource type="Texture2D" uid="uid://b0sviypnoxko3" path="res://asset/graphic/bosses/pestone_area.png" id="1_at4qs"]
 [ext_resource type="AudioStream" uid="uid://6m4v0oxmfscq" path="res://asset/sfx/player/footsteps/footstep1.wav" id="3_hqqd5"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kgkj0"]
@@ -12,7 +12,6 @@ radius = 30.0
 
 [node name="StompAttack" type="Node2D"]
 texture_filter = 1
-scale = Vector2(5, 5)
 script = ExtResource("1_8y7a3")
 interaction_radius = 30.0
 
