@@ -15,7 +15,16 @@ extends BossBase
 func _ready() -> void:
 	stomp_cooldown_timer.timeout.connect(on_stomp_timer_end)
 	stomp_duration_time.timeout.connect(on_stomp_duration_end)
-	
+	stomp_attack.player_entered_interaction_area.connect(on_player_in_range)
+	stomp_attack.player_exited_interaction_area.connect(on_player_out_of_range)
+	# stomp_cooldown_timer.start()
+
+func on_player_in_range(body: Node2D):
+	print("Player in range")
+	start_stomp_timer()
+
+func on_player_out_of_range(body: Node2D):
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,6 +33,7 @@ func _process(delta: float) -> void:
 		move_towards(delta, target)
 
 func start_stomp_timer():
+	print("Started Stomp Timer")
 	stomp_cooldown_timer.start()
 	
 func move_towards(_delta, curr_target: Node2D):

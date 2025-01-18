@@ -3,7 +3,7 @@
 extends Node2D
 class_name StompAttack
 
-signal player_endered_interaction_area(body: Node2D) 
+signal player_entered_interaction_area(body: Node2D) 
 signal player_exited_interaction_area(body: Node2D) 
 
 @onready var interaction_area: Area2D = $InteractionArea
@@ -22,7 +22,6 @@ signal player_exited_interaction_area(body: Node2D)
 
 var player: Player = null
 
-
 var enabled: bool = false
 
 # Called when the node enters the scene tree for the first time.
@@ -33,7 +32,7 @@ func _ready() -> void:
 		interaction_area.body_exited.connect(on_player_exited_interaction)
 		hurt_box.body_entered.connect(on_player_entered_hurt_box)
 		hurt_box.body_entered.connect(on_player_exited_hurt_box)
-		self.visible = false
+		self.stomp_sprite.visible = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -50,40 +49,43 @@ func run() -> void:
 		# Code to execute in game.
 		print("StompArea Enabled")
 		enabled = true
-		self.visible = true
+		self.stomp_sprite.visible = true
 		set_collisions(true)
 		stomp_sound.play()
 
 func stop() -> void:
 	if not Engine.is_editor_hint():
 		# Code to execute in game.
+		print("StompArea Disabled")
 		enabled = false
-		self.visible = false
+		self.stomp_sprite.visible = false
 		set_collisions(false)
 
 func set_collisions(value: bool):
 	$HurtBox/CollisionShape2D.disabled = not value
-	$InteractionArea/InteractionShape.disabled = not value
+	# $InteractionArea/InteractionShape.disabled = not value
 
 func on_player_entered_interaction(body: Node2D):
 	if body.is_in_group("Player"):
 		# add a cast
+		print("Player entered in interaction")
 		player = body as Player
-		player_endered_interaction_area.emit(player)
+		player_entered_interaction_area.emit(player)
 
 
 func on_player_exited_interaction(body: Node2D):
 	if body.is_in_group("Player"):
 		# add a cast
+		print("Player exited in interaction")
 		player = null
 		player_exited_interaction_area.emit(player)
 
 func on_player_entered_hurt_box(body: Node2D):
 	if body.is_in_group("Player"):
 		# add a cast
-		var player = body as Player
+		player = body as Player
 
 func on_player_exited_hurt_box(body: Node2D):
 	if body.is_in_group("Player"):
 		# add a cast
-		var player = body as Player
+		player = body as Player

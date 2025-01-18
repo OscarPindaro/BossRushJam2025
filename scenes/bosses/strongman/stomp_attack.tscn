@@ -23,14 +23,12 @@ texture = ExtResource("1_at4qs")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_kgkj0")
-disabled = true
 debug_color = Color(0.996512, 0, 0.185251, 0.42)
 
 [node name="InteractionArea" type="Area2D" parent="."]
 
 [node name="InteractionShape" type="CollisionShape2D" parent="InteractionArea"]
 shape = SubResource("CircleShape2D_8kgh3")
-disabled = true
 debug_color = Color(0.657115, 0.515665, 0.0454865, 0.42)
 
 [node name="StompSound" type="AudioStreamPlayer2D" parent="."]
