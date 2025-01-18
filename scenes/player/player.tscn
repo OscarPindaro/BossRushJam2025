@@ -4,9 +4,6 @@
 [ext_resource type="Texture2D" uid="uid://c3usfowlc3in" path="res://asset/graphic/MC Anim-Sheet.png" id="2_wku6e"]
 [ext_resource type="Script" path="res://scenes/player/sounds.gd" id="3_6rq4q"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_tbjbh"]
-size = Vector2(32, 32)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ng7hk"]
 atlas = ExtResource("2_wku6e")
 region = Rect2(0, 14, 32, 50)
@@ -76,6 +73,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_juipm"]
+radius = 5.0
+height = 34.0
+
 [sub_resource type="AudioStream" id="AudioStream_non0l"]
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
@@ -84,14 +85,16 @@ script = ExtResource("1_iqo1o")
 initial_hp = 100.0
 SPEED = 300.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_tbjbh")
-
 [node name="Animations" type="AnimatedSprite2D" parent="."]
-scale = Vector2(3, 3)
+position = Vector2(-3, -9)
 sprite_frames = SubResource("SpriteFrames_5jcw2")
 animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -2)
+shape = SubResource("CapsuleShape2D_juipm")
 
 [node name="Sounds" type="AudioStreamPlayer2D" parent="." groups=["Player"]]
 stream = SubResource("AudioStream_non0l")
 script = ExtResource("3_6rq4q")
+Sounds = null
