@@ -17,6 +17,7 @@ var is_stomping: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	super()
 	stomp_cooldown_timer.timeout.connect(on_stomp_timer_end)
 	vision_area.body_entered.connect(on_player_in_range)
 	vision_area.body_exited.connect(on_player_out_of_range)

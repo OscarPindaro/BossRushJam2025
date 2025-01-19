@@ -33,6 +33,7 @@ signal player_exited_interaction_area(body: Node2D)
 var player: Player = null
 
 var enabled: bool = false
+var vortex_scale: Vector2 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -44,6 +45,7 @@ func _ready() -> void:
 		hurt_box.body_entered.connect(on_player_entered_hurt_box)
 		hurt_box.body_entered.connect(on_player_exited_hurt_box)
 		self.stomp_sprite.visible = false
+		vortex_scale = vortex.scale
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -70,7 +72,7 @@ func run() -> void:
 
 func tween_vortex():
 	var tween = get_tree().create_tween()
-
+	vortex.scale = vortex_scale
 	# Fade to 0.5 alpha
 	tween.tween_property(vortex, "modulate:a", modulation_max, vortex_duration / 2)
 
@@ -83,6 +85,12 @@ func tween_vortex():
 	# rot_tween.tween_interval()
 	vortex.rotation_degrees = 0
 	rot_tween.tween_property(vortex, "rotation_degrees", vortex_omega, vortex_duration)
+
+	var scale_tween = get_tree().create_tween()
+	scale_tween.tween_property(vortex, "scale", Vector2.ZERO, vortex_duration)
+
+
+	
 
 # func rotate_vortex(t):
 
