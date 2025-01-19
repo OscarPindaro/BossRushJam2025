@@ -4,6 +4,7 @@ extends BossBase
 @onready var stomp_cooldown_timer: Timer =  $StompTimer # timer che decide tra quanto parte il colpo una volta visto il player
 @onready var can_stomp_again_timer: Timer =  $StompDurationTimer # timer che ti dice se puoi già far partire un altro stomp
 @onready var vision_area: Area2D = $VisionArea
+@onready var audio_player: WAUAudioPlayer = $Sounds
 
 @onready var stomp_attack: StompAttack = $StompAttack
 
@@ -59,6 +60,7 @@ func move_towards(_delta, curr_target: Node2D):
 		self.velocity = direction*self.speed
 		self.move_and_slide()
 		animate_movement(direction)
+
 	else:
 		self.idle()
 
@@ -90,13 +92,16 @@ func animate_movement(direction: Vector2):
 
 func stomp_left():
 	animate("stomp_left")
+	audio_player.play_sound("charge_attack")
 
 func stomp_right():
 	animate("stomp_right")
+	audio_player.play_sound("charge_attack")
 
 
 func _on_animations_animation_finished() -> void:
 	if is_stomping == true and (animations.animation == "stomp_right" or animations.animation == "stomp_left"):
+		audio_player.play_sound("slam_attack")
 		print("Stomp finished ", animations.animation)
 		is_stomping=false
 		stomp_attack.pull_player()
