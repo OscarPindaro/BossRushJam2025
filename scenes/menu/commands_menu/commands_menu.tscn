@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci8munt5neoq7"]
+[gd_scene load_steps=6 format=3 uid="uid://ci8munt5neoq7"]
 
 [ext_resource type="Script" path="res://scenes/menu/base_menu.gd" id="1_2pwis"]
+[ext_resource type="FontFile" uid="uid://dake8jnvwlbv2" path="res://asset/graphic/UI/font/tuscan-mf-font/TuscanMfNarrow-GKnP.ttf" id="2_mb0lv"]
 [ext_resource type="PackedScene" uid="uid://gpah4ea7go8w" path="res://scenes/menu/buttons/ButtonSceneChange/button_scene_change.tscn" id="2_sflbv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qxnh5"]
+line_spacing = 6.0
+font = ExtResource("2_mb0lv")
+font_size = 42
+
+[sub_resource type="LabelSettings" id="LabelSettings_xbboo"]
+font = ExtResource("2_mb0lv")
+font_size = 18
 
 [node name="CommandsMenu" type="Control"]
 layout_mode = 3
@@ -34,17 +44,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/separation = 64
 alignment = 1
 
 [node name="Title" type="Label" parent="NinePatchRect/VBoxContainer"]
 layout_mode = 2
 text = "Commands"
+label_settings = SubResource("LabelSettings_qxnh5")
 horizontal_alignment = 1
 
 [node name="Body" type="Label" parent="NinePatchRect/VBoxContainer"]
 layout_mode = 2
-text = "Go Fast
-Eat Grass"
+text = "Move up with W
+Move left with A
+Move down with S
+Move right with D
+Hit your enemies with your juggling balls
+win the game"
+label_settings = SubResource("LabelSettings_xbboo")
 horizontal_alignment = 1
 
 [node name="ReturnButton" parent="NinePatchRect/VBoxContainer" instance=ExtResource("2_sflbv")]

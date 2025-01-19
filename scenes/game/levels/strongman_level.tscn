@@ -5,10 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://3paelqombsom" path="res://scenes/game/fights/strongman/strongman_bossfight.tscn" id="2_lsxqi"]
 
 [node name="StrongmanLevel" instance=ExtResource("1_83cq8")]
+scale = Vector2(4, 4)
 win_screen = ExtResource("2_fyduw")
 
+[node name="Map" parent="." index="0"]
+visible = false
+
 [node name="StrongmanBossfight" parent="." index="1" instance=ExtResource("2_lsxqi")]
-scale = Vector2(2, 2)
 
 [connection signal="lose" from="StrongmanBossfight" to="." method="_lose"]
 [connection signal="win" from="StrongmanBossfight" to="." method="_win"]

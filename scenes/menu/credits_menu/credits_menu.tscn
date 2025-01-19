@@ -1,7 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://b0r22s7oyogmi"]
+[gd_scene load_steps=6 format=3 uid="uid://b0r22s7oyogmi"]
 
 [ext_resource type="Script" path="res://scenes/menu/base_menu.gd" id="1_skmpt"]
 [ext_resource type="PackedScene" uid="uid://gpah4ea7go8w" path="res://scenes/menu/buttons/ButtonSceneChange/button_scene_change.tscn" id="2_2mrns"]
+[ext_resource type="FontFile" uid="uid://dake8jnvwlbv2" path="res://asset/graphic/UI/font/tuscan-mf-font/TuscanMfNarrow-GKnP.ttf" id="2_74b4k"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_qrjfd"]
+font = ExtResource("2_74b4k")
+font_size = 52
+
+[sub_resource type="LabelSettings" id="LabelSettings_7htxs"]
+font = ExtResource("2_74b4k")
+font_size = 20
 
 [node name="CreditsMenu" type="Control"]
 layout_mode = 3
@@ -39,12 +48,26 @@ alignment = 1
 [node name="Title" type="Label" parent="NinePatchRect/VBoxContainer"]
 layout_mode = 2
 text = "Credits"
+label_settings = SubResource("LabelSettings_qrjfd")
 horizontal_alignment = 1
 
 [node name="Body" type="Label" parent="NinePatchRect/VBoxContainer"]
 layout_mode = 2
-text = "Writing:
-Roberto Maligni"
+text = "Design:
+Wauhaus Productions
+Art:
+Vittorio Terzi
+Music & Sound:
+Hakim El Achak
+Developement:
+Fabio Losavio
+Francesco Maffezzoli
+Oscar Pindaro
+Samuele Lo Iacono
+Fonts:
+Carnevalee Freakshow by Chris Hansen
+Tuscan Mf by Rick Mueller"
+label_settings = SubResource("LabelSettings_7htxs")
 horizontal_alignment = 1
 
 [node name="ReturnButton" parent="NinePatchRect/VBoxContainer" instance=ExtResource("2_2mrns")]

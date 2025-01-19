@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://1rbrctgd8c1v" path="res://asset/graphic/UI/menu_gear.png" id="2_uedw1"]
 
 [node name="SettingsButton" instance=ExtResource("1_bhb40")]
+top_level = true
 offset_right = 100.0
 offset_bottom = 100.0
 icon = ExtResource("2_uedw1")

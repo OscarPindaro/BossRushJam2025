@@ -5,10 +5,13 @@
 [ext_resource type="PackedScene" uid="uid://b5i8bqys1nxic" path="res://scenes/game/levels/double_boss_level.tscn" id="2_wvxfc"]
 
 [node name="BallerinaLevel" instance=ExtResource("1_t0psp")]
-win_screen = ExtResource("2_wvxfc")
+scale = Vector2(4, 4)
+win_screen = ExtResource("2_21t8f")
+
+[node name="Map" parent="." index="0"]
+visible = false
 
 [node name="BallerinaBossfight" parent="." index="1" instance=ExtResource("2_kp3bd")]
-scale = Vector2(2, 2)
 
 [connection signal="lose" from="BallerinaBossfight" to="." method="_lose"]
 [connection signal="win" from="BallerinaBossfight" to="." method="_win"]
