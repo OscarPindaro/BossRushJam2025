@@ -5,8 +5,8 @@
 [ext_resource type="Script" path="res://scenes/menu/base_menu.gd" id="2_qw0xe"]
 [ext_resource type="PackedScene" uid="uid://cnulwif8u1373" path="res://scenes/game/base_end_screen.tscn" id="3_li1fu"]
 [ext_resource type="PackedScene" uid="uid://gpah4ea7go8w" path="res://scenes/menu/buttons/ButtonSceneChange/button_scene_change.tscn" id="3_ov6s2"]
-[ext_resource type="AudioStream" uid="uid://gnltwn8l1bjc" path="res://asset/music/music_temp.wav" id="6_5kwy7"]
 [ext_resource type="AudioStream" uid="uid://c5pccaj1f52c4" path="res://asset/sfx/UI/93100__cgeffex__whip-crack-01.wav" id="6_ogrh4"]
+[ext_resource type="AudioStream" uid="uid://bq6upffg6edtd" path="res://asset/music/in_game_music.wav" id="7_vmx5s"]
 [ext_resource type="Texture2D" uid="uid://fsau5087qvli" path="res://asset/graphic/TENDA.png" id="8_v1jdo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ow6f8"]
@@ -38,7 +38,7 @@ stream = ExtResource("6_ogrh4")
 bus = &"Sfx"
 
 [node name="LevelMusic" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("6_5kwy7")
+stream = ExtResource("7_vmx5s")
 bus = &"Music"
 
 [node name="CurtainRx" type="Sprite2D" parent="."]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3ygdh8sictui"]
+[gd_scene load_steps=6 format=3 uid="uid://b3ygdh8sictui"]
 
 [ext_resource type="Script" path="res://scenes/bosses/strongman/stomp_attack.gd" id="1_8y7a3"]
 [ext_resource type="Texture2D" uid="uid://b4b3bygiv8ry7" path="res://asset/graphic/bosses/Crack.png" id="2_ramfo"]
+[ext_resource type="Texture2D" uid="uid://crf2tu1x0tjy2" path="res://asset/graphic/bosses/Vortex.png" id="3_uqk17"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kgkj0"]
 radius = 7.6
@@ -33,3 +34,7 @@ shape = SubResource("CircleShape2D_8kgh3")
 debug_color = Color(0.657115, 0.515665, 0.0454865, 0.42)
 
 [node name="StompSound" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Vortex" type="Sprite2D" parent="."]
+scale = Vector2(1.8, 1.8)
+texture = ExtResource("3_uqk17")

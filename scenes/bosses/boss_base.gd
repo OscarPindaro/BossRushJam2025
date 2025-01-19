@@ -18,7 +18,7 @@ signal player_exited_hurt_box(body: Node2D)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	self.boss_dead.connect(cleanup)
 
 func animate(animation_name: String):
 	if animations != null:
@@ -41,7 +41,10 @@ func _process(delta: float) -> void:
 		
 func take_damage(damage) -> void:
 	hp -= damage
-	print(hp)
 	emit_signal("boss_damaged", damage)
 	if hp <= 0:
 		boss_dead.emit()
+
+func cleanup():
+	player = null
+	speed = 0
