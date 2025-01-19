@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b2kq5erlme841"]
+[gd_scene load_steps=7 format=3 uid="uid://b2kq5erlme841"]
 
 [ext_resource type="Script" path="res://scenes/menu/settings_menu/settings_menu.gd" id="1_x4glt"]
+[ext_resource type="Texture2D" uid="uid://b0gvoi5yrrt8a" path="res://asset/graphic/UI/CURTAIN.png" id="2_hs6hn"]
 [ext_resource type="PackedScene" uid="uid://c4xlqnbj00kf8" path="res://scenes/menu/buttons/AudioSlider/audio_slider.tscn" id="2_uoakn"]
 [ext_resource type="PackedScene" uid="uid://c72tadrko6hg0" path="res://scenes/menu/buttons/ButtonWrapper/button_wrapper.tscn" id="3_oh6vn"]
 [ext_resource type="PackedScene" uid="uid://gpah4ea7go8w" path="res://scenes/menu/buttons/ButtonSceneChange/button_scene_change.tscn" id="4_bi3jx"]
@@ -21,9 +22,23 @@ script = ExtResource("1_x4glt")
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
-offset_right = 1920.0
-offset_bottom = 1080.0
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+position = Vector2(960, 540)
+scale = Vector2(2, 2)
+texture = ExtResource("2_hs6hn")
+region_enabled = true
+region_rect = Rect2(240, 135, 480, 270)
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/Sprite2D"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -480.0
+offset_top = -270.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="NinePatchRect" type="NinePatchRect" parent="CanvasLayer"]
 anchors_preset = 13
@@ -38,6 +53,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = -304.0
+offset_right = 304.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -74,11 +91,12 @@ label_text = "Master"
 
 [node name="MusicSlider" parent="CanvasLayer/NinePatchRect/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer" instance=ExtResource("2_uoakn")]
 layout_mode = 2
-bus_name = "Master"
+bus_name = "Music"
 
 [node name="SFXSlider" parent="CanvasLayer/NinePatchRect/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer" instance=ExtResource("2_uoakn")]
 layout_mode = 2
-bus_name = "Master"
+bus_name = "Sfx"
+label_text = "Sound Effects"
 
 [node name="BackLinkContainer" type="HBoxContainer" parent="CanvasLayer/NinePatchRect/VBoxContainer"]
 layout_mode = 2
