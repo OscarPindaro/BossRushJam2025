@@ -1,8 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://ci8munt5neoq7"]
+[gd_scene load_steps=8 format=3 uid="uid://ci8munt5neoq7"]
 
 [ext_resource type="Script" path="res://scenes/menu/base_menu.gd" id="1_2pwis"]
+[ext_resource type="Theme" uid="uid://dq3fh7pdv4230" path="res://asset/graphic/UI/ui_custom_style.tres" id="1_3nd1w"]
 [ext_resource type="FontFile" uid="uid://dake8jnvwlbv2" path="res://asset/graphic/UI/font/tuscan-mf-font/TuscanMfNarrow-GKnP.ttf" id="2_mb0lv"]
 [ext_resource type="PackedScene" uid="uid://gpah4ea7go8w" path="res://scenes/menu/buttons/ButtonSceneChange/button_scene_change.tscn" id="2_sflbv"]
+[ext_resource type="Texture2D" uid="uid://b0gvoi5yrrt8a" path="res://asset/graphic/UI/CURTAIN.png" id="3_0q61u"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_qxnh5"]
 line_spacing = 6.0
@@ -20,7 +22,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_3nd1w")
 script = ExtResource("1_2pwis")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(960, 0)
+scale = Vector2(1.778, 1.778)
+texture = ExtResource("3_0q61u")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -59,13 +67,18 @@ text = "Move up with W
 Move left with A
 Move down with S
 Move right with D
+
 Hit your enemies with your juggling balls
+
+
+Make the boss HP go to Zero to
 win the game"
 label_settings = SubResource("LabelSettings_xbboo")
 horizontal_alignment = 1
 
 [node name="ReturnButton" parent="NinePatchRect/VBoxContainer" instance=ExtResource("2_sflbv")]
 layout_mode = 2
+theme = null
 text = "Return"
 
 [connection signal="scene_button_pressed" from="NinePatchRect/VBoxContainer/ReturnButton" to="." method="_on_next_scene"]

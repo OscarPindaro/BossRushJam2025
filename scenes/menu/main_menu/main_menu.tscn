@@ -1,6 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnlm6ho48juqv"]
+[gd_scene load_steps=11 format=3 uid="uid://cnlm6ho48juqv"]
 
 [ext_resource type="Script" path="res://scenes/menu/base_menu.gd" id="1_2642x"]
+[ext_resource type="Theme" uid="uid://dq3fh7pdv4230" path="res://asset/graphic/UI/ui_custom_style.tres" id="1_nqdss"]
 [ext_resource type="PackedScene" uid="uid://gpah4ea7go8w" path="res://scenes/menu/buttons/ButtonSceneChange/button_scene_change.tscn" id="2_t0ysj"]
 [ext_resource type="Texture2D" uid="uid://b0gvoi5yrrt8a" path="res://asset/graphic/UI/CURTAIN.png" id="2_ub24n"]
 [ext_resource type="PackedScene" uid="uid://c6yjvbaxt8tb" path="res://scenes/game/game.tscn" id="3_8yi6t"]
@@ -22,6 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+theme = ExtResource("1_nqdss")
 script = ExtResource("1_2642x")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -74,21 +76,25 @@ alignment = 1
 
 [node name="PlayButton" parent="NinePatchRect/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_t0ysj")]
 layout_mode = 2
+theme = null
 text = "Play"
 next_scene = ExtResource("3_8yi6t")
 
 [node name="CommandsButton" parent="NinePatchRect/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_t0ysj")]
 layout_mode = 2
+theme = null
 text = "Commands"
 next_scene = ExtResource("3_niwag")
 
 [node name="CreditsButton" parent="NinePatchRect/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_t0ysj")]
 layout_mode = 2
+theme = null
 text = "Credits"
 next_scene = ExtResource("3_67rq3")
 
 [node name="QuitButton" parent="NinePatchRect/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("5_n4wtq")]
 layout_mode = 2
+theme = null
 
 [connection signal="scene_button_pressed" from="NinePatchRect/VBoxContainer/HBoxContainer/VBoxContainer/PlayButton" to="." method="_on_next_scene"]
 [connection signal="scene_button_pressed" from="NinePatchRect/VBoxContainer/HBoxContainer/VBoxContainer/CommandsButton" to="." method="_on_next_scene"]

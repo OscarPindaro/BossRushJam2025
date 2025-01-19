@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://c72tadrko6hg0"]
+[gd_scene load_steps=4 format=3 uid="uid://c72tadrko6hg0"]
 
 [ext_resource type="FontFile" uid="uid://dake8jnvwlbv2" path="res://asset/graphic/UI/font/tuscan-mf-font/TuscanMfNarrow-GKnP.ttf" id="1_5cuck"]
 [ext_resource type="Script" path="res://scenes/menu/buttons/ButtonWrapper/button_wrapper.gd" id="1_hg25s"]
+[ext_resource type="Theme" uid="uid://dq3fh7pdv4230" path="res://asset/graphic/UI/ui_custom_style.tres" id="1_wt47c"]
 
 [node name="ButtonWrapper" type="Button"]
 offset_right = 8.0
 offset_bottom = 8.0
+theme = ExtResource("1_wt47c")
 theme_override_fonts/font = ExtResource("1_5cuck")
 script = ExtResource("1_hg25s")
 
