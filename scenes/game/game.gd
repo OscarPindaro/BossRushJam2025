@@ -1,10 +1,18 @@
 extends BaseScene
 @export var win_screen : PackedScene 
 @export var lose_screen : PackedScene 
+@export var transition_duration: float = 1
+
+var following_scene : PackedScene
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	#_win()
+	$StartingWhip.play()
+	$LevelMusic.play()
+	var tweenLx= get_tree().create_tween()
+	var tweenRx= get_tree().create_tween()
+	tweenLx.tween_property($CurtainLx, "position", $MarkerLxOpen.position, transition_duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	tweenRx.tween_property($CurtainRx, "position", $MarkerRxOpen.position, transition_duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	pass # Replace with function body.
 
 
@@ -13,7 +21,21 @@ func _process(delta: float) -> void:
 	pass
 
 func _win():
-	emit_signal("next_scene",win_screen)
+	following_scene = win_screen
+	_end_game()
 
 func _lose():
-	emit_signal("next_scene",lose_screen)
+	following_scene = lose_screen
+	_end_game()
+
+func _end_game():
+	
+	var tweenLx = get_tree().create_tween()
+	var tweenRx = get_tree().create_tween()
+	tweenLx.tween_property($CurtainLx, "position", $MarkerClosed.position, transition_duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	tweenRx.tween_property($CurtainRx, "position", $MarkerClosed.position, transition_duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	tweenRx.tween_callback(_end_scene)
+
+
+func _end_scene():
+	emit_signal("next_scene",following_scene)
