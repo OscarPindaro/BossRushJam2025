@@ -212,6 +212,7 @@ shape = SubResource("CapsuleShape2D_b0xfi")
 
 [node name="StompAttack" parent="." index="2" instance=ExtResource("2_3rnbk")]
 position = Vector2(0, 109)
+spiral_frame_duration = 50
 
 [node name="StompTimer" type="Timer" parent="." index="3"]
 wait_time = 0.1

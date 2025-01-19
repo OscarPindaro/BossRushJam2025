@@ -6,16 +6,20 @@
 [node name="StrongmanBossfight" instance=ExtResource("1_yxvtc")]
 enter_transition_duration = 2.0
 
-[node name="Boss" parent="." index="0" node_paths=PackedStringArray("target", "player") instance=ExtResource("2_yobm6")]
-position = Vector2(1178, 330)
+[node name="Boss" parent="." index="1" node_paths=PackedStringArray("target", "player") instance=ExtResource("2_yobm6")]
+position = Vector2(550, 303)
 target = NodePath("../Player")
 player = NodePath("../Player")
+collision_dmg = 5.0
+
+[node name="Player" parent="." index="2"]
+position = Vector2(-7, 310)
 
 [node name="PlayerEnterPosition" type="Marker2D" parent="." index="5"]
-position = Vector2(245, 315)
+position = Vector2(150, 135)
 
 [node name="BossEnterPosition" type="Marker2D" parent="." index="6"]
-position = Vector2(879, 315)
+position = Vector2(321, 135)
 
 [editable path="Boss"]
 [editable path="Player/BallsArea"]
