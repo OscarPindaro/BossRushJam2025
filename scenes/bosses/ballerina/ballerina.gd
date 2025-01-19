@@ -29,6 +29,7 @@ func get_random_direction() -> Vector2:
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	super()
 	curr_velocity = base_velocity
 	direction = (player.global_position - global_position).normalized()
 	idle_direction = get_random_direction()
