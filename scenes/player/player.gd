@@ -14,7 +14,7 @@ signal player_dead
 var moving = false
 var external_velocity: Vector2 = Vector2.ZERO
 
-var current_hp: float = initial_hp
+@onready var current_hp: float = initial_hp
 
 func take_damage(dmg_amount: float) -> float:
 	current_hp = current_hp - dmg_amount

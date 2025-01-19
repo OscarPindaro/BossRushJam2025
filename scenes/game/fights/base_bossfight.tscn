@@ -5,16 +5,16 @@
 [ext_resource type="PackedScene" uid="uid://dxlpp1xb6hb4m" path="res://scenes/balls/balls_area.tscn" id="5_gi4t1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ug3nj"]
-size = Vector2(75, 641)
+size = Vector2(75, 480)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qwpu"]
-size = Vector2(1169, 67)
+size = Vector2(960, 75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_518sc"]
-size = Vector2(1161, 31)
+size = Vector2(960, 75)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ifjhs"]
-size = Vector2(59, 620)
+size = Vector2(75, 480)
 
 [node name="Bossfight" type="Node2D"]
 script = ExtResource("1_ogfns")
@@ -29,29 +29,33 @@ collision_layer = 4
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(41, 320)
+position = Vector2(0, 240)
 shape = SubResource("RectangleShape2D_ug3nj")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(574.5, 23.5)
+position = Vector2(480, 0)
 shape = SubResource("RectangleShape2D_2qwpu")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(570.5, 631.5)
+position = Vector2(480, 480)
 shape = SubResource("RectangleShape2D_518sc")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(1139.5, 318)
+position = Vector2(960, 240)
 shape = SubResource("RectangleShape2D_ifjhs")
 
 [node name="BossHealthbar" type="ProgressBar" parent="."]
-offset_left = 106.0
-offset_top = 619.0
-offset_right = 1097.0
-offset_bottom = 646.0
+offset_left = 720.0
+offset_top = 450.0
+offset_right = 880.0
+offset_bottom = 470.0
+show_percentage = false
 
 [node name="PlayerHealthbar" type="ProgressBar" parent="."]
-offset_left = 116.0
-offset_top = 580.0
-offset_right = 1093.0
-offset_bottom = 607.0
+offset_left = 80.0
+offset_top = 450.0
+offset_right = 240.0
+offset_bottom = 470.0
+show_percentage = false
+
+[editable path="Player/BallsArea"]

@@ -163,7 +163,7 @@ script = ExtResource("2_k2wil")
 cerchio_scene = ExtResource("3_ejb54")
 max_vel = 900
 turn_speed = 1
-cerchio_dmg = 2.0
+cerchio_dmg = 25.0
 
 [node name="DoSomething" type="Timer" parent="." index="0"]
 wait_time = 3.0

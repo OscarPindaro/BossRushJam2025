@@ -1,6 +1,10 @@
 extends Node2D
 class_name BossfightBase
 
+signal win
+signal lose
+
+
 @onready var boss_healthbar = $BossHealthbar
 @onready var player_healthbar = $PlayerHealthbar
 @onready var boss = $Boss
@@ -35,6 +39,8 @@ func _on_player_damaged(damage) -> void:
 
 func _on_boss_dead():
 	print("BOSS IS DEAD")
+	emit_signal("win")
 
 func _on_player_dead():
 	print("PLAYER IS DEAD")
+	emit_signal("lose")

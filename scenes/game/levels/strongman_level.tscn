@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://cu0732sjcd8oe"]
+
+[ext_resource type="PackedScene" uid="uid://c6yjvbaxt8tb" path="res://scenes/game/game.tscn" id="1_83cq8"]
+[ext_resource type="PackedScene" uid="uid://3paelqombsom" path="res://scenes/game/fights/strongman/strongman_bossfight.tscn" id="2_lsxqi"]
+
+[node name="StrongmanLevel" instance=ExtResource("1_83cq8")]
+
+[node name="StrongmanBossfight" parent="." index="1" instance=ExtResource("2_lsxqi")]
+
+[connection signal="lose" from="StrongmanBossfight" to="." method="_lose"]
+[connection signal="win" from="StrongmanBossfight" to="." method="_win"]

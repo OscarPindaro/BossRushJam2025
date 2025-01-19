@@ -9,8 +9,6 @@ scale = Vector2(2, 2)
 [node name="Boss" parent="." index="0" node_paths=PackedStringArray("target", "player") instance=ExtResource("2_yobm6")]
 position = Vector2(245, 204.75)
 target = NodePath("../Player")
-speed = 50.0
 player = NodePath("../Player")
-collision_dmg = 5.0
 
 [editable path="Boss"]
