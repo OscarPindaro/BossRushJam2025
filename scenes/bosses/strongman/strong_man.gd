@@ -109,3 +109,4 @@ func _on_animations_animation_finished() -> void:
 		stomp_attack.stop()
 		if vision_player != null:
 			start_or_continue_stomp_timer()
+		stomp_attack.tween_vortex()

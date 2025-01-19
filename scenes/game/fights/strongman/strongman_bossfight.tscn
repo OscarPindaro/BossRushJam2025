@@ -12,6 +12,9 @@ target = NodePath("../Player")
 player = NodePath("../Player")
 collision_dmg = 5.0
 
+[node name="StompAttack" parent="Boss" index="2"]
+vortex_omega = 180.0
+
 [node name="Player" parent="." index="2"]
 position = Vector2(-7, 310)
 
