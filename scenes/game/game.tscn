@@ -1,10 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://c6yjvbaxt8tb"]
+[gd_scene load_steps=11 format=3 uid="uid://c6yjvbaxt8tb"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_0u2hm"]
 [ext_resource type="PackedScene" uid="uid://d1sdkri0tjfcq" path="res://scenes/map/map.tscn" id="1_jcveh"]
 [ext_resource type="Script" path="res://scenes/menu/base_menu.gd" id="2_qw0xe"]
 [ext_resource type="PackedScene" uid="uid://cnulwif8u1373" path="res://scenes/game/base_end_screen.tscn" id="3_li1fu"]
 [ext_resource type="PackedScene" uid="uid://gpah4ea7go8w" path="res://scenes/menu/buttons/ButtonSceneChange/button_scene_change.tscn" id="3_ov6s2"]
+[ext_resource type="AudioStream" uid="uid://gnltwn8l1bjc" path="res://asset/music/music_temp.wav" id="6_5kwy7"]
+[ext_resource type="AudioStream" uid="uid://c5pccaj1f52c4" path="res://asset/sfx/UI/93100__cgeffex__whip-crack-01.wav" id="6_ogrh4"]
+[ext_resource type="Texture2D" uid="uid://fsau5087qvli" path="res://asset/graphic/TENDA.png" id="8_v1jdo"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ow6f8"]
 font_size = 128
@@ -26,5 +29,32 @@ _bundled = {
 script = ExtResource("1_0u2hm")
 win_screen = SubResource("PackedScene_6hhc7")
 lose_screen = ExtResource("3_li1fu")
+transition_duration = 5.0
 
 [node name="Map" parent="." instance=ExtResource("1_jcveh")]
+
+[node name="StartingWhip" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_ogrh4")
+bus = &"Sfx"
+
+[node name="LevelMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_5kwy7")
+bus = &"Music"
+
+[node name="CurtainRx" type="Sprite2D" parent="."]
+position = Vector2(240, 135)
+texture = ExtResource("8_v1jdo")
+
+[node name="CurtainLx" type="Sprite2D" parent="."]
+position = Vector2(240, 135)
+scale = Vector2(-1, 1)
+texture = ExtResource("8_v1jdo")
+
+[node name="MarkerRxOpen" type="Marker2D" parent="."]
+position = Vector2(720, 135)
+
+[node name="MarkerLxOpen" type="Marker2D" parent="."]
+position = Vector2(-240, 135)
+
+[node name="MarkerClosed" type="Marker2D" parent="."]
+position = Vector2(240, 135)
