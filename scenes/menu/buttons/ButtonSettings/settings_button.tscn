@@ -6,8 +6,10 @@
 
 [node name="SettingsButton" instance=ExtResource("1_bhb40")]
 top_level = true
-offset_right = 100.0
-offset_bottom = 100.0
+offset_left = 1850.0
+offset_top = 20.0
+offset_right = 1900.0
+offset_bottom = 70.0
 icon = ExtResource("2_uedw1")
 icon_alignment = 1
 expand_icon = true
