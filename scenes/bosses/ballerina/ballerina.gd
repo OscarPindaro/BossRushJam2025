@@ -3,7 +3,8 @@ extends BossBase
 signal player_hit
 
 @export var cerchio_scene: PackedScene
-@export var max_vel = 900
+@export var base_velocity :float
+@export var max_vel :float
 @export var acceleration = 20
 @export var dash_prob = 0.7
 @export var turn_speed = 1
@@ -28,7 +29,7 @@ func get_random_direction() -> Vector2:
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	curr_velocity = speed
+	curr_velocity = base_velocity
 	direction = (player.global_position - global_position).normalized()
 	idle_direction = get_random_direction()
 	action = "idle"
@@ -38,7 +39,7 @@ func _process(delta: float) -> void:
 	super(delta)
 	match action:
 		"idle":
-			curr_velocity = speed
+			curr_velocity = base_velocity
 			direction = idle_direction
 			animation_sprites.rotation = 0
 			if direction.x < 0:
@@ -57,8 +58,8 @@ func _process(delta: float) -> void:
 				if curr_velocity > max_vel:
 					ramp_up = 0
 			if ramp_up == 0:
-				curr_velocity = curr_velocity - acceleration
-				if curr_velocity < speed:
+				curr_velocity = curr_velocity - 20
+				if curr_velocity < base_velocity:
 					idle_direction = get_random_direction()
 					action = "idle"
 

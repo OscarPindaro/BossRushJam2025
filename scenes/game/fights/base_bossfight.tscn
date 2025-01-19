@@ -20,7 +20,7 @@ size = Vector2(75, 480)
 script = ExtResource("1_ogfns")
 
 [node name="Player" parent="." instance=ExtResource("4_418sk")]
-position = Vector2(445, 235)
+position = Vector2(-123, 377)
 
 [node name="BallsArea" parent="Player" instance=ExtResource("5_gi4t1")]
 

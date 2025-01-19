@@ -161,6 +161,7 @@ collision_layer = 2
 collision_mask = 4
 script = ExtResource("2_k2wil")
 cerchio_scene = ExtResource("3_ejb54")
+base_velocity = 0.0
 max_vel = 1200
 acceleration = 20
 dash_prob = 0.7
@@ -176,7 +177,7 @@ autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_t3gtp")
-animation = &"shoot_windup_left"
+animation = &"shoot_windup_right"
 
 [node name="Dash" type="AudioStreamPlayer2D" parent="." index="2"]
 stream = ExtResource("6_c2fx8")

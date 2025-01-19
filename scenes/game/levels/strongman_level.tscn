@@ -8,6 +8,7 @@
 win_screen = ExtResource("2_fyduw")
 
 [node name="StrongmanBossfight" parent="." index="1" instance=ExtResource("2_lsxqi")]
+scale = Vector2(2, 2)
 
 [connection signal="lose" from="StrongmanBossfight" to="." method="_lose"]
 [connection signal="win" from="StrongmanBossfight" to="." method="_win"]

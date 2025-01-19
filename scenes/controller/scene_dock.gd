@@ -54,5 +54,7 @@ func _switch_settings():
 
 
 func _on_settings_switched() -> void:
+	print("Paused was: ", get_tree().paused)
 	get_tree().paused = !get_tree().paused
+	print("Paused is: ", get_tree().paused)
 	

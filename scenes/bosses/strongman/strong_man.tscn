@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://dk226c4gasgrh" path="res://asset/graphic/bosses/Stronkman anim-Sheet-ATTACK.png" id="4_8n4fy"]
 [ext_resource type="AudioStream" uid="uid://vlr0jgaedrxt" path="res://asset/sfx/strong_man/attack_charge.wav" id="6_ckkjr"]
 [ext_resource type="Script" path="res://scenes/player/sounds.gd" id="6_kpbmr"]
-[ext_resource type="Resource" uid="uid://dku42gtaev3a2" path="res://asset/sfx/strong_man/strongman_sounds.tres" id="7_hjb3e"]
+[ext_resource type="Resource" uid="uid://ci1ddpt6csa3x" path="res://asset/sfx/strong_man/strongman_sounds.tres" id="7_hjb3e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i6o2a"]
 atlas = ExtResource("3_hdym8")
@@ -243,6 +243,7 @@ debug_color = Color(0.989144, 0.100486, 0, 0.42)
 
 [node name="Sounds" type="AudioStreamPlayer2D" parent="." index="9"]
 stream = ExtResource("6_ckkjr")
+bus = &"Sfx"
 script = ExtResource("6_kpbmr")
 sound_collection = ExtResource("7_hjb3e")
 track_name = "charge_attack"
