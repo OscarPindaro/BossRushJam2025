@@ -15,7 +15,6 @@ func _ready() -> void:
 	tweenRx.tween_property($CurtainRx, "position", $MarkerRxOpen.position, transition_duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
