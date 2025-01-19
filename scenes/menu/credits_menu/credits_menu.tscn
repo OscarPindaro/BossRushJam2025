@@ -12,7 +12,7 @@ font_size = 52
 
 [sub_resource type="LabelSettings" id="LabelSettings_7htxs"]
 font = ExtResource("2_74b4k")
-font_size = 20
+font_size = 30
 
 [node name="CreditsMenu" type="Control"]
 layout_mode = 3
