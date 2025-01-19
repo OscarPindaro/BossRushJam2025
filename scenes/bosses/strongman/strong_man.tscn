@@ -123,7 +123,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_n64g6")
 }],
-"loop": true,
+"loop": false,
 "name": &"stomp_left",
 "speed": 5.0
 }, {
@@ -140,7 +140,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_u8y6m")
 }],
-"loop": true,
+"loop": false,
 "name": &"stomp_right",
 "speed": 5.0
 }, {
@@ -189,13 +189,12 @@ radius = 92.1954
 [node name="StrongMan" instance=ExtResource("1_2g1nu")]
 texture_filter = 1
 collision_layer = 2
+collision_mask = 0
 script = ExtResource("2_ha042")
-hp = null
-speed = null
 
 [node name="Animations" type="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_67ako")
-animation = &"stomp_left"
+animation = &"idle"
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
@@ -206,9 +205,12 @@ shape = SubResource("CapsuleShape2D_b0xfi")
 position = Vector2(0, 109)
 
 [node name="StompTimer" type="Timer" parent="." index="3"]
-wait_time = 4.0
+wait_time = 0.1
+one_shot = true
 
 [node name="StompDurationTimer" type="Timer" parent="." index="4"]
+wait_time = 5.0
+one_shot = true
 
 [node name="StompLeftPosition" type="Marker2D" parent="." index="5"]
 position = Vector2(-32, 32)
@@ -222,5 +224,3 @@ position = Vector2(32, 32)
 position = Vector2(-12, 0)
 shape = SubResource("CircleShape2D_ohr8r")
 debug_color = Color(0.672648, 0.506183, 0.107797, 0.42)
-
-[connection signal="animation_finished" from="Animations" to="." method="_on_animations_animation_finished"]
