@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://scenes/menu/buttons/AudioSlider/audio_slider.gd" id="1_s8fcs"]
 
 [node name="AudioSlider" type="HBoxContainer"]
-custom_minimum_size = Vector2(400, 20)
+custom_minimum_size = Vector2(500, 20)
 offset_right = 40.0
 offset_bottom = 40.0
 alignment = 1
