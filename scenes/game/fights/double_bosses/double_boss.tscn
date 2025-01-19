@@ -1,90 +1,76 @@
-[gd_scene load_steps=10 format=3 uid="uid://bf2mnbmm2fb01"]
+[gd_scene load_steps=8 format=3 uid="uid://bf2mnbmm2fb01"]
 
 [ext_resource type="PackedScene" uid="uid://dye77ts0dxhp2" path="res://scenes/bosses/ballerina/ballerina.tscn" id="1_0l8d5"]
 [ext_resource type="Script" path="res://scenes/game/fights/double_bosses/double_boss.gd" id="1_0wy2r"]
 [ext_resource type="PackedScene" uid="uid://clxb5qbyks832" path="res://scenes/bosses/strongman/strong_man.tscn" id="2_8a215"]
+[ext_resource type="Texture2D" uid="uid://bolbv1dk1gh8j" path="res://asset/graphic/Circus BG.png" id="2_jtjrv"]
 [ext_resource type="PackedScene" uid="uid://dn82qtyb5sjxk" path="res://scenes/player/player.tscn" id="3_j8mfu"]
 [ext_resource type="PackedScene" uid="uid://dxlpp1xb6hb4m" path="res://scenes/balls/balls_area.tscn" id="5_4jbgp"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_0i1og"]
-size = Vector2(75, 480)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4bcvj"]
-size = Vector2(960, 75)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w1hji"]
-size = Vector2(960, 75)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7htx0"]
-size = Vector2(75, 480)
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_cclrt"]
+a = Vector2(0, 270)
+b = Vector2(480, 270)
 
 [node name="DoubleBoss" type="Node2D"]
 script = ExtResource("1_0wy2r")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_jtjrv")
+centered = false
+
 [node name="Ballerina" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_0l8d5")]
-position = Vector2(1265, 484)
+position = Vector2(555, 343)
 base_velocity = 200.0
 player = NodePath("../Player")
 initial_hp = 1500.0
 
 [node name="Strongman" parent="." node_paths=PackedStringArray("target", "player") instance=ExtResource("2_8a215")]
-position = Vector2(1109, 605)
+position = Vector2(577, 391)
 target = NodePath("../Ballerina")
 player = NodePath("../Player")
 initial_hp = 3000.0
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2(-7, -1)
-collision_layer = 4
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(0, 240)
-shape = SubResource("RectangleShape2D_0i1og")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(480, 0)
-shape = SubResource("RectangleShape2D_4bcvj")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(480, 480)
-shape = SubResource("RectangleShape2D_w1hji")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(960, 240)
-shape = SubResource("RectangleShape2D_7htx0")
-
-[node name="BallerinaHealthbar" type="ProgressBar" parent="."]
-offset_left = 720.0
-offset_top = 450.0
-offset_right = 880.0
-offset_bottom = 470.0
-show_percentage = false
-
-[node name="PlayerHealthbar" type="ProgressBar" parent="."]
-offset_left = 80.0
-offset_top = 450.0
-offset_right = 240.0
-offset_bottom = 470.0
-show_percentage = false
-
 [node name="Player" parent="." instance=ExtResource("3_j8mfu")]
-position = Vector2(48, 584)
+position = Vector2(-10, 303)
 
 [node name="BallsArea" parent="Player" instance=ExtResource("5_4jbgp")]
 
-[node name="PlayerEnterPosition" type="Marker2D" parent="."]
-position = Vector2(245, 315)
+[node name="StaticBody2D2" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 3
 
-[node name="StrongmanEnterPosition" type="Marker2D" parent="."]
-position = Vector2(874, 359)
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D2"]
+polygon = PackedVector2Array(0, 269, 55, 215, 55, 205, 34, 180, 19, 143, 19, 130, 28, 101, 40, 82, 52, 68, 72, 52, 96, 38, 125, 25, 157, 16, 194, 9, 221, 7, 273, 7, 295, 8, 318, 14, 342, 20, 362, 27, 383, 37, 397, 43, 411, 53, 426, 66, 446, 90, 454, 104, 460, 128, 459, 155, 449, 179, 432.539, 198.753, 428, 203, 428, 214, 480, 265, 480, 238, 480, 198, 480, 1, 0, 0)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D2"]
+polygon = PackedVector2Array(53, 270, 90, 232, 103, 230, 125, 239, 156, 248, 159, 248, 193, 248, 214, 248, 312, 248, 371, 231, 394, 232, 431, 270)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
+shape = SubResource("SegmentShape2D_cclrt")
 
 [node name="BallerinaEnterPosition" type="Marker2D" parent="."]
-position = Vector2(859, 170)
+position = Vector2(340, 96)
+
+[node name="PlayerEnterPosition" type="Marker2D" parent="."]
+position = Vector2(138, 135)
+
+[node name="StrongmanEnterPosition" type="Marker2D" parent="."]
+position = Vector2(341, 136)
 
 [node name="StrongmanHealthbar" type="ProgressBar" parent="."]
-offset_left = 721.0
-offset_top = 483.0
-offset_right = 881.0
-offset_bottom = 503.0
-show_percentage = false
+offset_left = 90.0
+offset_top = 213.0
+offset_right = 390.0
+offset_bottom = 240.0
+
+[node name="PlayerHealthbar" type="ProgressBar" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 104.0
+offset_bottom = 31.0
+
+[node name="BallerinaHealthbar" type="ProgressBar" parent="."]
+offset_left = 90.0
+offset_top = 240.0
+offset_right = 390.0
+offset_bottom = 267.0
