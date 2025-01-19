@@ -47,7 +47,7 @@ func start_or_continue_stomp_timer():
 		if can_stomp_again_timer.is_stopped():
 			start_stomp_timer()
 		else:
-			print("DEBUG: The stomp attack is reloading")
+			pass
 	else:
 		pass
 
