@@ -1,7 +1,8 @@
 extends BossBase
 
 # timers
-@onready var stomp_cooldown_timer: Timer =  $StompTimer
+@onready var stomp_cooldown_timer: Timer =  $StompTimer # timer che decide tra quanto parte il colpo una volta visto il player
+@onready var can_stomp_again_timer: Timer =  $StompDurationTimer # timer che ti dice se puoi già far partire un altro stomp
 @onready var vision_area: Area2D = $VisionArea
 
 @onready var stomp_attack: StompAttack = $StompAttack
@@ -18,6 +19,7 @@ func _ready() -> void:
 	stomp_cooldown_timer.timeout.connect(on_stomp_timer_end)
 	vision_area.body_entered.connect(on_player_in_range)
 	vision_area.body_exited.connect(on_player_out_of_range)
+	animations.animation_finished.connect(_on_animations_animation_finished)
 	# stomp_cooldown_timer.start()
 
 func on_player_in_range(body: Node2D):
@@ -26,6 +28,7 @@ func on_player_in_range(body: Node2D):
 		print("Player in range")
 		start_or_continue_stomp_timer()
 
+# FABIO: HO IL DUBBIO CHE NON SERVA A NULLA
 func on_player_out_of_range(body: Node2D):
 	if body.is_in_group("Player"):
 		print("Player out of range")
@@ -36,10 +39,15 @@ func _process(delta: float) -> void:
 	if target != null:
 		if !is_stomping:
 			move_towards(delta, target)
+	if vision_player != null:
+		start_or_continue_stomp_timer()
 
 func start_or_continue_stomp_timer():
 	if stomp_cooldown_timer.is_stopped():
-		start_stomp_timer()
+		if can_stomp_again_timer.is_stopped():
+			start_stomp_timer()
+		else:
+			print("DEBUG: The stomp attack is reloading")
 	else:
 		pass
 
@@ -58,6 +66,9 @@ func move_towards(_delta, curr_target: Node2D):
 func on_stomp_timer_end():
 	# time to stomp, move it to the correct position
 	is_stomping = true
+	#can_stomp_again_timer.timeout.connect(on_can_stomp_again_timer)
+	can_stomp_again_timer.start()
+	
 	if self.velocity.x > 0: 
 		# move right and animate right
 		stomp_attack.position = $StompRightPosition.position
@@ -67,6 +78,9 @@ func on_stomp_timer_end():
 		stomp_left()
 	stomp_attack.run()
 	
+	
+#func on_can_stomp_again_timer_end():
+	#pass
 
 func animate_movement(direction: Vector2):
 	if direction.x > 0:
@@ -84,9 +98,11 @@ func stomp_right():
 
 func _on_animations_animation_finished() -> void:
 	print(animations.animation)
-	if animations.animation == "stomp_left" or animations.animation == "stomp_right" :
+	if is_stomping == true and (animations.animation == "stomp_right" or animations.animation == "stomp_left"):
+		print("Stomp finished ", animations.animation)
 		is_stomping=false
 		stomp_attack.pull_player()
 		stomp_attack.damage_player()
 		stomp_attack.stop()
-
+		if vision_player != null:
+			start_or_continue_stomp_timer()
