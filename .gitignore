@@ -2,3 +2,5 @@
 .godot/
 /android/
 scene_prova/
+build/
+*.zip
