@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="SoundsCollection" load_steps=7 format=3 uid="uid://dku42gtaev3a2"]
+
+[ext_resource type="Script" path="res://scenes/player/audio_tracks.gd" id="1_7cu8x"]
+[ext_resource type="Script" path="res://scenes/player/audio_track.gd" id="2_h25ol"]
+[ext_resource type="AudioStream" uid="uid://vlr0jgaedrxt" path="res://asset/sfx/strong_man/attack_charge.wav" id="3_k1q4p"]
+[ext_resource type="AudioStream" uid="uid://byfw0ebodpbkx" path="res://asset/sfx/strong_man/attack_slam.wav" id="4_77olk"]
+
+[sub_resource type="Resource" id="Resource_j6qmr"]
+script = ExtResource("2_h25ol")
+track_name = "charge_attack"
+track_file = ExtResource("3_k1q4p")
+
+[sub_resource type="Resource" id="Resource_4cckn"]
+script = ExtResource("2_h25ol")
+track_name = "slam_attack"
+track_file = ExtResource("4_77olk")
+
+[resource]
+script = ExtResource("1_7cu8x")
+sounds = Array[ExtResource("2_h25ol")]([SubResource("Resource_j6qmr"), SubResource("Resource_4cckn")])
