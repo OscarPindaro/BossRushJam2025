@@ -1,11 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://c6yjvbaxt8tb"]
+[gd_scene load_steps=8 format=3 uid="uid://c6yjvbaxt8tb"]
 
 [ext_resource type="Script" path="res://scenes/game/game.gd" id="1_0u2hm"]
 [ext_resource type="PackedScene" uid="uid://d1sdkri0tjfcq" path="res://scenes/map/map.tscn" id="1_jcveh"]
 [ext_resource type="Script" path="res://scenes/menu/base_menu.gd" id="2_qw0xe"]
 [ext_resource type="PackedScene" uid="uid://cnulwif8u1373" path="res://scenes/game/base_end_screen.tscn" id="3_li1fu"]
 [ext_resource type="PackedScene" uid="uid://gpah4ea7go8w" path="res://scenes/menu/buttons/ButtonSceneChange/button_scene_change.tscn" id="3_ov6s2"]
-[ext_resource type="PackedScene" uid="uid://bdtmixxl0qg7u" path="res://scene_prova/prova.tscn" id="6_yyncn"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ow6f8"]
 font_size = 128
@@ -29,5 +28,3 @@ win_screen = SubResource("PackedScene_6hhc7")
 lose_screen = ExtResource("3_li1fu")
 
 [node name="Map" parent="." instance=ExtResource("1_jcveh")]
-
-[node name="Prova" parent="." instance=ExtResource("6_yyncn")]

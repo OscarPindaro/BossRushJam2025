@@ -10,6 +10,7 @@ radius = 6.0
 [node name="RagBall" instance=ExtResource("1_hsm24")]
 texture_filter = 1
 collision_mask = 2
+dmg = 2.0
 
 [node name="RagBallCollision" type="CollisionShape2D" parent="." index="0"]
 shape = SubResource("CircleShape2D_q8gx0")

@@ -3,10 +3,9 @@ class_name BossBase
 
 signal boss_damaged
 
-@export var hp: float = 100
 @export var speed: float = 100 
 @export var player: Player 
-@export var max_hp: float = 1000
+@export var initial_hp: float = 1000
 @export var collision_dmg: float
 
 @onready var animations: AnimatedSprite2D = get_node_or_null("Animations")
@@ -36,10 +35,8 @@ func walk_right():
 func _process(delta: float) -> void:
 	if player != null:
 		if hurtbox.overlaps_body(player):
-			player.take_damage(1.)
+			player.take_damage(collision_dmg)
 		
 func take_damage(damage) -> void:
-	hp = hp - damage
-	print("dmg")
 	emit_signal("boss_damaged", damage)
 	pass

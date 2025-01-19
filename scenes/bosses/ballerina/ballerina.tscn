@@ -1,7 +1,8 @@
-[gd_scene load_steps=25 format=3 uid="uid://dye77ts0dxhp2"]
+[gd_scene load_steps=26 format=3 uid="uid://dye77ts0dxhp2"]
 
 [ext_resource type="PackedScene" uid="uid://48065bwf2hcu" path="res://scenes/bosses/boss_base.tscn" id="1_5l7ns"]
 [ext_resource type="Script" path="res://scenes/bosses/ballerina/ballerina.gd" id="2_k2wil"]
+[ext_resource type="PackedScene" uid="uid://b2voe3swrvfod" path="res://scenes/bosses/ballerina/cerchio.tscn" id="3_ejb54"]
 [ext_resource type="Texture2D" uid="uid://rp0no1eyp0pw" path="res://asset/graphic/bosses/Ballerina/Rota.png" id="3_stee0"]
 [ext_resource type="Texture2D" uid="uid://ce6gd0m721a4b" path="res://asset/graphic/bosses/Ballerina/Ballerina-Anim Sheet-export.png" id="4_jc4dw"]
 [ext_resource type="AudioStream" uid="uid://8s4uqkx5ky8w" path="res://asset/sfx/ballerina/dash2.wav" id="6_c2fx8"]
@@ -159,11 +160,11 @@ radius = 35.5106
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("2_k2wil")
-cerchio_scene = null
-base_velocity = 0.0
-max_vel = 0.0
+cerchio_scene = ExtResource("3_ejb54")
+base_velocity = 80.0
+max_vel = 900.0
 turn_speed = 1
-cerchio_dmg = 0.0
+cerchio_dmg = 2.0
 
 [node name="DoSomething" type="Timer" parent="." index="0"]
 wait_time = 3.0

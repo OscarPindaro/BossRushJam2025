@@ -3,7 +3,6 @@ class_name BaseBall
 
 
 @export var dmg: float
-
 @onready var audio: AudioStreamPlayer2D = $Sounds
 
 var boss: BossBase
