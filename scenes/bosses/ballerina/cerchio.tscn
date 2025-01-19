@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2voe3swrvfod"]
+
+[ext_resource type="Script" path="res://scenes/bosses/ballerina/cerchio.gd" id="1_6bfop"]
+[ext_resource type="Texture2D" uid="uid://cnfc0t8caxqh6" path="res://asset/graphic/bosses/Ballerina/RINGO ELLISSO.png" id="2_qj0ea"]
+[ext_resource type="AudioStream" uid="uid://bliqdj6nl12ng" path="res://asset/sfx/ballerina/boomerang.wav" id="3_q2t8u"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sjbnp"]
+radius = 16.0
+height = 80.0
+
+[node name="Cerchio" type="Area2D"]
+script = ExtResource("1_6bfop")
+speed = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, 2)
+scale = Vector2(1.46875, 1.4375)
+texture = ExtResource("2_qj0ea")
+
+[node name="Collision" type="AudioStreamPlayer2D" parent="."]
+bus = &"Sfx"
+
+[node name="In_flight" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_q2t8u")
+bus = &"Sfx"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_sjbnp")

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkdj5tv4scmlv"]
+
+[ext_resource type="PackedScene" uid="uid://b33rcxtvopwp2" path="res://scenes/game/fights/base_bossfight.tscn" id="1_jlc7g"]
+[ext_resource type="PackedScene" uid="uid://dye77ts0dxhp2" path="res://scenes/bosses/ballerina/ballerina.tscn" id="2_w6bhu"]
+
+[node name="BallerinaBossfight" instance=ExtResource("1_jlc7g")]
+
+[node name="Boss" parent="." index="1" node_paths=PackedStringArray("player") instance=ExtResource("2_w6bhu")]
+position = Vector2(550, 303)
+player = NodePath("../Player")
+
+[node name="Player" parent="." index="2"]
+position = Vector2(-7, 310)
+
+[node name="PlayerEnterPosition" type="Marker2D" parent="." index="5"]
+position = Vector2(138, 135)
+
+[node name="BossEnterPosition" type="Marker2D" parent="." index="6"]
+position = Vector2(341, 136)

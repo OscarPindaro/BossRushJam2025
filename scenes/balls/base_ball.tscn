@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://t6vco26lke6y"]
+
+[ext_resource type="Script" path="res://scenes/balls/base_ball.gd" id="1_4d5bn"]
+
+[node name="BaseBall" type="Area2D"]
+script = ExtResource("1_4d5bn")

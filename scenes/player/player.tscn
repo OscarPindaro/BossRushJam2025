@@ -1,0 +1,103 @@
+[gd_scene load_steps=16 format=3 uid="uid://dn82qtyb5sjxk"]
+
+[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_iqo1o"]
+[ext_resource type="Texture2D" uid="uid://c3usfowlc3in" path="res://asset/graphic/MC Anim-Sheet.png" id="2_wku6e"]
+[ext_resource type="Script" path="res://scenes/player/sounds.gd" id="3_6rq4q"]
+[ext_resource type="AudioStream" uid="uid://bgbi8m00cfrw2" path="res://asset/sfx/player/dealing_damage/8-bit_damage.wav" id="3_yrrv1"]
+[ext_resource type="Resource" uid="uid://ci1ddpt6csa3x" path="res://asset/sfx/strong_man/strongman_sounds.tres" id="5_bx3p1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ng7hk"]
+atlas = ExtResource("2_wku6e")
+region = Rect2(0, 14, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhu5a"]
+atlas = ExtResource("2_wku6e")
+region = Rect2(32, 14, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqinu"]
+atlas = ExtResource("2_wku6e")
+region = Rect2(64, 14, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wfhdh"]
+atlas = ExtResource("2_wku6e")
+region = Rect2(96, 14, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b40tp"]
+atlas = ExtResource("2_wku6e")
+region = Rect2(0, 78, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jxman"]
+atlas = ExtResource("2_wku6e")
+region = Rect2(32, 78, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5dd0j"]
+atlas = ExtResource("2_wku6e")
+region = Rect2(64, 78, 32, 50)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jkd50"]
+atlas = ExtResource("2_wku6e")
+region = Rect2(96, 78, 32, 50)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5jcw2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ng7hk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhu5a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqinu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wfhdh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b40tp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jxman")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5dd0j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jkd50")
+}],
+"loop": true,
+"name": &"walk",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_juipm"]
+radius = 5.0
+height = 34.0
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+position = Vector2(1, 0)
+collision_mask = 14
+script = ExtResource("1_iqo1o")
+initial_hp = 1000.0
+SPEED = 300.0
+
+[node name="Animations" type="AnimatedSprite2D" parent="."]
+position = Vector2(-3, -9)
+sprite_frames = SubResource("SpriteFrames_5jcw2")
+animation = &"walk"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, -2)
+shape = SubResource("CapsuleShape2D_juipm")
+
+[node name="Sounds" type="AudioStreamPlayer2D" parent="." groups=["Player"]]
+stream = ExtResource("3_yrrv1")
+bus = &"Sfx"
+script = ExtResource("3_6rq4q")
+sound_collection = ExtResource("5_bx3p1")
+track_name = "DEAL_DMG"

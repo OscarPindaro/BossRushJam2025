@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy8n4rlcxk21t"
-path="res://.godot/imported/NicePng_settings-icon-png_1344785.png-fdcc1b317b0f065a99caf396ed657d37.ctex"
+uid="uid://dk226c4gasgrh"
+path="res://.godot/imported/Stronkman anim-Sheet-ATTACK.png-53a5397a67ecc5b52b19860469c1a4f8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/graphic/UI/NicePng_settings-icon-png_1344785.png"
-dest_files=["res://.godot/imported/NicePng_settings-icon-png_1344785.png-fdcc1b317b0f065a99caf396ed657d37.ctex"]
+source_file="res://asset/graphic/bosses/Stronkman anim-Sheet-ATTACK.png"
+dest_files=["res://.godot/imported/Stronkman anim-Sheet-ATTACK.png-53a5397a67ecc5b52b19860469c1a4f8.ctex"]
 
 [params]
 

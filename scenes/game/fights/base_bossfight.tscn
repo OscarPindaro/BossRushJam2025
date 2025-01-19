@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://b33rcxtvopwp2"]
+
+[ext_resource type="Script" path="res://scenes/game/fights/base_bossfight.gd" id="1_ogfns"]
+[ext_resource type="Texture2D" uid="uid://bolbv1dk1gh8j" path="res://asset/graphic/Circus BG.png" id="2_0y00c"]
+[ext_resource type="PackedScene" uid="uid://dn82qtyb5sjxk" path="res://scenes/player/player.tscn" id="4_418sk"]
+[ext_resource type="PackedScene" uid="uid://dxlpp1xb6hb4m" path="res://scenes/balls/balls_area.tscn" id="5_gi4t1"]
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_8ttom"]
+a = Vector2(0, 270)
+b = Vector2(480, 270)
+
+[node name="Bossfight" type="Node2D"]
+script = ExtResource("1_ogfns")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_0y00c")
+centered = false
+
+[node name="Player" parent="." instance=ExtResource("4_418sk")]
+position = Vector2(83, 98)
+
+[node name="BallsArea" parent="Player" instance=ExtResource("5_gi4t1")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(0, 269, 55, 215, 55, 205, 34, 180, 19, 143, 19, 130, 28, 101, 40, 82, 52, 68, 72, 52, 96, 38, 125, 25, 157, 16, 194, 9, 221, 7, 273, 7, 295, 8, 318, 14, 342, 20, 362, 27, 383, 37, 397, 43, 411, 53, 426, 66, 446, 90, 454, 104, 460, 128, 459, 155, 449, 179, 432.539, 198.753, 428, 203, 428, 214, 480, 265, 480, 238, 480, 198, 480, 1, 0, 0)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(53, 270, 90, 232, 103, 230, 125, 239, 156, 248, 159, 248, 193, 248, 214, 248, 312, 248, 371, 231, 394, 232, 431, 270)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("SegmentShape2D_8ttom")
+
+[node name="BossHealthbar" type="ProgressBar" parent="."]
+offset_left = 90.0
+offset_top = 240.0
+offset_right = 390.0
+offset_bottom = 267.0
+
+[node name="PlayerHealthbar" type="ProgressBar" parent="."]
+offset_left = 4.0
+offset_top = 4.0
+offset_right = 104.0
+offset_bottom = 31.0

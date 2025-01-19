@@ -1,0 +1,35 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3ygdh8sictui"]
+
+[ext_resource type="Script" path="res://scenes/bosses/strongman/stomp_attack.gd" id="1_8y7a3"]
+[ext_resource type="Texture2D" uid="uid://b0sviypnoxko3" path="res://asset/graphic/bosses/pestone_area.png" id="1_at4qs"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kgkj0"]
+radius = 7.6
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8kgh3"]
+radius = 100.0
+
+[node name="StompAttack" type="Node2D"]
+texture_filter = 1
+script = ExtResource("1_8y7a3")
+interaction_radius = 100.0
+
+[node name="StompSprite" type="Sprite2D" parent="."]
+texture = ExtResource("1_at4qs")
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_kgkj0")
+debug_color = Color(0.996512, 0, 0.185251, 0.42)
+
+[node name="InteractionArea" type="Area2D" parent="."]
+collision_layer = 8
+
+[node name="InteractionShape" type="CollisionShape2D" parent="InteractionArea"]
+shape = SubResource("CircleShape2D_8kgh3")
+debug_color = Color(0.657115, 0.515665, 0.0454865, 0.42)
+
+[node name="StompSound" type="AudioStreamPlayer2D" parent="."]
