@@ -3,7 +3,10 @@ extends BossBase
 signal player_hit
 
 @export var cerchio_scene: PackedScene
-@export var max_vel = 900
+@export var base_velocity :float
+@export var max_vel :float
+@export var acceleration = 20
+@export var dash_prob = 0.7
 @export var turn_speed = 1
 @export var cerchio_dmg :float
 @onready var audio_shoot = $Shoot
@@ -26,7 +29,7 @@ func get_random_direction() -> Vector2:
 	
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	curr_velocity = speed
+	curr_velocity = base_velocity
 	direction = (player.global_position - global_position).normalized()
 	idle_direction = get_random_direction()
 	action = "idle"
@@ -36,7 +39,7 @@ func _process(delta: float) -> void:
 	super(delta)
 	match action:
 		"idle":
-			curr_velocity = speed
+			curr_velocity = base_velocity
 			direction = idle_direction
 			animation_sprites.rotation = 0
 			if direction.x < 0:
@@ -51,12 +54,12 @@ func _process(delta: float) -> void:
 			
 			animation_sprites.rotate((curr_velocity/max_vel) * 0.5)
 			if ramp_up == 1:
-				curr_velocity = curr_velocity + 20
+				curr_velocity = curr_velocity + acceleration
 				if curr_velocity > max_vel:
 					ramp_up = 0
 			if ramp_up == 0:
 				curr_velocity = curr_velocity - 20
-				if curr_velocity < speed:
+				if curr_velocity < base_velocity:
 					idle_direction = get_random_direction()
 					action = "idle"
 
@@ -72,7 +75,7 @@ func _process(delta: float) -> void:
 
 func _on_do_something_timeout() -> void:
 	var what_to_do = rng.randf_range(0, 1)
-	if what_to_do < 0.7:
+	if what_to_do < dash_prob:
 		direction = (player.global_position - global_position).normalized()
 		curr_velocity = 5
 		ramp_up = 1

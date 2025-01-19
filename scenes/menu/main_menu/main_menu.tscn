@@ -4,7 +4,7 @@
 [ext_resource type="Theme" uid="uid://dq3fh7pdv4230" path="res://asset/graphic/UI/ui_custom_style.tres" id="1_nqdss"]
 [ext_resource type="PackedScene" uid="uid://gpah4ea7go8w" path="res://scenes/menu/buttons/ButtonSceneChange/button_scene_change.tscn" id="2_t0ysj"]
 [ext_resource type="Texture2D" uid="uid://b0gvoi5yrrt8a" path="res://asset/graphic/UI/CURTAIN.png" id="2_ub24n"]
-[ext_resource type="PackedScene" uid="uid://c6yjvbaxt8tb" path="res://scenes/game/game.tscn" id="3_8yi6t"]
+[ext_resource type="PackedScene" uid="uid://cu0732sjcd8oe" path="res://scenes/game/levels/strongman_level.tscn" id="3_2kcnt"]
 [ext_resource type="PackedScene" uid="uid://b0r22s7oyogmi" path="res://scenes/menu/credits_menu/credits_menu.tscn" id="3_67rq3"]
 [ext_resource type="FontFile" uid="uid://bb7kdtuq8g2c6" path="res://asset/graphic/UI/font/carnivalee-freakshow/Carnevalee Freakshow/Carnevalee Freakshow.ttf" id="3_fqnv5"]
 [ext_resource type="PackedScene" uid="uid://ci8munt5neoq7" path="res://scenes/menu/commands_menu/commands_menu.tscn" id="3_niwag"]
@@ -78,7 +78,7 @@ alignment = 1
 layout_mode = 2
 theme = null
 text = "Play"
-next_scene = ExtResource("3_8yi6t")
+next_scene = ExtResource("3_2kcnt")
 
 [node name="CommandsButton" parent="NinePatchRect/VBoxContainer/HBoxContainer/VBoxContainer" instance=ExtResource("2_t0ysj")]
 layout_mode = 2

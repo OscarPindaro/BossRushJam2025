@@ -21,6 +21,8 @@ signal player_exited_interaction_area(body: Node2D)
 			collision_shape.shape.radius = interaction_radius
 @export var pull_force: float = 50
 
+@export var spiral_frame_duration: int = 50
+
 var player: Player = null
 
 var enabled: bool = false
@@ -41,7 +43,8 @@ func _process(delta: float) -> void:
 
 func pull_player():
 	if interaction_area.overlaps_body(player):
-		player.pull(self.global_position, self.pull_force)
+		#player.pull(self.global_position, self.pull_force)
+		player.pull_spiral(self.global_position, spiral_frame_duration)
 
 func damage_player():
 	if hurt_box.overlaps_body(player):
@@ -63,7 +66,7 @@ func stop() -> void:
 		self.stomp_sprite.visible = false
 		set_collisions(false)
 
-func set_collisions(value: bool):
+func set_collisions(value: bool): 
 	$HurtBox/CollisionShape2D.disabled = not value
 	# $InteractionArea/InteractionShape.disabled = not value
 

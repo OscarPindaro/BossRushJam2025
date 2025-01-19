@@ -5,13 +5,16 @@
 
 [node name="BallerinaBossfight" instance=ExtResource("1_jlc7g")]
 
-[node name="Boss" parent="." index="0" node_paths=PackedStringArray("player") instance=ExtResource("2_w6bhu")]
-position = Vector2(880, 515)
+[node name="Boss" parent="." index="1" node_paths=PackedStringArray("player") instance=ExtResource("2_w6bhu")]
+position = Vector2(550, 303)
+base_velocity = 150.0
 player = NodePath("../Player")
-collision_dmg = 1.0
 
-[node name="StaticBody2D" parent="." index="2"]
-position = Vector2(-7, -1)
+[node name="Player" parent="." index="2"]
+position = Vector2(-7, 310)
 
-[node name="CollisionShape2D2" parent="StaticBody2D" index="1"]
-position = Vector2(585, 7)
+[node name="PlayerEnterPosition" type="Marker2D" parent="." index="5"]
+position = Vector2(138, 135)
+
+[node name="BossEnterPosition" type="Marker2D" parent="." index="6"]
+position = Vector2(341, 136)

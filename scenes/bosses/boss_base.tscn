@@ -4,3 +4,4 @@
 
 [node name="BossBase" type="CharacterBody2D" groups=["Boss"]]
 script = ExtResource("1_0fnw3")
+collision_dmg = 10.0
