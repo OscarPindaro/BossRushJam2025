@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://b33rcxtvopwp2"]
+[gd_scene load_steps=7 format=3 uid="uid://b33rcxtvopwp2"]
 
 [ext_resource type="Script" path="res://scenes/game/fights/base_bossfight.gd" id="1_ogfns"]
 [ext_resource type="Texture2D" uid="uid://bolbv1dk1gh8j" path="res://asset/graphic/Circus BG.png" id="2_0y00c"]
 [ext_resource type="PackedScene" uid="uid://dn82qtyb5sjxk" path="res://scenes/player/player.tscn" id="4_418sk"]
 [ext_resource type="PackedScene" uid="uid://dxlpp1xb6hb4m" path="res://scenes/balls/balls_area.tscn" id="5_gi4t1"]
+[ext_resource type="Theme" uid="uid://b8mlc3phiwgba" path="res://asset/graphic/UI/HealthBar/healthbar.tres" id="5_jr3tt"]
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_8ttom"]
 a = Vector2(0, 270)
@@ -36,12 +37,16 @@ shape = SubResource("SegmentShape2D_8ttom")
 
 [node name="BossHealthbar" type="ProgressBar" parent="."]
 offset_left = 90.0
-offset_top = 240.0
+offset_top = 250.0
 offset_right = 390.0
-offset_bottom = 267.0
+offset_bottom = 265.0
+theme = ExtResource("5_jr3tt")
+show_percentage = false
 
 [node name="PlayerHealthbar" type="ProgressBar" parent="."]
 offset_left = 4.0
 offset_top = 4.0
-offset_right = 104.0
-offset_bottom = 31.0
+offset_right = 144.0
+offset_bottom = 19.0
+theme = ExtResource("5_jr3tt")
+show_percentage = false
