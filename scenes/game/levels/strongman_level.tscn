@@ -7,6 +7,7 @@
 [node name="StrongmanLevel" instance=ExtResource("1_83cq8")]
 scale = Vector2(4, 4)
 win_screen = ExtResource("2_fyduw")
+transition_duration = 3.0
 
 [node name="Map" parent="." index="0"]
 visible = false

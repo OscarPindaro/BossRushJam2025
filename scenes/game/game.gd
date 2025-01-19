@@ -11,8 +11,8 @@ func _ready() -> void:
 	$LevelMusic.play()
 	var tweenLx= get_tree().create_tween()
 	var tweenRx= get_tree().create_tween()
-	tweenLx.tween_property($CurtainLx, "position", $MarkerLxOpen.position, transition_duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-	tweenRx.tween_property($CurtainRx, "position", $MarkerRxOpen.position, transition_duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	tweenLx.tween_property($CurtainLx, "position", $MarkerLxOpen.position, transition_duration).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tweenRx.tween_property($CurtainRx, "position", $MarkerRxOpen.position, transition_duration).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	pass # Replace with function body.
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -32,10 +32,10 @@ func _end_game():
 	var tweenLx = get_tree().create_tween()
 	var tweenRx = get_tree().create_tween()
 	var tweenVolume = get_tree().create_tween()
-	tweenLx.tween_property($CurtainLx, "position", $MarkerClosed.position, transition_duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
-	tweenRx.tween_property($CurtainRx, "position", $MarkerClosed.position, transition_duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	tweenLx.tween_property($CurtainLx, "position", $MarkerClosed.position, transition_duration).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
+	tweenRx.tween_property($CurtainRx, "position", $MarkerClosed.position, transition_duration).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tweenRx.tween_callback(_end_scene)
-	tweenVolume.tween_property($LevelMusic,"volume_db",-24,transition_duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	tweenVolume.tween_property($LevelMusic,"volume_db",-24,transition_duration).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 
 
 func _end_scene():

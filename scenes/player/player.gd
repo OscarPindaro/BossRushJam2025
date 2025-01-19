@@ -12,6 +12,7 @@ signal player_dead
 @export var initial_hp: float
 @export var SPEED: float
 var moving = false
+var dead = false
 
 
 var spiral_path = []
@@ -20,6 +21,16 @@ var spiral_time_instant = 0
 var external_velocity: Vector2 = Vector2.ZERO
 
 @onready var current_hp: float = initial_hp
+
+func _ready() -> void:
+	self.player_dead.connect(on_player_death)
+
+func on_player_death():
+	dead = true
+	var tween = get_tree().create_tween()
+
+	# Fade to 0.5 alpha
+	tween.tween_property(self, "modulate:a", 0, 0.3)
 
 func take_damage(dmg_amount: float) -> float:
 	current_hp = current_hp - dmg_amount
@@ -39,46 +50,47 @@ func pull_spiral(stomp_position: Vector2, stomp_duration_in_frames: int):
 
 
 func _physics_process(delta: float) -> void:
-	if spiral_path.size() > 0:
-		if spiral_time_instant < spiral_path.size():
-			global_position = spiral_path[spiral_time_instant]
-			spiral_time_instant += 1
+	if dead == false:
+		if spiral_path.size() > 0:
+			if spiral_time_instant < spiral_path.size():
+				global_position = spiral_path[spiral_time_instant]
+				spiral_time_instant += 1
+			else:
+				spiral_path = []
+				spiral_time_instant = 0
 		else:
-			spiral_path = []
-			spiral_time_instant = 0
-	else:
-		var direction_x := Input.get_axis("ui_left", "ui_right")
-		var direction_y := Input.get_axis("ui_up", "ui_down")
+			var direction_x := Input.get_axis("ui_left", "ui_right")
+			var direction_y := Input.get_axis("ui_up", "ui_down")
 
-		velocity.x = 0
-		velocity.y = 0
+			velocity.x = 0
+			velocity.y = 0
+					
+			if direction_x != 0 and direction_y == 0:
+				velocity.x = direction_x * SPEED
+				animations.play('walk')
+				moving = true
+				audio.play_sound("STEP")
+			elif direction_y != 0 and direction_x == 0:
+				velocity.y = direction_y * SPEED
+				animations.play('walk')
+				moving = true
+				audio.play_sound("STEP")
+			elif  direction_y != 0 and direction_x != 0:
+				velocity.y = direction_y * SPEED / sqrt(2)
+				velocity.x = direction_x * SPEED / sqrt(2)
+				animations.play('walk')
+				moving = true
+				audio.play_sound("STEP")
+			else:
+				animations.play('idle')
+				if moving:
+					audio.play_sound("STOP_MOVING")
+					moving = false
+
+			velocity = velocity + external_velocity
 				
-		if direction_x != 0 and direction_y == 0:
-			velocity.x = direction_x * SPEED
-			animations.play('walk')
-			moving = true
-			audio.play_sound("STEP")
-		elif direction_y != 0 and direction_x == 0:
-			velocity.y = direction_y * SPEED
-			animations.play('walk')
-			moving = true
-			audio.play_sound("STEP")
-		elif  direction_y != 0 and direction_x != 0:
-			velocity.y = direction_y * SPEED / sqrt(2)
-			velocity.x = direction_x * SPEED / sqrt(2)
-			animations.play('walk')
-			moving = true
-			audio.play_sound("STEP")
-		else:
-			animations.play('idle')
-			if moving:
-				audio.play_sound("STOP_MOVING")
-				moving = false
-
-		velocity = velocity + external_velocity
-			
-	move_and_slide()
-	external_velocity = Vector2.ZERO
+		move_and_slide()
+		external_velocity = Vector2.ZERO
 
 	
 func compute_spiral_track_position(spiral_start_position: Vector2, spiral_end_position: Vector2, t: float) -> Vector2:

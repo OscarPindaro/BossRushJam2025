@@ -8,6 +8,7 @@ signal player_exited_interaction_area(body: Node2D)
 
 @onready var interaction_area: Area2D = $InteractionArea
 @onready var collision_shape: CollisionShape2D = $InteractionArea/InteractionShape
+@onready var vortex: Sprite2D = $Vortex
 
 @onready var hurt_box: Area2D = $HurtBox
 @onready var stomp_sprite: Sprite2D = $StompSprite
@@ -19,6 +20,12 @@ signal player_exited_interaction_area(body: Node2D)
 		interaction_radius = float(value)
 		if collision_shape != null:
 			collision_shape.shape.radius = interaction_radius
+		if vortex != null:
+			vortex.scale = Vector2((interaction_radius*1.8) / 100, (interaction_radius*1.8) / 100)
+
+@export var vortex_duration: float = 1
+@export var vortex_omega: float = 180
+@export var modulation_max: float = 0.7
 @export var pull_force: float = 50
 
 @export var spiral_frame_duration: int = 50
@@ -26,16 +33,19 @@ signal player_exited_interaction_area(body: Node2D)
 var player: Player = null
 
 var enabled: bool = false
+var vortex_scale: Vector2 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if not Engine.is_editor_hint():
 		# Code to execute in game.
+		vortex.modulate.a = 0
 		interaction_area.body_entered.connect(on_player_entered_interaction)
 		interaction_area.body_exited.connect(on_player_exited_interaction)
 		hurt_box.body_entered.connect(on_player_entered_hurt_box)
 		hurt_box.body_entered.connect(on_player_exited_hurt_box)
 		self.stomp_sprite.visible = false
+		vortex_scale = vortex.scale
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -51,6 +61,7 @@ func damage_player():
 		print("damagin player")
 		player.take_damage(1.)
 
+
 func run() -> void:
 	if not Engine.is_editor_hint():
 		# Code to execute in game.
@@ -58,6 +69,32 @@ func run() -> void:
 		self.stomp_sprite.visible = true
 		set_collisions(true)
 		stomp_sound.play()
+
+func tween_vortex():
+	var tween = get_tree().create_tween()
+	vortex.scale = vortex_scale
+	# Fade to 0.5 alpha
+	tween.tween_property(vortex, "modulate:a", modulation_max, vortex_duration / 2)
+
+	# Fade back to 0 alpha
+	tween.tween_property(vortex, "modulate:a", 0, vortex_duration / 2)
+
+
+	# Rotate the sprite continuously during the vortex duration
+	var rot_tween = get_tree().create_tween()
+	# rot_tween.tween_interval()
+	vortex.rotation_degrees = 0
+	rot_tween.tween_property(vortex, "rotation_degrees", vortex_omega, vortex_duration)
+
+	var scale_tween = get_tree().create_tween()
+	scale_tween.tween_property(vortex, "scale", Vector2.ZERO, vortex_duration)
+
+
+	
+
+# func rotate_vortex(t):
+
+
 
 func stop() -> void:
 	if not Engine.is_editor_hint():
