@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://clxb5qbyks832"]
+[gd_scene load_steps=30 format=3 uid="uid://clxb5qbyks832"]
 
 [ext_resource type="PackedScene" uid="uid://48065bwf2hcu" path="res://scenes/bosses/boss_base.tscn" id="1_2g1nu"]
 [ext_resource type="PackedScene" uid="uid://b3ygdh8sictui" path="res://scenes/bosses/strongman/stomp_attack.tscn" id="2_3rnbk"]
@@ -186,6 +186,10 @@ height = 56.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_ohr8r"]
 radius = 92.1954
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bcdil"]
+radius = 29.0
+height = 66.0
+
 [node name="StrongMan" instance=ExtResource("1_2g1nu")]
 texture_filter = 1
 collision_layer = 2
@@ -224,3 +228,9 @@ position = Vector2(32, 32)
 position = Vector2(-12, 0)
 shape = SubResource("CircleShape2D_ohr8r")
 debug_color = Color(0.672648, 0.506183, 0.107797, 0.42)
+
+[node name="Hurtbox" type="Area2D" parent="." index="8"]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+shape = SubResource("CapsuleShape2D_bcdil")

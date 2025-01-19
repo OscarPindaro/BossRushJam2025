@@ -7,7 +7,6 @@
 
 [node name="Boss" parent="." index="0" node_paths=PackedStringArray("player") instance=ExtResource("2_w6bhu")]
 position = Vector2(880, 515)
-max_vel = 900
 player = NodePath("../Player")
 collision_dmg = 1.0
 

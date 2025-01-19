@@ -45,6 +45,7 @@ func pull_player():
 
 func damage_player():
 	if hurt_box.overlaps_body(player):
+		print("damagin player")
 		player.take_damage(1.)
 
 func run() -> void:

@@ -161,8 +161,7 @@ collision_layer = 2
 collision_mask = 4
 script = ExtResource("2_k2wil")
 cerchio_scene = ExtResource("3_ejb54")
-base_velocity = 80.0
-max_vel = 900.0
+max_vel = 900
 turn_speed = 1
 cerchio_dmg = 2.0
 
