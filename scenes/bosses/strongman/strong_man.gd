@@ -36,6 +36,7 @@ func on_player_out_of_range(body: Node2D):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	super(delta)
 	if target != null:
 		if !is_stomping:
 			move_towards(delta, target)
@@ -95,7 +96,6 @@ func stomp_right():
 
 
 func _on_animations_animation_finished() -> void:
-	print(animations.animation)
 	if is_stomping == true and (animations.animation == "stomp_right" or animations.animation == "stomp_left"):
 		print("Stomp finished ", animations.animation)
 		is_stomping=false

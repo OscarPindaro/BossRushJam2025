@@ -2,6 +2,7 @@ extends CharacterBody2D
 class_name Player
 
 signal player_damaged
+signal player_dead
 
 @onready var animations: AnimatedSprite2D = $Animations
 @onready var audio: AudioStreamPlayer2D = $Sounds
@@ -18,6 +19,8 @@ var current_hp: float = initial_hp
 func take_damage(dmg_amount: float) -> float:
 	current_hp = current_hp - dmg_amount
 	emit_signal("player_damaged", dmg_amount)
+	if current_hp < 0:
+		player_dead.emit()
 	return current_hp
 	
 func pull(position: Vector2, pull_force: float):

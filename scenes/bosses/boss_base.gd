@@ -2,11 +2,13 @@ extends CharacterBody2D
 class_name BossBase
 
 signal boss_damaged
+signal boss_dead
 
 @export var speed: float = 100 
 @export var player: Player 
 @export var initial_hp: float = 1000
 @export var collision_dmg: float
+var hp: float = initial_hp
 
 @onready var animations: AnimatedSprite2D = get_node_or_null("Animations")
 @onready var hurtbox: Area2D = get_node_or_null("Hurtbox")
@@ -38,5 +40,7 @@ func _process(delta: float) -> void:
 			player.take_damage(collision_dmg)
 		
 func take_damage(damage) -> void:
+	hp -= damage
 	emit_signal("boss_damaged", damage)
-	pass
+	if hp <= 0:
+		boss_dead.emit()
