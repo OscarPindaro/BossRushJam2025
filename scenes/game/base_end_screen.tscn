@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://cnulwif8u1373"]
+[gd_scene load_steps=6 format=3 uid="uid://cnulwif8u1373"]
 
 [ext_resource type="Script" path="res://scenes/game/base_end_screen.gd" id="1_w7mv7"]
+[ext_resource type="Texture2D" uid="uid://b0gvoi5yrrt8a" path="res://asset/graphic/UI/CURTAIN.png" id="2_kahwn"]
 [ext_resource type="PackedScene" uid="uid://gpah4ea7go8w" path="res://scenes/menu/buttons/ButtonSceneChange/button_scene_change.tscn" id="2_vbbcm"]
+[ext_resource type="FontFile" uid="uid://bb7kdtuq8g2c6" path="res://asset/graphic/UI/font/carnivalee-freakshow/Carnevalee Freakshow/Carnevalee Freakshow.ttf" id="3_ko7th"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_70b55"]
+font = ExtResource("3_ko7th")
 font_size = 128
+font_color = Color(1, 1, 0, 1)
 
 [node name="EndScreen" type="Control"]
 layout_mode = 3
@@ -17,6 +21,9 @@ script = ExtResource("1_w7mv7")
 title = "Gay Mover"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(960, 0)
+scale = Vector2(1.778, 1.778)
+texture = ExtResource("2_kahwn")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
