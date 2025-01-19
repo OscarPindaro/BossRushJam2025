@@ -7,6 +7,7 @@
 
 [node name="Boss" parent="." index="0" node_paths=PackedStringArray("player") instance=ExtResource("2_w6bhu")]
 position = Vector2(1131, 187)
+base_velocity = 100.0
 player = NodePath("../Player")
 
 [node name="StaticBody2D" parent="." index="2"]
