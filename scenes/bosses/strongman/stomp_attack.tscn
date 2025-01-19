@@ -13,6 +13,7 @@ radius = 100.0
 texture_filter = 1
 script = ExtResource("1_8y7a3")
 interaction_radius = 100.0
+spiral_frame_duration = null
 
 [node name="StompSprite" type="Sprite2D" parent="."]
 texture = ExtResource("1_at4qs")
