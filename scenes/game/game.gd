@@ -31,9 +31,11 @@ func _end_game():
 	
 	var tweenLx = get_tree().create_tween()
 	var tweenRx = get_tree().create_tween()
+	var tweenVolume = get_tree().create_tween()
 	tweenLx.tween_property($CurtainLx, "position", $MarkerClosed.position, transition_duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	tweenRx.tween_property($CurtainRx, "position", $MarkerClosed.position, transition_duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 	tweenRx.tween_callback(_end_scene)
+	tweenVolume.tween_property($LevelMusic,"volume_db",-24,transition_duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
 
 
 func _end_scene():

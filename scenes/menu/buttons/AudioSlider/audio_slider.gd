@@ -14,8 +14,8 @@ func _ready() -> void:
 		$LabelContainer/Label.text = name
 	bus_index = AudioServer.get_bus_index(bus_name)
 	print (bus_index)
-	max_volume = db_to_linear(AudioServer.get_bus_volume_db(bus_index))
-	#$SliderContainer/Volume.value = 100 #AudioServer.get_bus_volume_db(bus_index)#db_to_linear(AudioServer.get_bus_volume_db(bus_index))
+	#max_volume = db_to_linear(AudioServer.get_bus_volume_db(bus_index))
+	$SliderContainer/Volume.value = db_to_linear(AudioServer.get_bus_volume_db(bus_index))
 	print($SliderContainer/Volume.value)
 	
 
