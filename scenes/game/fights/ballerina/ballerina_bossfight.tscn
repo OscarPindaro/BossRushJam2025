@@ -11,3 +11,5 @@ player = NodePath("../Player")
 
 [node name="StaticBody2D" parent="." index="2"]
 position = Vector2(-7, -1)
+
+[editable path="Player/BallsArea"]
