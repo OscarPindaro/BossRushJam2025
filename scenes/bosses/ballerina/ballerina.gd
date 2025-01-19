@@ -28,7 +28,7 @@ func get_random_direction() -> Vector2:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	curr_velocity = base_velocity
-	direction = (player.global_position - position).normalized()
+	direction = (player.global_position - global_position).normalized()
 	idle_direction = get_random_direction()
 	action = "idle"
 
@@ -46,7 +46,7 @@ func _process(delta: float) -> void:
 				animation_sprites.play("idle_right")
 
 		"charge":
-			var player_direction = (player.global_position - position).normalized()
+			var player_direction = (player.global_position - global_position).normalized()
 			var current_direction = velocity.normalized()
 			direction = current_direction.lerp(player_direction, turn_speed * delta).normalized()
 			
@@ -74,7 +74,7 @@ func _process(delta: float) -> void:
 func _on_do_something_timeout() -> void:
 	var what_to_do = rng.randf_range(0, 1)
 	if what_to_do < 0.7:
-		direction = (player.global_position - position).normalized()
+		direction = (player.global_position - global_position).normalized()
 		curr_velocity = 5
 		ramp_up = 1
 		self.velocity = direction*curr_velocity
@@ -84,7 +84,7 @@ func _on_do_something_timeout() -> void:
 		action = "charge"
 
 	else:
-		direction = (player.global_position - position).normalized()
+		direction = (player.global_position - global_position).normalized()
 		action = "shoot_windup"
 		curr_velocity = 0
 		if direction.x < 0:
@@ -93,7 +93,7 @@ func _on_do_something_timeout() -> void:
 		else:
 			animation_sprites.play("shoot_windup_right")
 		await get_tree().create_timer(0.5).timeout
-		direction = (player.global_position - position).normalized() 
+		direction = (player.global_position - global_position).normalized() 
 		cerchio = cerchio_scene.instantiate()
 		add_child(cerchio)
 		cerchio.connect("player_hitted", _on_player_hitted)
