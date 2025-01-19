@@ -8,8 +8,8 @@ signal boss_dead
 @export var player: Player 
 @export var initial_hp: float = 1000
 @export var collision_dmg: float
-var hp: float = initial_hp
 
+@onready var hp: float = initial_hp
 @onready var animations: AnimatedSprite2D = get_node_or_null("Animations")
 @onready var hurtbox: Area2D = get_node_or_null("Hurtbox")
 
@@ -41,6 +41,7 @@ func _process(delta: float) -> void:
 		
 func take_damage(damage) -> void:
 	hp -= damage
+	print(hp)
 	emit_signal("boss_damaged", damage)
 	if hp <= 0:
 		boss_dead.emit()
