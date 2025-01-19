@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="SoundsCollection" load_steps=13 format=3 uid="uid://bqp21r455qnly"]
+
+[ext_resource type="Script" path="res://scenes/player/audio_tracks.gd" id="1_73pmv"]
+[ext_resource type="Script" path="res://scenes/player/audio_track.gd" id="2_1hano"]
+[ext_resource type="AudioStream" uid="uid://bgbi8m00cfrw2" path="res://asset/sfx/player/dealing_damage/8-bit_damage.wav" id="3_jcw4a"]
+[ext_resource type="AudioStream" uid="uid://daohktsf32qrs" path="res://asset/sfx/player/footsteps/footstep5.wav" id="3_y4f87"]
+[ext_resource type="AudioStream" uid="uid://6m4v0oxmfscq" path="res://asset/sfx/player/footsteps/footstep1.wav" id="5_lfbmx"]
+[ext_resource type="AudioStream" uid="uid://d11j11v84e7ab" path="res://asset/sfx/player/footsteps/footstep2.wav" id="6_f1cn0"]
+[ext_resource type="AudioStream" uid="uid://dwhwjt1h4yegm" path="res://asset/sfx/player/footsteps/footstep3.wav" id="7_pnkff"]
+[ext_resource type="AudioStream" uid="uid://cmpu8s8ila1r8" path="res://asset/sfx/player/footsteps/footstep4.wav" id="8_oq2lr"]
+
+[sub_resource type="Resource" id="Resource_j6qmr"]
+script = ExtResource("2_1hano")
+track_name = "STOP_MOVING"
+track_file = ExtResource("3_y4f87")
+
+[sub_resource type="Resource" id="Resource_4cckn"]
+script = ExtResource("2_1hano")
+track_name = "DEAL_DMG"
+track_file = ExtResource("3_jcw4a")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_qja35"]
+streams_count = 4
+stream_0/stream = ExtResource("5_lfbmx")
+stream_0/weight = 0.25
+stream_1/stream = ExtResource("6_f1cn0")
+stream_1/weight = 0.25
+stream_2/stream = ExtResource("7_pnkff")
+stream_2/weight = 0.25
+stream_3/stream = ExtResource("8_oq2lr")
+stream_3/weight = 0.25
+
+[sub_resource type="Resource" id="Resource_myf32"]
+script = ExtResource("2_1hano")
+track_name = "STEP"
+track_file = SubResource("AudioStreamRandomizer_qja35")
+
+[resource]
+script = ExtResource("1_73pmv")
+sounds = Array[ExtResource("2_1hano")]([SubResource("Resource_j6qmr"), SubResource("Resource_4cckn"), SubResource("Resource_myf32")])
