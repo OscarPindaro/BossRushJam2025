@@ -63,7 +63,7 @@ func stop() -> void:
 		self.stomp_sprite.visible = false
 		set_collisions(false)
 
-func set_collisions(value: bool):
+func set_collisions(value: bool): 
 	$HurtBox/CollisionShape2D.disabled = not value
 	# $InteractionArea/InteractionShape.disabled = not value
 

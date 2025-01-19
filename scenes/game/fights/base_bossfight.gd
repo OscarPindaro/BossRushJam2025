@@ -10,6 +10,8 @@ signal lose
 @onready var boss = $Boss
 @onready var player = $Player
 
+@export var enter_transition_duration: float = 1
+
 var boss_hp
 var player_hp
 
@@ -23,8 +25,16 @@ func _ready() -> void:
 	boss.boss_dead.connect(_on_boss_dead)
 	player.connect("player_damaged", _on_player_damaged)	
 	player.player_dead.connect(_on_player_dead)
+	create_bounce_tween()
 	pass # Replace with function body.
 
+func create_bounce_tween():
+	var tween = get_tree().create_tween()
+		
+	# Tween the position
+	tween.tween_property(player, "position", $PlayerEnterPosition.position, enter_transition_duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	tween.tween_property(boss, "position", $BossEnterPosition.position, enter_transition_duration).set_trans(Tween.TRANS_EXPO).set_ease(Tween.EASE_OUT)
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass

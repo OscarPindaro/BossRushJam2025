@@ -6,10 +6,22 @@
 [node name="BallerinaBossfight" instance=ExtResource("1_jlc7g")]
 
 [node name="Boss" parent="." index="0" node_paths=PackedStringArray("player") instance=ExtResource("2_w6bhu")]
-position = Vector2(683, 311)
+position = Vector2(1253, 315)
 player = NodePath("../Player")
+
+[node name="Player" parent="." index="1"]
+position = Vector2(-98, 318)
 
 [node name="StaticBody2D" parent="." index="2"]
 position = Vector2(-7, -1)
+
+[node name="CollisionShape2D2" parent="StaticBody2D" index="1"]
+position = Vector2(585, 7)
+
+[node name="PlayerEnterPosition" type="Marker2D" parent="." index="5"]
+position = Vector2(245, 315)
+
+[node name="BossEnterPosition" type="Marker2D" parent="." index="6"]
+position = Vector2(879, 315)
 
 [editable path="Player/BallsArea"]
