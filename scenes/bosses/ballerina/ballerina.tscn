@@ -151,10 +151,10 @@ animations = [{
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kwmqf"]
-radius = 29.0
+radius = 22.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vbfxy"]
-radius = 35.5106
+radius = 29.0
 
 [node name="Ballerina" instance=ExtResource("1_5l7ns")]
 collision_layer = 2
@@ -162,13 +162,13 @@ collision_mask = 4
 script = ExtResource("2_k2wil")
 cerchio_scene = ExtResource("3_ejb54")
 base_velocity = 0.0
-max_vel = 1200
-acceleration = 20
-dash_prob = 0.7
+max_vel = 1100.0
+acceleration = 15
+dash_prob = 0.5
 turn_speed = 1
-cerchio_dmg = 25.0
+cerchio_dmg = 5.0
 speed = 110.0
-initial_hp = 2000.0
+initial_hp = 3000.0
 collision_dmg = 8.0
 
 [node name="DoSomething" type="Timer" parent="." index="0"]

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://dy0dg87mqaucl"]
+[gd_scene load_steps=7 format=3 uid="uid://dy0dg87mqaucl"]
 
 [ext_resource type="PackedScene" uid="uid://cnlm6ho48juqv" path="res://scenes/menu/main_menu/main_menu.tscn" id="2_dobb5"]
 [ext_resource type="PackedScene" uid="uid://b2kq5erlme841" path="res://scenes/menu/settings_menu/settings_menu.tscn" id="2_qag8e"]
+[ext_resource type="AudioStream" uid="uid://gnltwn8l1bjc" path="res://asset/music/music_temp.wav" id="2_r6m8j"]
 [ext_resource type="Script" path="res://scenes/controller/menu_music.gd" id="3_5vsym"]
 [ext_resource type="Script" path="res://scenes/controller/scene_dock.gd" id="3_u4nt1"]
 [ext_resource type="PackedScene" uid="uid://c31dprby61dbw" path="res://scenes/menu/buttons/ButtonSettings/settings_button.tscn" id="5_2rffb"]
@@ -14,6 +15,7 @@ anchors_preset = 0
 layout_mode = 1
 
 [node name="MenuMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_r6m8j")
 bus = &"Music"
 script = ExtResource("3_5vsym")
 

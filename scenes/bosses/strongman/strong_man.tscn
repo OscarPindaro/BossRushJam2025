@@ -183,15 +183,15 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b0xfi"]
-radius = 22.0
-height = 56.0
+radius = 16.0
+height = 52.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ohr8r"]
 radius = 92.1954
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_bcdil"]
-radius = 29.0
-height = 66.0
+radius = 19.0
+height = 52.0
 
 [node name="StrongMan" instance=ExtResource("1_2g1nu")]
 texture_filter = 1
@@ -200,19 +200,19 @@ collision_mask = 0
 script = ExtResource("2_ha042")
 speed = 85.0
 initial_hp = 5000.0
+collision_dmg = 20.0
 
-[node name="Animations" type="AnimatedSprite2D" parent="." index="0"]
+[node name="StompAttack" parent="." index="0" instance=ExtResource("2_3rnbk")]
+position = Vector2(0, 109)
+
+[node name="Animations" type="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_67ako")
 animation = &"stomp_left"
 metadata/_edit_group_ = true
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="2"]
 position = Vector2(0, 2)
 shape = SubResource("CapsuleShape2D_b0xfi")
-
-[node name="StompAttack" parent="." index="2" instance=ExtResource("2_3rnbk")]
-position = Vector2(0, 109)
-vortex_omega = 1.0
 
 [node name="StompTimer" type="Timer" parent="." index="3"]
 wait_time = 0.1
@@ -239,6 +239,7 @@ debug_color = Color(0.672648, 0.506183, 0.107797, 0.42)
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
+position = Vector2(0, 4)
 shape = SubResource("CapsuleShape2D_bcdil")
 debug_color = Color(0.989144, 0.100486, 0, 0.42)
 

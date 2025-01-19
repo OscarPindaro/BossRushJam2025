@@ -1,22 +1,22 @@
 [gd_scene load_steps=6 format=3 uid="uid://b3ygdh8sictui"]
 
 [ext_resource type="Script" path="res://scenes/bosses/strongman/stomp_attack.gd" id="1_8y7a3"]
-[ext_resource type="Texture2D" uid="uid://b0sviypnoxko3" path="res://asset/graphic/bosses/pestone_area.png" id="1_at4qs"]
+[ext_resource type="Texture2D" uid="uid://b4b3bygiv8ry7" path="res://asset/graphic/bosses/Crack.png" id="2_ramfo"]
 [ext_resource type="Texture2D" uid="uid://crf2tu1x0tjy2" path="res://asset/graphic/bosses/Vortex.png" id="3_uqk17"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_kgkj0"]
 radius = 7.6
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8kgh3"]
-radius = 100.0
+radius = 65.0
 
 [node name="StompAttack" type="Node2D"]
 texture_filter = 1
 script = ExtResource("1_8y7a3")
-interaction_radius = 100.0
+interaction_radius = 65.0
 
 [node name="StompSprite" type="Sprite2D" parent="."]
-texture = ExtResource("1_at4qs")
+texture = ExtResource("2_ramfo")
 
 [node name="HurtBox" type="Area2D" parent="."]
 collision_layer = 8
