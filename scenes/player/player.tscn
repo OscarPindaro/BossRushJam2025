@@ -97,6 +97,7 @@ shape = SubResource("CapsuleShape2D_juipm")
 
 [node name="Sounds" type="AudioStreamPlayer2D" parent="." groups=["Player"]]
 stream = ExtResource("3_yrrv1")
+bus = &"Sfx"
 script = ExtResource("3_6rq4q")
 sound_collection = ExtResource("5_bx3p1")
 track_name = "DEAL_DMG"
