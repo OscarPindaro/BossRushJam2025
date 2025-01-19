@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dy8n4rlcxk21t"
-path="res://.godot/imported/NicePng_settings-icon-png_1344785.png-fdcc1b317b0f065a99caf396ed657d37.ctex"
+uid="uid://1rbrctgd8c1v"
+path="res://.godot/imported/menu_gear.png-044dc5f22c6db3788ff39fef44bdea8f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://asset/graphic/UI/NicePng_settings-icon-png_1344785.png"
-dest_files=["res://.godot/imported/NicePng_settings-icon-png_1344785.png-fdcc1b317b0f065a99caf396ed657d37.ctex"]
+source_file="res://asset/graphic/UI/menu_gear.png"
+dest_files=["res://.godot/imported/menu_gear.png-044dc5f22c6db3788ff39fef44bdea8f.ctex"]
 
 [params]
 

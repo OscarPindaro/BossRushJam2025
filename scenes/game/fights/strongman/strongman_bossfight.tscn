@@ -12,3 +12,4 @@ target = NodePath("../Player")
 player = NodePath("../Player")
 
 [editable path="Boss"]
+[editable path="Player/BallsArea"]

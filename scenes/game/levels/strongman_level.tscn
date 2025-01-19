@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://cu0732sjcd8oe"]
+[gd_scene load_steps=4 format=3 uid="uid://cu0732sjcd8oe"]
 
 [ext_resource type="PackedScene" uid="uid://c6yjvbaxt8tb" path="res://scenes/game/game.tscn" id="1_83cq8"]
+[ext_resource type="PackedScene" uid="uid://s4it0jrhlunv" path="res://scenes/game/levels/ballerina_level.tscn" id="2_fyduw"]
 [ext_resource type="PackedScene" uid="uid://3paelqombsom" path="res://scenes/game/fights/strongman/strongman_bossfight.tscn" id="2_lsxqi"]
 
 [node name="StrongmanLevel" instance=ExtResource("1_83cq8")]
+win_screen = ExtResource("2_fyduw")
 
 [node name="StrongmanBossfight" parent="." index="1" instance=ExtResource("2_lsxqi")]
 
