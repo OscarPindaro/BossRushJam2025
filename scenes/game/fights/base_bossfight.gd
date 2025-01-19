@@ -19,7 +19,6 @@ func _ready() -> void:
 	player_healthbar.value = 100
 	boss_hp = boss.initial_hp
 	player_hp =  player.initial_hp
-	print(boss_hp)
 	boss.connect("boss_damaged", _on_boss_damaged)
 	boss.boss_dead.connect(_on_boss_dead)
 	player.connect("player_damaged", _on_player_damaged)	

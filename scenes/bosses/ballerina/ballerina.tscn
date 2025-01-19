@@ -171,7 +171,7 @@ autostart = true
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." index="1"]
 sprite_frames = SubResource("SpriteFrames_t3gtp")
-animation = &"shoot_windup_left"
+animation = &"shoot_windup_right"
 
 [node name="Dash" type="AudioStreamPlayer2D" parent="." index="2"]
 stream = ExtResource("6_c2fx8")
