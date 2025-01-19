@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c3usfowlc3in" path="res://asset/graphic/MC Anim-Sheet.png" id="2_wku6e"]
 [ext_resource type="Script" path="res://scenes/player/sounds.gd" id="3_6rq4q"]
 [ext_resource type="AudioStream" uid="uid://bgbi8m00cfrw2" path="res://asset/sfx/player/dealing_damage/8-bit_damage.wav" id="3_yrrv1"]
-[ext_resource type="Resource" uid="uid://yjnevhy004ah" path="res://scenes/player/player_sounds.tres" id="5_10r6l"]
+[ext_resource type="Resource" uid="uid://dku42gtaev3a2" path="res://asset/sfx/strong_man/strongman_sounds.tres" id="5_bx3p1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ng7hk"]
 atlas = ExtResource("2_wku6e")
@@ -98,5 +98,5 @@ shape = SubResource("CapsuleShape2D_juipm")
 [node name="Sounds" type="AudioStreamPlayer2D" parent="." groups=["Player"]]
 stream = ExtResource("3_yrrv1")
 script = ExtResource("3_6rq4q")
-sound_collection = ExtResource("5_10r6l")
+sound_collection = ExtResource("5_bx3p1")
 track_name = "DEAL_DMG"

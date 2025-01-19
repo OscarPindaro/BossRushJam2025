@@ -1,10 +1,13 @@
-[gd_scene load_steps=30 format=3 uid="uid://clxb5qbyks832"]
+[gd_scene load_steps=33 format=3 uid="uid://clxb5qbyks832"]
 
 [ext_resource type="PackedScene" uid="uid://48065bwf2hcu" path="res://scenes/bosses/boss_base.tscn" id="1_2g1nu"]
 [ext_resource type="PackedScene" uid="uid://b3ygdh8sictui" path="res://scenes/bosses/strongman/stomp_attack.tscn" id="2_3rnbk"]
 [ext_resource type="Script" path="res://scenes/bosses/strongman/strong_man.gd" id="2_ha042"]
 [ext_resource type="Texture2D" uid="uid://bf2jq0n42ylt5" path="res://asset/graphic/bosses/Stronkman anim-Sheet-IDLE WALK.png" id="3_hdym8"]
 [ext_resource type="Texture2D" uid="uid://dk226c4gasgrh" path="res://asset/graphic/bosses/Stronkman anim-Sheet-ATTACK.png" id="4_8n4fy"]
+[ext_resource type="AudioStream" uid="uid://vlr0jgaedrxt" path="res://asset/sfx/strong_man/attack_charge.wav" id="6_ckkjr"]
+[ext_resource type="Script" path="res://scenes/player/sounds.gd" id="6_kpbmr"]
+[ext_resource type="Resource" uid="uid://dku42gtaev3a2" path="res://asset/sfx/strong_man/strongman_sounds.tres" id="7_hjb3e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i6o2a"]
 atlas = ExtResource("3_hdym8")
@@ -125,7 +128,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"stomp_left",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -142,7 +145,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"stomp_right",
-"speed": 5.0
+"speed": 7.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -198,7 +201,7 @@ script = ExtResource("2_ha042")
 
 [node name="Animations" type="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = SubResource("SpriteFrames_67ako")
-animation = &"idle"
+animation = &"stomp_left"
 metadata/_edit_group_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
@@ -235,3 +238,9 @@ collision_layer = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hurtbox" index="0"]
 shape = SubResource("CapsuleShape2D_bcdil")
 debug_color = Color(0.989144, 0.100486, 0, 0.42)
+
+[node name="Sounds" type="AudioStreamPlayer2D" parent="." index="9"]
+stream = ExtResource("6_ckkjr")
+script = ExtResource("6_kpbmr")
+sound_collection = ExtResource("7_hjb3e")
+track_name = "charge_attack"
