@@ -8,6 +8,7 @@ texture = ExtResource("1_bmtwi")
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ibldd"]
 texture = ExtResource("2_dfox3")
+region_rect = Rect2(0.271341, -0.142315, 92.7536, 9.36455)
 
 [resource]
 ProgressBar/styles/background = SubResource("StyleBoxTexture_45avu")
