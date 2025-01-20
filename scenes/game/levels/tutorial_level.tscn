@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bnv8kfy1t8r32"]
+
+[ext_resource type="PackedScene" uid="uid://c6yjvbaxt8tb" path="res://scenes/game/game.tscn" id="1_bu4l3"]
+[ext_resource type="PackedScene" uid="uid://84kqmgq004en" path="res://scenes/game/fights/tutorial/tutorial_bossfight.tscn" id="2_lbrlo"]
+
+[node name="Tutorial" instance=ExtResource("1_bu4l3")]
+scale = Vector2(4, 4)
+
+[node name="Bossfight" parent="." index="1" instance=ExtResource("2_lbrlo")]
