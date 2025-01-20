@@ -14,6 +14,7 @@ extends BossBase
 
 var vision_player: Player = null
 var is_stomping: bool = false
+var is_dead = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -111,3 +112,12 @@ func _on_animations_animation_finished() -> void:
 		if vision_player != null:
 			start_or_continue_stomp_timer()
 		stomp_attack.tween_vortex()
+
+func take_damage(damage) -> void:
+	hp -= damage
+	emit_signal("boss_damaged", damage)
+	if hp <= 0:
+		boss_dead.emit()
+		if !is_dead:
+			audio_player.play_sound("death")
+		is_dead = true

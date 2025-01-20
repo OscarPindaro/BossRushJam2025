@@ -245,7 +245,7 @@ debug_color = Color(0.989144, 0.100486, 0, 0.42)
 
 [node name="Sounds" type="AudioStreamPlayer2D" parent="." index="9"]
 stream = ExtResource("6_ckkjr")
-bus = &"Sfx"
+bus = &"Strongman"
 script = ExtResource("6_kpbmr")
 sound_collection = ExtResource("7_hjb3e")
 track_name = "charge_attack"

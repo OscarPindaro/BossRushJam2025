@@ -55,7 +55,6 @@ text = "Settings"
 horizontal_alignment = 1
 
 [node name="TabContainer" type="TabContainer" parent="CanvasLayer/NinePatchRect/VBoxContainer"]
-visible = false
 custom_minimum_size = Vector2(400, 200)
 layout_mode = 2
 theme = ExtResource("1_7hog2")
@@ -87,11 +86,12 @@ label_text = "Master"
 [node name="MusicSlider" parent="CanvasLayer/NinePatchRect/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer" instance=ExtResource("2_uoakn")]
 layout_mode = 2
 bus_name = "Music"
+label_text = "Music"
 
 [node name="SFXSlider" parent="CanvasLayer/NinePatchRect/VBoxContainer/TabContainer/Audio/MarginContainer/VBoxContainer" instance=ExtResource("2_uoakn")]
 layout_mode = 2
 bus_name = "Sfx"
-label_text = "Sound Effects"
+label_text = "Sounds FX"
 
 [node name="BackLinkContainer" type="HBoxContainer" parent="CanvasLayer/NinePatchRect/VBoxContainer"]
 layout_mode = 2

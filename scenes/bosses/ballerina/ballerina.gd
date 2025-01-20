@@ -111,3 +111,11 @@ func _on_do_something_timeout() -> void:
 func _on_player_hitted():
 	player.take_damage(cerchio_dmg)
 	
+func take_damage(damage) -> void:
+	hp -= damage
+	emit_signal("boss_damaged", damage)
+	if hp <= 0:
+		boss_dead.emit()
+		audio_defeat.play()
+
+	

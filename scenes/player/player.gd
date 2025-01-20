@@ -24,6 +24,7 @@ var external_velocity: Vector2 = Vector2.ZERO
 
 func _ready() -> void:
 	self.player_dead.connect(on_player_death)
+	
 
 func on_player_death():
 	dead = true
@@ -35,6 +36,12 @@ func on_player_death():
 func take_damage(dmg_amount: float) -> float:
 	current_hp = current_hp - dmg_amount
 	emit_signal("player_damaged", dmg_amount)
+	if !dead:
+		audio.play_sound("TAKE_DMG")
+	var tween = get_tree().create_tween()
+	# Fade to 0.5 alpha
+	tween.tween_property(self, "modulate:v", 1, 0.01).from(15)
+	
 	if current_hp < 0:
 		player_dead.emit()
 	return current_hp
