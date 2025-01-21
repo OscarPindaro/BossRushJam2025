@@ -182,17 +182,17 @@ animation = &"shoot_windup_right"
 
 [node name="Dash" type="AudioStreamPlayer2D" parent="." index="2"]
 stream = ExtResource("6_c2fx8")
-bus = &"Sfx"
+bus = &"Ballerina"
 
 [node name="Shoot" type="AudioStreamPlayer2D" parent="." index="3"]
-bus = &"Sfx"
+bus = &"Ballerina"
 
 [node name="Defeat" type="AudioStreamPlayer2D" parent="." index="4"]
 stream = ExtResource("7_3uel1")
-bus = &"Sfx"
+bus = &"Ballerina"
 
 [node name="Hit_received" type="AudioStreamPlayer2D" parent="." index="5"]
-bus = &"Sfx"
+bus = &"Ballerina"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." index="6"]
 shape = SubResource("CircleShape2D_kwmqf")

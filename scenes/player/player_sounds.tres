@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SoundsCollection" load_steps=13 format=3 uid="uid://yjnevhy004ah"]
+[gd_resource type="Resource" script_class="SoundsCollection" load_steps=17 format=3 uid="uid://yjnevhy004ah"]
 
 [ext_resource type="Script" path="res://scenes/player/audio_tracks.gd" id="1_0ksck"]
 [ext_resource type="Script" path="res://scenes/player/audio_track.gd" id="2_hd6tv"]
@@ -8,6 +8,8 @@
 [ext_resource type="AudioStream" uid="uid://d11j11v84e7ab" path="res://asset/sfx/player/footsteps/footstep2.wav" id="6_ih4a8"]
 [ext_resource type="AudioStream" uid="uid://dwhwjt1h4yegm" path="res://asset/sfx/player/footsteps/footstep3.wav" id="7_wny3n"]
 [ext_resource type="AudioStream" uid="uid://cmpu8s8ila1r8" path="res://asset/sfx/player/footsteps/footstep4.wav" id="8_j4gi6"]
+[ext_resource type="AudioStream" uid="uid://cqi5kfd4wov8a" path="res://asset/sfx/player/receiving_damage/receive_damage_1.wav" id="9_4nkua"]
+[ext_resource type="AudioStream" uid="uid://bikwuogqjjcny" path="res://asset/sfx/player/receiving_damage/receive_damage_2.wav" id="9_8j0g3"]
 
 [sub_resource type="Resource" id="Resource_j6qmr"]
 script = ExtResource("2_hd6tv")
@@ -35,6 +37,18 @@ script = ExtResource("2_hd6tv")
 track_name = "STEP"
 track_file = SubResource("AudioStreamRandomizer_qja35")
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_02b3w"]
+streams_count = 2
+stream_0/stream = ExtResource("9_4nkua")
+stream_0/weight = 0.4
+stream_1/stream = ExtResource("9_8j0g3")
+stream_1/weight = 0.6
+
+[sub_resource type="Resource" id="Resource_k5bfy"]
+script = ExtResource("2_hd6tv")
+track_name = "TAKE_DMG"
+track_file = SubResource("AudioStreamRandomizer_02b3w")
+
 [resource]
 script = ExtResource("1_0ksck")
-sounds = Array[ExtResource("2_hd6tv")]([SubResource("Resource_j6qmr"), SubResource("Resource_4cckn"), SubResource("Resource_myf32")])
+sounds = Array[ExtResource("2_hd6tv")]([SubResource("Resource_j6qmr"), SubResource("Resource_4cckn"), SubResource("Resource_myf32"), SubResource("Resource_k5bfy")])
