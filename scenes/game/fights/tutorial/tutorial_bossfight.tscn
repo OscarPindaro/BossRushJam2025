@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b3ygdh8sictui" path="res://scenes/bosses/strongman/stomp_attack.tscn" id="5_uotxs"]
 [ext_resource type="AudioStream" uid="uid://vlr0jgaedrxt" path="res://asset/sfx/strong_man/attack_charge.wav" id="6_y6u31"]
 [ext_resource type="Script" path="res://scenes/player/sounds.gd" id="7_sggxy"]
-[ext_resource type="Resource" path="res://asset/sfx/strong_man/strongman_sounds.tres" id="8_5hojf"]
+[ext_resource type="Resource" uid="uid://ci1ddpt6csa3x" path="res://asset/sfx/strong_man/strongman_sounds.tres" id="8_5hojf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_i6o2a"]
 atlas = ExtResource("3_re1fd")

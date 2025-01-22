@@ -29,14 +29,27 @@ expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_iqspa"]
 texture = ExtResource("2_xk2g1")
-region_rect = Rect2(7.65738, 7.48765, 144.832, 49.0754)
+texture_margin_left = 26.0
+texture_margin_top = 26.0
+texture_margin_right = 26.0
+texture_margin_bottom = 26.0
+region_rect = Rect2(0, 0, 160, 64)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5ord1"]
 texture = ExtResource("2_miug5")
-region_rect = Rect2(7.77618, 7.54642, 144.305, 49.2429)
+texture_margin_left = 26.0
+texture_margin_top = 26.0
+texture_margin_right = 26.0
+texture_margin_bottom = 26.0
+region_rect = Rect2(0, 0, 160, 64)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_lml1a"]
 texture = ExtResource("2_xk2g1")
+texture_margin_left = 26.0
+texture_margin_top = 26.0
+texture_margin_right = 26.0
+texture_margin_bottom = 26.0
+region_rect = Rect2(0, 0, 160, 64)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fecjm"]
 bg_color = Color(0.494118, 0.419608, 0.494118, 1)
@@ -124,9 +137,6 @@ Button/styles/focus = SubResource("StyleBoxFlat_lwcje")
 Button/styles/hover = SubResource("StyleBoxTexture_iqspa")
 Button/styles/normal = SubResource("StyleBoxTexture_5ord1")
 Button/styles/pressed = SubResource("StyleBoxTexture_lml1a")
-HSlider/icons/grabber = null
-HSlider/icons/grabber_disabled = null
-HSlider/icons/grabber_highlight = null
 Label/colors/font_color = Color(0, 0, 0, 1)
 Label/colors/font_outline_color = Color(0, 0, 0, 1)
 Label/font_sizes/font_size = 24
@@ -138,6 +148,8 @@ ProgressBar/styles/background = SubResource("StyleBoxTexture_jec8w")
 ProgressBar/styles/fill = SubResource("StyleBoxTexture_j46if")
 TabBar/styles/button_highlight = SubResource("StyleBoxFlat_36j7r")
 TabBar/styles/button_pressed = SubResource("StyleBoxFlat_oxtg2")
+TabBar/styles/tab_disabled = SubResource("StyleBoxFlat_oojx5")
+TabBar/styles/tab_focus = SubResource("StyleBoxFlat_oojx5")
 TabBar/styles/tab_hovered = SubResource("StyleBoxFlat_oojx5")
 TabBar/styles/tab_selected = SubResource("StyleBoxFlat_5ubl8")
 TabBar/styles/tab_unselected = SubResource("StyleBoxFlat_op060")

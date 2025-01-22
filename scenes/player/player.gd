@@ -29,7 +29,6 @@ func _ready() -> void:
 func on_player_death():
 	dead = true
 	var tween = get_tree().create_tween()
-
 	# Fade to 0.5 alpha
 	tween.tween_property(self, "modulate:a", 0, 0.3)
 
@@ -40,7 +39,8 @@ func take_damage(dmg_amount: float) -> float:
 		audio.play_sound("TAKE_DMG")
 	var tween = get_tree().create_tween()
 	# Fade to 0.5 alpha
-	tween.tween_property(self, "modulate:v", 1, 0.01).from(15)
+	tween.tween_property($Animations, "modulate:v", 1, 0.1).from(15)
+	#tween.tween_property($Animations, "modulate", Color.WHITE, 0.1).from(Color.CRIMSON)
 	
 	if current_hp < 0:
 		player_dead.emit()
