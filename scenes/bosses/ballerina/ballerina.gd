@@ -37,42 +37,43 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	super(delta)
-	match action:
-		"idle":
-			curr_velocity = base_velocity
-			direction = idle_direction
-			animation_sprites.rotation = 0
-			if direction.x < 0:
-				animation_sprites.play("idle_left")
-			else:
-				animation_sprites.play("idle_right")
+	if player != null:
+		super(delta)
+		match action:
+			"idle":
+				curr_velocity = base_velocity
+				direction = idle_direction
+				animation_sprites.rotation = 0
+				if direction.x < 0:
+					animation_sprites.play("idle_left")
+				else:
+					animation_sprites.play("idle_right")
 
-		"charge":
-			var player_direction = (player.global_position - global_position).normalized()
-			var current_direction = velocity.normalized()
-			direction = current_direction.lerp(player_direction, turn_speed * delta).normalized()
-			
-			animation_sprites.rotate((curr_velocity/max_vel) * 0.5)
-			if ramp_up == 1:
-				curr_velocity = curr_velocity + acceleration
-				if curr_velocity > max_vel:
-					ramp_up = 0
-			if ramp_up == 0:
-				curr_velocity = curr_velocity - 20
-				if curr_velocity < base_velocity:
+			"charge":
+				var player_direction = (player.global_position - global_position).normalized()
+				var current_direction = velocity.normalized()
+				direction = current_direction.lerp(player_direction, turn_speed * delta).normalized()
+				
+				animation_sprites.rotate((curr_velocity/max_vel) * 0.5)
+				if ramp_up == 1:
+					curr_velocity = curr_velocity + acceleration
+					if curr_velocity > max_vel:
+						ramp_up = 0
+				if ramp_up == 0:
+					curr_velocity = curr_velocity - 20
+					if curr_velocity < base_velocity:
+						idle_direction = get_random_direction()
+						action = "idle"
+
+			"shoot":
+				direction = Vector2(0, 0)
+				curr_velocity = 0
+				if cerchio.despawned == true:
 					idle_direction = get_random_direction()
 					action = "idle"
 
-		"shoot":
-			direction = Vector2(0, 0)
-			curr_velocity = 0
-			if cerchio.despawned == true:
-				idle_direction = get_random_direction()
-				action = "idle"
-
-	self.velocity = direction*curr_velocity
-	self.move_and_slide()
+		self.velocity = direction*curr_velocity
+		self.move_and_slide()
 
 func _on_do_something_timeout() -> void:
 	var what_to_do = rng.randf_range(0, 1)
