@@ -20,7 +20,7 @@ func _process(delta: float) -> void:
 	pass
 
 func _on_settings_switched() -> void:
-	get_tree().paused = !get_tree().paused
+	#get_tree().paused = !visible
 	_switch_visibility(!visible)
 	emit_signal("settings_switched")
 

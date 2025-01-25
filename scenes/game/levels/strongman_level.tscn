@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://3paelqombsom" path="res://scenes/game/fights/strongman/strongman_bossfight.tscn" id="2_lsxqi"]
 
 [node name="StrongmanLevel" instance=ExtResource("1_83cq8")]
+process_mode = 1
 scale = Vector2(4, 4)
 win_screen = ExtResource("2_fyduw")
 transition_duration = 3.0
