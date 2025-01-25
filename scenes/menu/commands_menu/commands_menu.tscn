@@ -63,10 +63,10 @@ horizontal_alignment = 1
 
 [node name="Body" type="Label" parent="NinePatchRect/VBoxContainer"]
 layout_mode = 2
-text = "Move up with W
-Move left with A
-Move down with S
-Move right with D
+text = "Move up with W/UP
+Move left with A/LEFT
+Move down with S/DOWN
+Move right with D/RIGHT
 
 Hit your enemies with your juggling balls
 
