@@ -5,12 +5,12 @@
 [ext_resource type="Texture2D" uid="uid://1rbrctgd8c1v" path="res://asset/graphic/UI/menu_gear.png" id="2_uedw1"]
 
 [node name="SettingsButton" instance=ExtResource("1_bhb40")]
+process_mode = 3
 top_level = true
-offset_left = 1850.0
-offset_top = 20.0
-offset_right = 1900.0
-offset_bottom = 70.0
+offset_left = 1836.0
+offset_top = 1.0
+offset_right = 1920.0
+offset_bottom = 85.0
 icon = ExtResource("2_uedw1")
 icon_alignment = 1
-expand_icon = true
 script = ExtResource("2_e8jg6")

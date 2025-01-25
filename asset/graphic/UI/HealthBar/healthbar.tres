@@ -5,10 +5,15 @@
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_45avu"]
 texture = ExtResource("1_bmtwi")
+texture_margin_left = 4.67018
+texture_margin_right = 4.3656
+region_rect = Rect2(-0.100338, 0, 93.1003, 9)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_ibldd"]
 texture = ExtResource("2_dfox3")
-region_rect = Rect2(0, 0, 93, 9)
+texture_margin_left = 4.91057
+texture_margin_right = 7.18368
+region_rect = Rect2(0.101831, 0, 92.9974, 9)
 
 [resource]
 ProgressBar/styles/background = SubResource("StyleBoxTexture_45avu")

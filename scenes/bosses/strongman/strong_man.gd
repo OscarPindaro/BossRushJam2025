@@ -116,6 +116,9 @@ func _on_animations_animation_finished() -> void:
 func take_damage(damage) -> void:
 	hp -= damage
 	emit_signal("boss_damaged", damage)
+	var tween = get_tree().create_tween()
+	# Fade to 0.5 alpha
+	tween.tween_property(animations, "modulate", Color.WHITE, 0.1).from(Color.CRIMSON)
 	if hp <= 0:
 		boss_dead.emit()
 		if !is_dead:
