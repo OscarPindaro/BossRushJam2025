@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://11gn2n5pek7f" path="res://scenes/controller/menu_music.gd" id="3_5vsym"]
 [ext_resource type="Script" uid="uid://dmhpte1juaj6q" path="res://scenes/controller/scene_dock.gd" id="3_u4nt1"]
 [ext_resource type="PackedScene" uid="uid://c31dprby61dbw" path="res://scenes/menu/buttons/ButtonSettings/settings_button.tscn" id="5_2rffb"]
+[ext_resource type="PackedScene" uid="uid://cgg5d85nbefrl" path="res://addons/WAUCommands/mobile_ui/mobile_ui.tscn" id="7_nrnlv"]
 
 [node name="BaseController" type="Control" unique_id=1189287611]
 layout_mode = 3
@@ -23,6 +24,9 @@ script = ExtResource("3_5vsym")
 script = ExtResource("3_u4nt1")
 first_scene = ExtResource("2_dobb5")
 settings_button = ExtResource("5_2rffb")
+
+[node name="MobileUi" parent="." unique_id=616313561 instance=ExtResource("7_nrnlv")]
+layout_mode = 1
 
 [connection signal="next_scene" from="SettingsMenu" to="SceneDock" method="_on_next_scene"]
 [connection signal="settings_switched" from="SettingsMenu" to="SceneDock" method="_on_settings_switched"]

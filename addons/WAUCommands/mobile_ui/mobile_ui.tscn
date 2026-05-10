@@ -1,9 +1,9 @@
 [gd_scene format=3 uid="uid://cgg5d85nbefrl"]
 
 [ext_resource type="Script" uid="uid://m3fdibravf6v" path="res://addons/WAUCommands/mobile_ui/mobile_ui.gd" id="1_rttqt"]
-[ext_resource type="PackedScene" uid="uid://dn82qtyb5sjxk" path="res://scenes/player/player.tscn" id="2_feqrj"]
 
 [node name="MobileUi" type="Control" unique_id=616313561]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,8 +20,10 @@ layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_top = -600.0
-offset_right = 600.0
+offset_left = 34.0
+offset_top = -414.0
+offset_right = 556.0
+offset_bottom = -37.0
 grow_vertical = 0
 
 [node name="ActionButtons" type="Control" parent="CanvasLayer" unique_id=2136964091]
@@ -35,5 +37,3 @@ offset_left = -561.0
 offset_top = -425.0
 grow_horizontal = 0
 grow_vertical = 0
-
-[node name="Player" parent="." unique_id=892217161 instance=ExtResource("2_feqrj")]

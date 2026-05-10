@@ -47,6 +47,7 @@ offset_left = 374.0
 offset_top = 245.0
 offset_right = 767.0
 offset_bottom = 319.0
+button_pressed = true
 text = "Save only custom commands (excludes ui_*) "
 
 [node name="LoadOnlyCustomButton" type="CheckButton" parent="." unique_id=661665574]
@@ -55,6 +56,7 @@ offset_left = 1145.0
 offset_top = 247.0
 offset_right = 1540.0
 offset_bottom = 321.0
+button_pressed = true
 text = "Load only custom commands (excludes ui_*) "
 
 [node name="AllSettingsPath" type="LineEdit" parent="." unique_id=1864484292]
