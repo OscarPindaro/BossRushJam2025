@@ -66,8 +66,10 @@ func _physics_process(delta: float) -> void:
 				spiral_path = []
 				spiral_time_instant = 0
 		else:
-			var direction_x := Input.get_axis("ui_left", "ui_right")
-			var direction_y := Input.get_axis("ui_up", "ui_down")
+			#var direction_x := Input.get_axis("ui_left", "ui_right")
+			#var direction_y := Input.get_axis("ui_up", "ui_down")
+			var direction_x := Input.get_axis("wau_left", "wau_right")
+			var direction_y := Input.get_axis("wau_up", "wau_down")
 
 			velocity.x = 0
 			velocity.y = 0
