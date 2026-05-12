@@ -2,19 +2,27 @@ extends Control
 
 @onready var d_pad: Control = $CanvasLayer/DPad
 @onready var ui_button = preload("res://addons/WAUCommands/mobile_ui/touch_button.tscn")
-
 @onready var canvas_layer: CanvasLayer = $CanvasLayer
-@onready var action_container: Control = $CanvasLayer/ActionButtons
+@onready var action_container: Control = $CanvasLayer/ActioButtonsArea/ActionButtons
 
+
+##### EXPORT VARIABLES #####
+
+## Actions to implement in the DPAD. Actions will be deployed clockwhise.
 @export var dpad_actions = ["wau_up", "wau_left", "wau_down", "wau_right"]
+## Custom actions that will be deployed in the right part of the screen. If empty, the container will be filled with all the available NON DEFAULT actions until the space is filled.
 @export var custom_actions: Array = []
-@export var buttons_per_arc: int = 5
-
+## Number of rows and columns in the Actions container. It will accomodate at most 3x3 actions from the custom_actions list or
+@export var actions_grid_size: int = 3
+## IDLE button color
 @export var button_color: Color = Color.WHITE
+## Pressed button color
 @export var button_pressed_color: Color = Color.GRAY
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
+	# Check if the platform supports touch screen, if yes ENABLE TOUCH UI
 	var is_mobile_platform = DisplayServer.is_touchscreen_available()
 	if is_mobile_platform:
 		self.show_all()
@@ -22,14 +30,15 @@ func _ready() -> void:
 	else:
 		self.hide_all()
 		print("not on mobile")
+		return
 	
 	# Extract all the custom commands set up
 	var custom_commands: Dictionary = {}
-	if custom_actions == []:
-		for action in InputMap.get_actions():
-			if action.begins_with("ui_") or action.begins_with("editor_") or action.begins_with("spatial_editor"):
+	for action in InputMap.get_actions():
+		if action.begins_with("ui_") or action.begins_with("editor_") or action.begins_with("spatial_editor"):
+			if action not in custom_actions:
 				continue
-			custom_commands[action] = []
+		custom_commands[action] = []
 		
 			
 	# build the DPAD
@@ -42,19 +51,46 @@ func _ready() -> void:
 	for i in range(len(dpad_actions)):
 		var pos = d_pad_buttons_positions[i]
 		var new_button = _create_button(dpad_actions[i], d_pad)
-		new_button.position = pos - Vector2(ui_button_size, ui_button_size) / 2
+		new_button.name = dpad_actions[i]
+		new_button.position = pos
 		custom_commands.erase(dpad_actions[i])
 		
-	# build actions
-	var test_actions = []
-	for i in range(4):
-		var index = i / 4
-		test_actions.append(dpad_actions[index])
-	_build_action_buttons(test_actions)
+		
+	# build actions container with a [actions_grid_size X actions_grid_size] grid
+	action_container.columns = actions_grid_size
+	for i in range(actions_grid_size * actions_grid_size):
+		var control_container = Control.new()
+		control_container.name = str(i)
+		control_container.custom_minimum_size = Vector2(ui_button_size, ui_button_size)
+		action_container.add_child(control_container)
+
+	# position the buttons in the grid according to a specific logic
+	var positions = []
 	
-	#var action_center = action_container.size - Vector2(ui_button_size, ui_button_size)  / 2.0
-	#var action_radius = min(action_container.size.x, action_container.size.y) / 2.0 - max(ui_button_size.x, ui_button_size.y) / 2.0
+	if actions_grid_size == 3:
+		match len(custom_actions):
+			0: positions = []
+			1: positions = ["4"]
+			2: positions = ["1", "3"]
+			3: positions = ["2", "4", "6"]
+			4: positions = ["1", "3", "4", "5"]
+			5: positions = ["1", "3", "4", "5", "7"]
+			_: for i in range(len(custom_actions)):
+					positions.append(str(i))
+		#positions = get_grid_positions(len(custom_actions), actions_grid_size)
+	else:		
+		positions = get_grid_positions(len(custom_actions), actions_grid_size)
+				
+	for i in range(len(custom_actions)):
+		var control_container = action_container.get_node(positions[i])
+		var action_btn = _create_button(custom_actions[i], control_container)
+		action_btn.position = control_container.custom_minimum_size / 2
+
+
+	#_build_action_buttons(test_actions)
 	
+		#var action_btn = _create_button(dpad_actions[index], control_container)
+		#action_btn.position = control_container.custom_minimum_size / 2
 
 
 func _create_button(action: String, father: Node) -> Node:
@@ -74,10 +110,7 @@ func show_all():
 func hide_all():
 	self.hide()
 	canvas_layer.hide()
-	
-	
-	
-	
+		
 # evenly distribute objects in a circle
 func arrange_in_circle(num_objects: int, radius: float, center=Vector2.ZERO, start_offset=0) -> Array:
 	var output = []
@@ -90,108 +123,55 @@ func arrange_in_circle(num_objects: int, radius: float, center=Vector2.ZERO, sta
 		output.push_front(pos + center)
 	return output
 
-# evenly distribute objects in a quarter of circle
-func arrange_in_quarter(num_objects: int, radius: float, center: Vector2) -> Array:
-	var output = []
-	if num_objects == 0:
-		return output
 
-	if num_objects == 1:
-		# Single button on the arc: place at 45° (middle of the quarter)
-		var pos = radius * Vector2.from_angle(-PI / 4.0)
-		output.append(pos + center)
-		return output
+### DA RIVEDERE
+func get_grid_positions(count: int, grid_size: int) -> Array:
+	var total_cells = grid_size * grid_size
+	var mid = grid_size / 2
 
-	# Spread across a quarter circle 
-	var arc_start = - PI
-	var arc_end =  - PI * 1.0 / 2.0
-	var step = (arc_end - arc_start) / (num_objects - 1)
+	if count == 0:
+		return []
 
-	for i in range(num_objects):
-		var angle = arc_start + i * step
-		var pos = radius * Vector2.from_angle(angle)
-		output.append({"position": pos + center, "rotation": angle})
+	if count == 1:
+		# Center
+		return [str(mid * grid_size + mid)]
 
-	return output
+	if count == 2:
+		# Top-center, middle-left
+		return [
+			str((mid - 1) * grid_size + mid),
+			str(mid * grid_size + (mid - 1))
+		]
 
-func arrange_in_quarter_ellipse(num_objects: int, container_size: Vector2, center: Vector2, margin: float = 40.0) -> Array:
-	var output = []
-	if num_objects == 0:
-		return output
+	if count == 3:
+		# Anti-diagonal: top-right, center, bottom-left
+		return [
+			str((mid - 1) * grid_size + (mid + 1)),
+			str(mid * grid_size + mid),
+			str((mid + 1) * grid_size + (mid - 1))
+		]
 
-	var radius_x = container_size.x / 2.0 - margin
-	var radius_y = container_size.y / 2.0 - margin
+	if count == 4:
+		# Cross without bottom
+		return [
+			str((mid - 1) * grid_size + mid),
+			str(mid * grid_size + (mid - 1)),
+			str(mid * grid_size + mid),
+			str(mid * grid_size + (mid + 1))
+		]
 
-	if num_objects == 1:
-		var angle = -PI / 4.0
-		var pos = Vector2(radius_x * cos(angle), radius_y * sin(angle))
-		output.append({"position": pos + center, "rotation": _ellipse_tangent_angle(angle, radius_x, radius_y)})
-		return output
+	if count == 5:
+		# Full cross
+		return [
+			str((mid - 1) * grid_size + mid),
+			str(mid * grid_size + (mid - 1)),
+			str(mid * grid_size + mid),
+			str(mid * grid_size + (mid + 1)),
+			str((mid + 1) * grid_size + mid)
+		]
 
-	var arc_start = - PI
-	var arc_end =  - PI * 1.0 / 2.0
-	var step = (arc_end - arc_start) / (num_objects - 1)
-
-	for i in range(num_objects):
-		var angle = arc_start + i * step
-		var pos = Vector2(radius_x * cos(angle), radius_y * sin(angle))
-		var tangent_angle = _ellipse_tangent_angle(angle, radius_x, radius_y)
-		output.append({"position": pos + center, "rotation": tangent_angle})
-
-	return output
-
-func _ellipse_tangent_angle(angle: float, radius_x: float, radius_y: float) -> float:
-	# Derivative of the ellipse gives the tangent direction
-	var tangent = Vector2(-radius_x * sin(angle), radius_y * cos(angle))
-	return tangent.angle()
-	
-
-func _build_action_buttons(actions: Array):
-	var ui_button_size = ui_button.instantiate().button_size
-	var center = action_container.size - Vector2(ui_button_size,ui_button_size) / 2.0
-	var positions = arrange_in_quarter_ellipse(actions.size(), action_container.size, center, 0)
-
-	for i in range(actions.size()):
-		var btn = _create_button(actions[i], action_container)
-		var data = positions[i]
-		btn.position = data["position"] 
-#
-#func _build_action_buttons(actions: Array):
-	#var ui_button_size = ui_button.instantiate().size
-	#var center = action_container.size - ui_button_size / 2.0
-	#var base_radius = max(action_container.size.x, action_container.size.y) - max(ui_button_size.x, ui_button_size.y) / 2.0
-#
-	#if actions.size() == 1:
-		## Single button: centered
-		#var btn = _create_button(actions[0], action_container)
-		#btn.position = center - btn.size / 2.0
-#
-	#elif actions.size() <= buttons_per_arc:
-		## One quarter-circle arc
-		#var positions = arrange_in_quarter(actions.size(), base_radius, center)
-		#for i in range(actions.size()):
-			#var btn = _create_button(actions[i], action_container)
-#
-			#btn.pivot_offset = Vector2(btn.size.x / 2.0, btn.size.y)
-			#btn.rotation = positions[i]["rotation"] + PI / 2.0  # tangent to the arc
-			#
-			#var offset = Vector2(0, -btn.size.y).rotated(positions[i]["rotation"] + PI / 2.0)
-			#btn.position = positions[i]["position"] - offset - btn.pivot_offset
-#
-	#else:
-		## Two arcs: inner (smaller radius) and outer (larger radius)
-		#var outer_count = buttons_per_arc
-		#var inner_count = actions.size() - outer_count
-		#var outer_radius = base_radius
-		#var inner_radius = base_radius * 0.55
-#
-		#var outer_positions = arrange_in_quarter(outer_count, outer_radius, center)
-		#var inner_positions = arrange_in_quarter(inner_count, inner_radius, center)
-#
-		#for i in range(outer_count):
-			#var btn = _create_button(actions[i], action_container)
-			#btn.position = outer_positions[i] - btn.size / 2.0
-#
-		#for i in range(inner_count):
-			#var btn = _create_button(actions[outer_count + i], action_container)
-			#btn.position = inner_positions[i] - btn.size / 2.0
+	# 6+ items: sequential fill
+	var positions = []
+	for i in range(min(count, total_cells)):
+		positions.append(str(i))
+	return positions

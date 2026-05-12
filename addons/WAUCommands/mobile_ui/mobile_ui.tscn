@@ -11,6 +11,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_rttqt")
+custom_actions = ["ui_left", "ui_right", "ui_up", "ui_down"]
 button_color = Color(0.24705882, 0.29803923, 0.7764706, 1)
 button_pressed_color = Color(0.17254902, 0.20392157, 0.5921569, 1)
 
@@ -22,22 +23,35 @@ layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 34.0
-offset_top = -414.0
-offset_right = 556.0
-offset_bottom = -37.0
+offset_left = 40.0
+offset_top = -440.0
+offset_right = 440.0
+offset_bottom = -40.0
 grow_vertical = 0
 
-[node name="ActionButtons" type="Control" parent="CanvasLayer" unique_id=2136964091]
+[node name="ActioButtonsArea" type="Control" parent="CanvasLayer" unique_id=895336120]
 layout_mode = 3
 anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -557.0
-offset_top = -400.0
-offset_right = -42.0
-offset_bottom = -37.0
+offset_left = -440.0
+offset_top = -440.0
+offset_right = -40.0
+offset_bottom = -40.0
 grow_horizontal = 0
 grow_vertical = 0
+
+[node name="ActionButtons" type="GridContainer" parent="CanvasLayer/ActioButtonsArea" unique_id=643141094]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 20
+theme_override_constants/v_separation = 20
+columns = 3
