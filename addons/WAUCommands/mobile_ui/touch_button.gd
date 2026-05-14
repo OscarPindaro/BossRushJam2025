@@ -25,6 +25,7 @@ func _draw():
 	
 func _ready():
 	$Label.text = text_label
+	$Label.add_theme_font_size_override("font_size", floor(button_size * 0.15))
 	shape.radius = button_size / 2.0
 	pressed.connect(_on_pressed)
 	released.connect(_on_released)
