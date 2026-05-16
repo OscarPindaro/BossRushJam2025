@@ -2,6 +2,7 @@
 extends EditorPlugin
 
 const MainPanel = preload("res://addons/WAUCommands/CommandsConfigurator.tscn")
+
 const PLUGIN_NAME = "WAUCommands"
 const ICON = preload("res://addons/WAUCommands/game-control.png")
 
@@ -9,6 +10,9 @@ var main_panel_instance
 
 func _enter_tree():
 	main_panel_instance = MainPanel.instantiate()
+	var main_screen = get_editor_interface().get_editor_main_screen()
+	#main_screen.resized.connect(_on_main_screen_resized)
+	#main_panel_instance.margin = main_screen.size * 5/100
 	
 	# Add the main panel to the editor's main viewport.
 	get_editor_interface().get_editor_main_screen().add_child(main_panel_instance)
@@ -16,6 +20,12 @@ func _enter_tree():
 	# Hide the main panel
 	_make_visible(false)
 
+
+
+#func _on_main_screen_resized():
+	#var new_size = get_editor_interface().get_editor_main_screen().size
+	#main_panel_instance.margin = new_size * 5/100
+	
 func _exit_tree():
 	if main_panel_instance:
 		main_panel_instance.queue_free()

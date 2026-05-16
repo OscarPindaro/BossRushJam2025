@@ -1,82 +1,82 @@
 [gd_resource type="Resource" script_class="CommandsConfig" format=3 uid="uid://1ulaijfx4s7q"]
 
-[ext_resource type="Script" uid="uid://cc5dn1cccmpoo" path="res://addons/WAUCommands/CommandsConfig.gd" id="1_7mg5e"]
+[ext_resource type="Script" uid="uid://cc5dn1cccmpoo" path="res://addons/WAUCommands/OLD_UI/CommandsConfig.gd" id="1_y71ub"]
 
-[sub_resource type="InputEventKey" id="InputEventKey_7mg5e"]
+[sub_resource type="InputEventKey" id="InputEventKey_q1j0w"]
 device = -1
 physical_keycode = 83
 unicode = 115
 
-[sub_resource type="InputEventKey" id="InputEventKey_8b1t0"]
+[sub_resource type="InputEventKey" id="InputEventKey_pjjts"]
 device = -1
 physical_keycode = 4194322
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_1qhoh"]
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_cebkb"]
 device = -1
 button_index = 12
 
-[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_njny4"]
+[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_506jn"]
 device = -1
 axis = 1
 axis_value = 1.0
 
-[sub_resource type="InputEventKey" id="InputEventKey_8fe2d"]
+[sub_resource type="InputEventKey" id="InputEventKey_3ygo3"]
 device = -1
 physical_keycode = 65
 unicode = 97
 
-[sub_resource type="InputEventKey" id="InputEventKey_uknbx"]
+[sub_resource type="InputEventKey" id="InputEventKey_eewh8"]
 device = -1
 physical_keycode = 4194319
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_gho1e"]
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_0p7k5"]
 device = -1
 button_index = 13
 
-[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_ykf25"]
+[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_igl2r"]
 device = -1
 axis_value = -1.0
 
-[sub_resource type="InputEventKey" id="InputEventKey_8c5n2"]
+[sub_resource type="InputEventKey" id="InputEventKey_uwpyr"]
 device = -1
 physical_keycode = 68
 unicode = 100
 
-[sub_resource type="InputEventKey" id="InputEventKey_5vmci"]
+[sub_resource type="InputEventKey" id="InputEventKey_ih1la"]
 device = -1
 physical_keycode = 4194321
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_jefy6"]
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_0pw2u"]
 device = -1
 button_index = 14
 
-[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_fgk1l"]
+[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_2di5o"]
 device = -1
 axis_value = 1.0
 
-[sub_resource type="InputEventKey" id="InputEventKey_a30x3"]
+[sub_resource type="InputEventKey" id="InputEventKey_wbf0g"]
 device = -1
 physical_keycode = 87
 unicode = 119
 
-[sub_resource type="InputEventKey" id="InputEventKey_uhgng"]
+[sub_resource type="InputEventKey" id="InputEventKey_ke3y1"]
 device = -1
 physical_keycode = 4194320
 
-[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_shjgt"]
+[sub_resource type="InputEventJoypadButton" id="InputEventJoypadButton_8qd6h"]
 device = -1
 button_index = 11
 
-[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_s5n65"]
+[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_qkjev"]
 device = -1
 axis = 1
 axis_value = -1.0
 
 [resource]
-script = ExtResource("1_7mg5e")
+script = ExtResource("1_y71ub")
 controls = Dictionary[String, Array]({
-"wau_down": Array[InputEvent]([SubResource("InputEventKey_7mg5e"), SubResource("InputEventKey_8b1t0"), SubResource("InputEventJoypadButton_1qhoh"), SubResource("InputEventJoypadMotion_njny4")]),
-"wau_left": Array[InputEvent]([SubResource("InputEventKey_8fe2d"), SubResource("InputEventKey_uknbx"), SubResource("InputEventJoypadButton_gho1e"), SubResource("InputEventJoypadMotion_ykf25")]),
-"wau_right": Array[InputEvent]([SubResource("InputEventKey_8c5n2"), SubResource("InputEventKey_5vmci"), SubResource("InputEventJoypadButton_jefy6"), SubResource("InputEventJoypadMotion_fgk1l")]),
-"wau_up": Array[InputEvent]([SubResource("InputEventKey_a30x3"), SubResource("InputEventKey_uhgng"), SubResource("InputEventJoypadButton_shjgt"), SubResource("InputEventJoypadMotion_s5n65")])
+"wau_down": Array[InputEvent]([SubResource("InputEventKey_q1j0w"), SubResource("InputEventKey_pjjts"), SubResource("InputEventJoypadButton_cebkb"), SubResource("InputEventJoypadMotion_506jn")]),
+"wau_left": Array[InputEvent]([SubResource("InputEventKey_3ygo3"), SubResource("InputEventKey_eewh8"), SubResource("InputEventJoypadButton_0p7k5"), SubResource("InputEventJoypadMotion_igl2r")]),
+"wau_right": Array[InputEvent]([SubResource("InputEventKey_uwpyr"), SubResource("InputEventKey_ih1la"), SubResource("InputEventJoypadButton_0pw2u"), SubResource("InputEventJoypadMotion_2di5o")]),
+"wau_up": Array[InputEvent]([SubResource("InputEventKey_wbf0g"), SubResource("InputEventKey_ke3y1"), SubResource("InputEventJoypadButton_8qd6h"), SubResource("InputEventJoypadMotion_qkjev")])
 })
