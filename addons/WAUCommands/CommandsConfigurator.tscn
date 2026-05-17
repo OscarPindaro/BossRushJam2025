@@ -3,13 +3,11 @@
 [ext_resource type="Script" uid="uid://h5ghfdi2jfqw" path="res://addons/WAUCommands/commands_configurator.gd" id="1_w5cfj"]
 
 [node name="CommandsConfigurator" type="Control" unique_id=1451103480]
-custom_minimum_size = Vector2(960, 540)
+custom_minimum_size = Vector2(960, 720)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -1920.0
-offset_bottom = -1080.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -28,11 +26,13 @@ dialog_autowrap = true
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2004779195]
 layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -573.0
+offset_right = 573.0
+offset_bottom = 901.0
 grow_horizontal = 2
-grow_vertical = 2
 theme_override_constants/margin_left = 100
 theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 100
@@ -65,6 +65,8 @@ placeholder_text = "res://addons/WAUCommands/saved_commands/custom_commands.tres
 
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer" unique_id=935450522]
 layout_mode = 2
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_bottom = 40
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer" unique_id=746607052]
 layout_mode = 2
@@ -83,8 +85,9 @@ layout_mode = 2
 text = "Save Commnads"
 
 [node name="Control" type="Control" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=1121024963]
-custom_minimum_size = Vector2(200, 0)
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer" unique_id=941219642]
 layout_mode = 2
@@ -97,3 +100,46 @@ text = "Load only custom commands (excludes ui_*) "
 [node name="LoadButton" type="Button" parent="MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2" unique_id=1254137109]
 layout_mode = 2
 text = "Load Commnads"
+
+[node name="HSplitContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer" unique_id=320133023]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HSplitContainer" unique_id=1712586213]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HSplitContainer/VBoxContainer" unique_id=1824051128]
+layout_mode = 2
+text = "LOCAL COMMANDS"
+
+[node name="LocalCommands" type="ItemList" parent="MarginContainer/VBoxContainer/HSplitContainer/VBoxContainer" unique_id=1090661779]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+select_mode = 2
+scroll_hint_mode = 1
+tile_scroll_hint = true
+item_count = 4
+item_0/text = "wau_down"
+item_1/text = "wau_left"
+item_2/text = "wau_right"
+item_3/text = "wau_up"
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HSplitContainer" unique_id=878230259]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/HSplitContainer/VBoxContainer2" unique_id=82322705]
+layout_mode = 2
+text = "SAVED COMMANDS"
+
+[node name="SavedCommands" type="ItemList" parent="MarginContainer/VBoxContainer/HSplitContainer/VBoxContainer2" unique_id=1108508591]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+select_mode = 2
+scroll_hint_mode = 1
+tile_scroll_hint = true
+item_count = 4
+item_0/text = "wau_down"
+item_1/text = "wau_left"
+item_2/text = "wau_right"
+item_3/text = "wau_up"
