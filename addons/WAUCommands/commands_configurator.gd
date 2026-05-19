@@ -1,15 +1,15 @@
 @tool
 extends Control
 
-@onready var save_button: Button = $MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/SaveButton
-@onready var load_button: Button = $MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2/LoadButton
-@onready var save_checkbox: CheckButton = $MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/SaveOnlyCustomButton
-@onready var load_checkbox: CheckButton = $MarginContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2/LoadOnlyCustomButton
-@onready var all_settings_textbox: LineEdit = $MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/AllSettingsPath
-@onready var custom_settings_textbox: LineEdit = $MarginContainer/VBoxContainer/MarginContainer2/VBoxContainer/CustomSettingsPath
+@onready var save_button: Button = $MarginContainer/ScrollContainer/CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/SaveButton
+@onready var load_button: Button = $MarginContainer/ScrollContainer/CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2/LoadButton
+@onready var save_checkbox: CheckButton = $MarginContainer/ScrollContainer/CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer/SaveOnlyCustomButton
+@onready var load_checkbox: CheckButton = $MarginContainer/ScrollContainer/CenterContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer2/LoadOnlyCustomButton
+@onready var all_settings_textbox: LineEdit = $MarginContainer/ScrollContainer/CenterContainer/VBoxContainer/MarginContainer2/VBoxContainer/AllSettingsPath
+@onready var custom_settings_textbox: LineEdit = $MarginContainer/ScrollContainer/CenterContainer/VBoxContainer/MarginContainer2/VBoxContainer/CustomSettingsPath
 @onready var popup_panel: ConfirmationDialog = $PopupPanel
-@onready var local_commands: ItemList = $MarginContainer/VBoxContainer/HSplitContainer/VBoxContainer/LocalCommands
-@onready var saved_commands: ItemList = $MarginContainer/VBoxContainer/HSplitContainer/VBoxContainer2/SavedCommands
+@onready var local_commands: ItemList = $MarginContainer/ScrollContainer/CenterContainer/VBoxContainer/HSplitContainer/VBoxContainer/LocalCommands
+@onready var saved_commands: ItemList = $MarginContainer/ScrollContainer/CenterContainer/VBoxContainer/HSplitContainer/VBoxContainer2/SavedCommands
 
 
 var all_settings_path = ""
@@ -23,7 +23,7 @@ func _ready():
 	custom_settings_textbox.editing_toggled.connect(_fill_saved_commands_list)
 	save_checkbox.pressed.connect(_fill_local_commands_list)
 	load_checkbox.pressed.connect(_fill_saved_commands_list)
-	
+		
 	all_settings_path = all_settings_textbox.text if all_settings_textbox.text != '' else all_settings_textbox.placeholder_text
 	custom_settings_path = custom_settings_textbox.text if custom_settings_textbox.text != '' else custom_settings_textbox.placeholder_text
 	

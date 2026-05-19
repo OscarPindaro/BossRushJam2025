@@ -25,12 +25,14 @@ extends Control
 @export_range(0, 1) var button_areas_percentage_size: float = 0.33
 ## Percentage margin to place areas for Dpad and actions
 @export_range(0, 1) var margin_percentage: float = 0.05
+## Show the UI even if the thouchscreen is not available
+@export var always_show_ui: bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	# Check if the platform supports touch screen, if yes ENABLE TOUCH UI
 	var is_mobile_platform = DisplayServer.is_touchscreen_available()
-	if is_mobile_platform:
+	if is_mobile_platform or always_show_ui:
 		self.show_all()
 		print("on mobile")
 	else:
